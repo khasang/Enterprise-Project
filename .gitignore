@@ -1,3 +1,4 @@
-/STS/enterprise/*iml
-/STS/enterprise/out
-/STS/enterprise/.idea
+*iml
+out
+.idea
+vcs.xml
