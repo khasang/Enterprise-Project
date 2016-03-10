@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Game {
+    private ArrayList<String> cities;
+    private Scanner scanner;
+    private String currentCity;
+    private String previousCity;
+    private HashSet<String> listOfCitiesWithoutRepeats;
+    private char firstLetterOfCurrentCity;
+    private char lastLetterOfPreviousCity;
+
+    public Game() {
+        scanner = new Scanner(System.in);
+        currentCity = "";
+        cities = new ArrayList<String>();
+        listOfCitiesWithoutRepeats = new HashSet<String>();
+        firstLetterOfCurrentCity = 1;
+        lastLetterOfPreviousCity = 1;
+    }
+
+    public void start() {
+        System.out.println("Введите название города:");
+        while (!currentCity.toLowerCase().equals("quit")) {
+            currentCity = scanner.nextLine();
+            if (cities.isEmpty()) {
+                cities.add(currentCity);
+                previousCity = currentCity;
+                System.out.println("Введите название следующего города:");
+            } else {
+                firstLetterOfCurrentCity = currentCity.toLowerCase().charAt(0);
+                previousCity = cities.get(cities.size() - 1);
+                lastLetterOfPreviousCity = previousCity.toLowerCase().charAt(previousCity.length() - 1);
+                if (firstLetterOfCurrentCity == lastLetterOfPreviousCity) {
+                    cities.add(currentCity);
+                    listOfCitiesWithoutRepeats.add(currentCity);
+                    System.out.println("Введите название следующего города:");
+                } else {
+                    if (!currentCity.toLowerCase().equals("quit")) {
+                        System.out.println("Город должен начинаться с последней буквы предыдущего города - " + Character.toString(lastLetterOfPreviousCity).toUpperCase() + ":");
+                    }
+                }
+            }
+        }
+        scanner.close();
+        System.out.println("Игра завершена.");
+        System.out.println(listOfCitiesWithoutRepeats.toString());
+    }
+}
