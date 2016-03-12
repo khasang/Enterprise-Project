@@ -1,3 +1,4 @@
-/STS/enterprise/*iml
-/STS/enterprise/out
-/STS/enterprise/.idea
+/STS/Enterprise/*iml
+/STS/Enterprise/out
+/STS/Enterprise/.idea
+/STS/Enterprise/target
