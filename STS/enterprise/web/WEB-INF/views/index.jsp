@@ -8,5 +8,6 @@
 <body>
 <h1>Hello World!</h1>
 <p>${xxx}</p>
+<p>${trackPoint}</p>
 </body>
 </html>
