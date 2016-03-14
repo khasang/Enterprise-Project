@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     @RequestMapping("/")
     public String home(Model model) {
-        String hello = "Hello World";
+        String hello = "Hello Kostya";
         model.addAttribute("xxx", hello);
         return "index";
     }
