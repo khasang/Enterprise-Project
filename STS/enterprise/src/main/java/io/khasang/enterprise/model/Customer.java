@@ -1,4 +1,4 @@
 package io.khasang.enterprise.model;
 
-public class Customer {
+public class Customer extends User {
 }

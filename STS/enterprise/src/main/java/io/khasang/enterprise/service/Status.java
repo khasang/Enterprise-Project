@@ -1,4 +1,5 @@
 package io.khasang.enterprise.service;
 
-public class Status {
+public enum Status {
+    PENDING, ACCEPTED, INPROGRESS, FINISHED
 }

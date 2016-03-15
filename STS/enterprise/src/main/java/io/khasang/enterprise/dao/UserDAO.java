@@ -1,4 +1,4 @@
 package io.khasang.enterprise.dao;
 
-public class UserDAO {
+public class UserDAO extends AbstractDAO {
 }
