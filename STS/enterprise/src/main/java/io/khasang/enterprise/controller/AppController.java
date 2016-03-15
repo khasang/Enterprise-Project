@@ -1,6 +1,7 @@
 package io.khasang.enterprise.controller;
 
 import io.khasang.enterprise.model.AccessToNewBase;
+import io.khasang.enterprise.service.ChatService;
 import io.khasang.enterprise.service.ProjectTrackingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,5 +41,15 @@ public class AppController {
         AccessToNewBase accessToNewBase = new AccessToNewBase();
         model.addAttribute("xxx", accessToNewBase.access());
         return "index";
+    }
+
+    @RequestMapping("/track")
+    public String chat(Model model) {
+        ChatService chat = new ChatService();
+        chat.setMessage("Сообщение 1");
+        model.addAttribute("chatMessage1", chat.send("Андрей"));
+        chat.setMessage("Сообщение 1");
+        model.addAttribute("chatMessage1", chat.send());
+        return "chat";
     }
 }
