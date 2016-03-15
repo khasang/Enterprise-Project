@@ -1,6 +1,7 @@
 package io.khasang.enterprise.controller;
 
 import io.khasang.enterprise.model.AccessToNewBase;
+import io.khasang.enterprise.service.ProjectTrackingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +15,11 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/binding1")
+    @RequestMapping("/track")
     public String home1(Model model) {
-        model.addAttribute("xxx", "Buy");
+        ProjectTrackingService trackingService = new ProjectTrackingService();
+        trackingService.setProgress("Done 5% of Enterprise app");
+        model.addAttribute("trackPoint", trackingService.getProgress());
         return "index";
     }
 
