@@ -3,12 +3,16 @@ package io.khasang.enterprise.controller;
 import io.khasang.enterprise.model.AccessToNewBase;
 import io.khasang.enterprise.service.ChatService;
 import io.khasang.enterprise.service.ProjectTrackingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
+    @Autowired
+    AccessToNewBase accessToNewBase;
+
     @RequestMapping("/")
     public String home(Model model) {
         String hello = "Hello World";
@@ -38,18 +42,17 @@ public class AppController {
 
     @RequestMapping("/home3")
     public String home3(Model model) {
-        AccessToNewBase accessToNewBase = new AccessToNewBase();
-        model.addAttribute("xxx", accessToNewBase.access());
+        model.addAttribute("xxx", accessToNewBase.getStatus());
         return "index";
     }
 
-    @RequestMapping("/track")
+    @RequestMapping("/chat")
     public String chat(Model model) {
         ChatService chat = new ChatService();
         chat.setMessage("Сообщение 1");
         model.addAttribute("chatMessage1", chat.send("Андрей"));
-        chat.setMessage("Сообщение 1");
-        model.addAttribute("chatMessage1", chat.send());
+        chat.setMessage("Сообщение 2");
+        model.addAttribute("chatMessage2", chat.send());
         return "chat";
     }
 }

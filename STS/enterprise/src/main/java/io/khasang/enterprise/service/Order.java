@@ -1,5 +1,9 @@
 package io.khasang.enterprise.service;
 
+import io.khasang.enterprise.model.Employee;
+
+import java.util.ArrayList;
+
 public class Order {
     private final Project PROJECT;
     private String title;
@@ -30,18 +34,18 @@ public class Order {
         this.executors = executors;
     }
 
-    public boolean setExecutor(Employee executor) {
-        if (PROJECT.hasEmplyee(executor)) {
-            this.executor = executor;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public Project getProject() {
-        return project;
-    }
+//    public boolean setExecutor(Employee executor) {
+//        if (PROJECT.hasEmplyee(executor)) {
+//            this.executor = executor;
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//    public Project getProject() {
+//        return project;
+//    }
 
     public String getTitle() {
         return title;

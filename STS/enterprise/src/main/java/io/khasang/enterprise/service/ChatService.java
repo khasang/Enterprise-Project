@@ -1,7 +1,5 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.model.User;
-
 public class ChatService {
     private String message;
 

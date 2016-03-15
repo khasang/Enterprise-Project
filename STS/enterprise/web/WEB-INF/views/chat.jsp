@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Hello World!</h1>
-<p>${chatMessege1}</p>
-<p>${chatMessege2}</p>
+<p>${chatMessage1}</p>
+<p>${chatMessage2}</p>
 </body>
 </html>
