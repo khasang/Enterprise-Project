@@ -43,13 +43,13 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/track")
+    @RequestMapping("/chat")
     public String chat(Model model) {
         ChatService chat = new ChatService();
         chat.setMessage("Сообщение 1");
         model.addAttribute("chatMessage1", chat.send("Андрей"));
-        chat.setMessage("Сообщение 1");
-        model.addAttribute("chatMessage1", chat.send());
+        chat.setMessage("Сообщение 2");
+        model.addAttribute("chatMessage2", chat.send());
         return "chat";
     }
 }
