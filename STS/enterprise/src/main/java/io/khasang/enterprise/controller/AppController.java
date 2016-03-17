@@ -10,8 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
-    @Autowired
+
     AccessToNewBase accessToNewBase;
+    ProjectTrackingService trackingService;
+    ChatService chatService;
+
+    @Autowired
+    public AppController(ProjectTrackingService trackingService, AccessToNewBase accessToNewBase, ChatService chatService) {
+        this.trackingService = trackingService;
+        this.accessToNewBase = accessToNewBase;
+        this.chatService = chatService;
+    }
 
     @RequestMapping("/")
     public String home(Model model) {
@@ -22,7 +31,6 @@ public class AppController {
 
     @RequestMapping("/track")
     public String home1(Model model) {
-        ProjectTrackingService trackingService = new ProjectTrackingService();
         trackingService.setProgress("Done 5% of Enterprise app");
         model.addAttribute("trackPoint", trackingService.getProgress());
         return "index";
@@ -42,17 +50,17 @@ public class AppController {
 
     @RequestMapping("/home3")
     public String home3(Model model) {
+        accessToNewBase.setStatus("We have some progress");
         model.addAttribute("xxx", accessToNewBase.getStatus());
         return "index";
     }
 
     @RequestMapping("/chat")
     public String chat(Model model) {
-        ChatService chat = new ChatService();
-        chat.setMessage("Сообщение 1");
-        model.addAttribute("chatMessage1", chat.send("Андрей"));
-        chat.setMessage("Сообщение 2");
-        model.addAttribute("chatMessage2", chat.send());
+        chatService.setMessage("Сообщение 1");
+        model.addAttribute("chatMessage1", chatService.send("Андрей"));
+        chatService.setMessage("Сообщение 2");
+        model.addAttribute("chatMessage2", chatService.send());
         return "chat";
     }
 }
