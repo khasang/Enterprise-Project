@@ -1,22 +1,21 @@
 package io.khasang.enterprise.model;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
 public class AccessToNewBase {
-    private static String status;
+    private String status;
 
-    public String access(){
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        status = "try to connect...";
-        try {
-            jdbcTemplate.execute("");
-            status = "OK";
-        } catch (Exception e){
-            status = "Error: " + e;
-            e.printStackTrace();
-        }
-        return status;
+    public AccessToNewBase() {
+    }
+
+    public AccessToNewBase(String hello){
+        status = hello;
     }
 
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
