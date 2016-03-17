@@ -16,13 +16,13 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../login.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li class="selected"><a href="../login.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li class="selected"><a href="../index.html">ГЛАВНАЯ</a></li>
+				<li><a href="../index.html">ГЛАВНАЯ</a></li>
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
 				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
@@ -35,11 +35,11 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Главная страница</h1>
+					<h1>Регистрация нового пользователя</h1>
 					<p>
-						Содержимое главной страницы.
+						Регистрация пользователя (Заказчика) с указание его реквизитов.
 						<br>
-						Сведения об организации.
+						После регистрации пользователь перенаправляется в личный кабинет <a href="../customer/customer.html">Заказчика</a>.
 					</p>
 					<h2>Статическая HTML-страница</h2>
 				</section>

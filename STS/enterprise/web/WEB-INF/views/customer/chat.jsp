@@ -9,42 +9,39 @@
 	<body>
 		<header class="top">
 			<img id="headerLogo"
-					 src="images/headerLogo.png" alt="Enterprise header logo image">
+					 src="../images/headerLogo.png" alt="Enterprise header logo image">
 			<img id="headerSlogan"
-					src="images/headerSlogan.png" alt="Слоган">
+					src="../images/headerSlogan.png" alt="Слоган">
 		</header>
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../login.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li><a href="../index.html">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li class="selected"><a href="../index.html">ГЛАВНАЯ</a></li>
-				<li><a href="../structure.html">СТРУКТУРА</a></li>
-				<li><a href="../services.html">УСЛУГИ</a></li>
-				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../proects.html">НАШИ ПРОЕКТЫ</a></li>
-				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
+				<li class="selected"><a href="../customer/chat.html">ЧАТ</a></li>
+				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
+				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Главная страница</h1>
+					<h1>Чат с менеджером</h1>
 					<p>
-						Содержимое главной страницы.
-						<br>
-						Сведения об организации.
+						Форма чата.
 					</p>
-					<h2>Статическая HTML-страница</h2>
+					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../customer/news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

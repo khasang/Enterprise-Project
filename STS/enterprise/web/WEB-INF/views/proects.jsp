@@ -22,11 +22,11 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li class="selected"><a href="../index.html">ГЛАВНАЯ</a></li>
+				<li><a href="../index.html">ГЛАВНАЯ</a></li>
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
 				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../proects.html">НАШИ ПРОЕКТЫ</a></li>
+				<li class="selected"><a href="../proects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
 			</ul>
@@ -35,13 +35,13 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Главная страница</h1>
+					<h1>Наши проекты</h1>
 					<p>
-						Содержимое главной страницы.
+						Презентации выполненных проектов.
 						<br>
-						Сведения об организации.
+						Описания проектов со ссылками на рабочий сайт/приложение в Store.
 					</p>
-					<h2>Статическая HTML-страница</h2>
+					<h2>Статическая или Динамическая??? HTML-страница</h2>
 				</section>
 				<section id="news">
 					<a href="../news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
