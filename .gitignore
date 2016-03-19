@@ -1,3 +1,7 @@
+*iml
+out
+.idea
+vcs.xml
 /STS/Enterprise/*.iml
 /STS/Enterprise/out
 /STS/Enterprise/.idea
