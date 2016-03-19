@@ -26,21 +26,23 @@
 				<li><a href="../index.html">ГЛАВНАЯ</a></li>
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
-				<li class="selected"><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
 				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
+				<li class="selected"><a href="../contacts.html">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Новости и статьи</h1>
+					<h1>Контакты организации</h1>
 					<p>
-						В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой. 
+						Основные контакты организации.
+						<br>
+						Адрес, телефоны для контактов, e-mail-ы, описание проезда к организации, карта Google Map/Yandex Map.
 					</p>
-					<h2>Динамическая HTML-страница</h2>
+					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
 					<a href="../news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>

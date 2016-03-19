@@ -24,9 +24,9 @@
 		<nav id="publicArea">
 			<ul>
 				<li><a href="../index.html">ГЛАВНАЯ</a></li>
-				<li><a href="../structure.html">СТРУКТУРА</a></li>
+				<li class="selected"><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
-				<li class="selected"><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
 				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
@@ -36,9 +36,9 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Новости и статьи</h1>
+					<h1>Структура организации</h1>
 					<p>
-						В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой. 
+						Список сотрудников с их реквизитами (должность, телефон, e-mail, и т.д.).
 					</p>
 					<h2>Динамическая HTML-страница</h2>
 				</section>

@@ -26,8 +26,8 @@
 				<li><a href="../index.html">ГЛАВНАЯ</a></li>
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
-				<li class="selected"><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li class="selected"><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
 			</ul>
@@ -36,11 +36,13 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Новости и статьи</h1>
+					<h1>Наши проекты</h1>
 					<p>
-						В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой. 
+						Презентации выполненных проектов.
+						<br>
+						Описания проектов со ссылками на рабочий сайт/приложение в Store.
 					</p>
-					<h2>Динамическая HTML-страница</h2>
+					<h2>Статическая или Динамическая??? HTML-страница</h2>
 				</section>
 				<section id="news">
 					<a href="../news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>

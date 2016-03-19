@@ -17,7 +17,7 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../login.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li class="selected"><a href="../login.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
 			</ul>
 		</nav>
 
@@ -26,7 +26,7 @@
 				<li><a href="../index.html">ГЛАВНАЯ</a></li>
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
-				<li class="selected"><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
 				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
@@ -36,11 +36,22 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Новости и статьи</h1>
+					<h1>Авторизация пользователя</h1>
 					<p>
-						В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой. 
+						Авторизация пользователя login/paswword для доступа в личный кабинет.
+						<br>
+						После авторизации пользователь перенаправляется в личный кабинет, в соответсвии со своей ролью:
+						<br>
+						<br>
+						<a href="../customer/customer.html">Заказчик</a>
+						<br>
+						<br>
+						<br>
+						Страница так же содержит ссылку на страницу <a href="../registration.html">Регистрации</a> в системе нового пользователя с ролью Заказчика(Customer).
+						<br>
+						Сотрудников регистрировать на данной странице нет смысла, т.к. это будет делать либо Менеджер, либо Админ.
 					</p>
-					<h2>Динамическая HTML-страница</h2>
+					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
 					<a href="../news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
