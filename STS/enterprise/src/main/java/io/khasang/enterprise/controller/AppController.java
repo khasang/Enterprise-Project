@@ -21,9 +21,41 @@ public class AppController {
 
     @RequestMapping("/")
     public String home(Model model) {
-        String hello = "Hello World";
-        model.addAttribute("xxx", hello);
         return "index";
+    }
+
+    @RequestMapping("/index")
+    public String index(Model model) {
+        return "index";
+    }
+
+    @RequestMapping("/structure")
+    public String structure(Model model) {
+        return "structure";
+    }
+
+    @RequestMapping("/services")
+    public String services(Model model) {
+        return "services";
+    }
+
+    @RequestMapping("/news")
+    public String news(Model model) {
+        return "news";
+    }
+    @RequestMapping("/projects")
+    public String projects(Model model) {
+        return "projects";
+    }
+
+    @RequestMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @RequestMapping("/contacts")
+    public String contacts(Model model) {
+        return "contacts";
     }
 
     @RequestMapping("/track")

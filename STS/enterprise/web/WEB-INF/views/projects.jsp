@@ -27,7 +27,7 @@
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
 				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li class="selected"><a href="../proects.html">НАШИ ПРОЕКТЫ</a></li>
+				<li class="selected"><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
 			</ul>
