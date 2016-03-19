@@ -1,6 +1,5 @@
 package io.khasang.enterprise.controller;
 
-import io.khasang.enterprise.model.AccessToNewBase;
 import io.khasang.enterprise.service.ChatService;
 import io.khasang.enterprise.service.ProjectTrackingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
 
-    AccessToNewBase accessToNewBase;
     ProjectTrackingService trackingService;
     ChatService chatService;
 
     @Autowired
-    public AppController(ProjectTrackingService trackingService, AccessToNewBase accessToNewBase, ChatService chatService) {
+    public AppController(ProjectTrackingService trackingService, ChatService chatService) {
         this.trackingService = trackingService;
-        this.accessToNewBase = accessToNewBase;
         this.chatService = chatService;
     }
 
@@ -45,13 +42,6 @@ public class AppController {
         model.addAttribute("xx3", hello);
         model.addAttribute("xx4", hello);
         model.addAttribute("xx5", hello);
-        return "index";
-    }
-
-    @RequestMapping("/home3")
-    public String home3(Model model) {
-        accessToNewBase.setStatus("We have some progress");
-        model.addAttribute("xxx", accessToNewBase.getStatus());
         return "index";
     }
 

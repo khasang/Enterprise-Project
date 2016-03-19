@@ -1,7 +1,6 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.model.Employee;
-
+import io.khasang.enterprise.model.employee.Employee;
 import java.util.ArrayList;
 
 public class Order {

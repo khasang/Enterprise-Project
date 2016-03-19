@@ -17,10 +17,6 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean name="accessToNewBase" class="io.khasang.enterprise.model.AccessToNewBase" scope="prototype">
-        <property name="status" value="" />
-    </bean>
-
     <bean name="projectTrackingService" class="io.khasang.enterprise.service.ProjectTrackingService"/>
 
     <bean name="chatService" class="io.khasang.enterprise.service.ChatService"/>
