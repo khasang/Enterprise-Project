@@ -1,7 +1,8 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>Enterprise Solution</title>
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 	</head> 
