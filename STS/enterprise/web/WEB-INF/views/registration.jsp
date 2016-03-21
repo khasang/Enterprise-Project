@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,7 @@
 					<p>
 						Регистрация пользователя (Заказчика) с указание его реквизитов.
 						<br>
-						После регистрации пользователь перенаправляется в личный кабинет <a href="../customer/customer.html">Заказчика</a>.
+						После регистрации пользователь перенаправляется в личный кабинет <a href=<c:url value='/client/customer'/>>Заказчика</a>.
 					</p>
 					<h2>Статическая HTML-страница</h2>
 				</section>

@@ -1,4 +1,7 @@
 package io.khasang.enterprise.model;
 
-public class ExternalAccountMaker {
+public class ExternalAccountMaker implements AccountHandler {
+    public UserAccount createAccount(String type) {
+        return null;
+    }
 }
