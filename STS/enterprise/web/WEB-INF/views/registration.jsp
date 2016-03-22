@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,7 +28,7 @@
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
 				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../proects.html">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
 			</ul>
@@ -39,7 +41,7 @@
 					<p>
 						Регистрация пользователя (Заказчика) с указание его реквизитов.
 						<br>
-						После регистрации пользователь перенаправляется в личный кабинет <a href="../customer/customer.html">Заказчика</a>.
+						После регистрации пользователь перенаправляется в личный кабинет <a href=<c:url value='/client/customer'/>>Заказчика</a>.
 					</p>
 					<h2>Статическая HTML-страница</h2>
 				</section>

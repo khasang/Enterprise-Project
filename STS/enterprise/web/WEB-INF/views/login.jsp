@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,7 +28,7 @@
 				<li><a href="../structure.html">СТРУКТУРА</a></li>
 				<li><a href="../services.html">УСЛУГИ</a></li>
 				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../proects.html">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
 				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
 			</ul>
@@ -42,11 +44,11 @@
 						После авторизации пользователь перенаправляется в личный кабинет, в соответсвии со своей ролью:
 						<br>
 						<br>
-						<a href="../customer/customer.html">Заказчик</a>
+						<a href=<c:url value='/client/customer'/>>Заказчик</a>
 						<br>
 						<br>
 						<br>
-						Страница так же содержит ссылку на страницу <a href="../registration.html">Регистрации</a> в системе нового пользователя с ролью Заказчика(Customer).
+						Страница так же содержит ссылку на страницу <a href=<c:url value='/registration'/>>Регистрации</a> в системе нового пользователя с ролью Заказчика(Customer).
 						<br>
 						Сотрудников регистрировать на данной странице нет смысла, т.к. это будет делать либо Менеджер, либо Админ.
 					</p>
