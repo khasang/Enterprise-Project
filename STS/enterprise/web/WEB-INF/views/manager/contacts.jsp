@@ -9,40 +9,42 @@
 	<body>
 		<header class="top">
 			<img id="headerLogo"
-					 src="images/headerLogo.png" alt="Enterprise header logo image">
+					 src="../images/headerLogo.png" alt="Enterprise header logo image">
 			<img id="headerSlogan"
-					src="images/headerSlogan.png" alt="Слоган">
+					src="../images/headerSlogan.png" alt="Слоган">
 		</header>
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../login.jsp">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../index.jsp">ГЛАВНАЯ</a></li>
-				<li><a href="../structure.jsp">СТРУКТУРА</a></li>
-				<li class="selected"><a href="../services.jsp">УСЛУГИ</a></li>
-				<li><a href="../news.jsp">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../projects.jsp">НАШИ ПРОЕКТЫ</a></li>
-				<li><a href="../login.jsp">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../contacts.jsp">КОНТАКТЫ</a></li>
+				<li><a href="../manager/manager.jsp">ЛИЧНЫЙ КАБИНЕТ МЕНЕДЖЕРА</a></li>
+				<li><a href="../manager/chat.jsp">ЧАТ</a></li>
+				<li><a href="../manager/structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../manager/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../manager/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../manager/employ.jsp">НАНЯТЬ РАБОТНИКА</a></li>
+				<li class="selected"><a href="../manager/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Услуги, оказываемые организацией</h1>
+					<h1>Контакты организации</h1>
 					<p>
-						Список оказываемых услуг.
+						Основные контакты организации.
+						<br>
+						Адрес, телефоны для контактов, e-mail-ы, описание проезда к организации, карта Google Map/Yandex Map.
 					</p>
-					<h2>Динамическая HTML-страница</h2>
+					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../manager/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

@@ -22,26 +22,32 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.jsp">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
-				<li class="selected"><a href="../customer/chat.jsp">ЧАТ</a></li>
-				<li><a href="../customer/structure.jsp">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.jsp">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.jsp">КОНТАКТЫ</a></li>
+				<li><a href="../manager/manager.jsp">ЛИЧНЫЙ КАБИНЕТ МЕНЕДЖЕРА</a></li>
+				<li><a href="../manager/chat.jsp">ЧАТ</a></li>
+				<li><a href="../manager/structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../manager/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../manager/.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li class="selected"><a href="../manager/employ.jsp">НАНЯТЬ РАБОТНИКА</a></li>
+				<li><a href="../manager/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Чат с менеджером</h1>
+					<h1>Нанять нового работника</h1>
 					<p>
-						Форма чата.
+						Менеджер может нанимать сотрудника.
+						<br>
+						Форма ввода с полями для заполнения основных свойств нового работника.
+						<br>
+						После нажатия кнопки "Сохранить" запись об новом пользователе записывается в базу. Дальнейшее назначение ролей, прав доступа и т.п. осуществляет Администратор.
+						<br>
 					</p>
-					<h2>Динамическая HTML-страница</h2>
+					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../manager/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>
