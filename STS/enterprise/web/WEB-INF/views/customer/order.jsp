@@ -17,18 +17,18 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.jsp">ВЫХОД</a></li>
+				<li><a href="../index.html">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.jsp">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
-				<li><a href="../customer/chat.jsp">ЧАТ</a></li>
-				<li><a href="../customer/structure.jsp">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
-				<li class="selected"><a href="../customer/order.jsp">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.jsp">КОНТАКТЫ</a></li>
+				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
+				<li><a href="../customer/chat.html">ЧАТ</a></li>
+				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
+				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li class="selected"><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
@@ -42,7 +42,7 @@
 					<h2>Статическая HTML-страница с формой ввода</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../customer/news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>
