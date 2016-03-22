@@ -58,8 +58,14 @@ public class AppController {
         return "contacts";
     }
 
-    @RequestMapping("/client/customer")
+    @RequestMapping("/customer/customer")
     public String customer() {
         return "customer/customer";
     }
+
+    @RequestMapping("/customer/chat")
+    public String chat() {
+        return "customer/chat";
+    }
+
 }
