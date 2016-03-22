@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,7 +17,7 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.html">ВЫХОД</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
