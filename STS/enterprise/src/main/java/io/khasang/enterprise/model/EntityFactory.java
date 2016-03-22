@@ -1,4 +1,4 @@
 package io.khasang.enterprise.model;
 
-public class InternatAccountMaker {
+public interface EntityFactory {
 }
