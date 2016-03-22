@@ -22,26 +22,33 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.jsp">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
-				<li class="selected"><a href="../customer/chat.jsp">ЧАТ</a></li>
-				<li><a href="../customer/structure.jsp">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.jsp">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.jsp">КОНТАКТЫ</a></li>
+				<li class="selected"><a href="../admin/admin.jsp">ЛИЧНЫЙ КАБИНЕТ АДМИНИСТРАТОРА</a></li>
+				<li><a href="../admin/chat.jsp">ЧАТ</a></li>
+				<li><a href="../admin/structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../admin/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../admin/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../admin/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Чат с менеджером</h1>
+					<h1>Личный кабинет Администратора</h1>
+					<h2>Вариант 1</h2>
 					<p>
-						Форма чата.
+						Табличные элементы, обеспечивающие доступ и работу (изменение, удаление, добавление) с данными в основных таблица БД (Пользователи, Заказы, ...).
+						<br>
+						Поле ввода для SQL-комманд и область для вывода результата выполнения комманд, а так же табличный элемент для результатов выполнения запросов.
+					</p>
+					<h2>Вариант 2</h2>
+					<p>
+						Поле ввода для SQL-комманд и область для вывода результата выполнения комманд, а так же табличный элемент для результатов выполнения запросов.
 					</p>
 					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../admin/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

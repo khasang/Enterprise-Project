@@ -9,40 +9,39 @@
 	<body>
 		<header class="top">
 			<img id="headerLogo"
-					 src="images/headerLogo.png" alt="Enterprise header logo image">
+					 src="../images/headerLogo.png" alt="Enterprise header logo image">
 			<img id="headerSlogan"
-					src="images/headerSlogan.png" alt="Слоган">
+					src="../images/headerSlogan.png" alt="Слоган">
 		</header>
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../login.jsp">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../index.jsp">ГЛАВНАЯ</a></li>
-				<li><a href="../structure.jsp">СТРУКТУРА</a></li>
-				<li class="selected"><a href="../services.jsp">УСЛУГИ</a></li>
-				<li><a href="../news.jsp">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../projects.jsp">НАШИ ПРОЕКТЫ</a></li>
-				<li><a href="../login.jsp">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../contacts.jsp">КОНТАКТЫ</a></li>
+				<li><a href="../employee/employee.jsp">ЛИЧНЫЙ КАБИНЕТ ИСПОЛНИТЕЛЯ</a></li>
+				<li><a href="../employee/chat.jsp">ЧАТ</a></li>
+				<li><a href="../employee/structure.jsp">СТРУКТУРА</a></li>
+				<li class="selected"><a href="../employee/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../employee/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../employee/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Услуги, оказываемые организацией</h1>
+					<h1>Новости и статьи</h1>
 					<p>
-						Список оказываемых услуг.
+						В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой. 
 					</p>
 					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../employee/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

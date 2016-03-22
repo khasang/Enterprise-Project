@@ -69,18 +69,6 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/home2")
-    public String home2(Model model) {
-        String hello = "Hello World";
-        model.addAttribute("xxx", hello);
-        model.addAttribute("xx1", hello);
-        model.addAttribute("xx2", hello);
-        model.addAttribute("xx3", hello);
-        model.addAttribute("xx4", hello);
-        model.addAttribute("xx5", hello);
-        return "index";
-    }
-
     @RequestMapping("/chat")
     public String chat(Model model) {
         chatService.setMessage("Сообщение 1");

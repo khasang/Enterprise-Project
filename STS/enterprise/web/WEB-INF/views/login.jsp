@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,19 +16,19 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li class="selected"><a href="../login.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li class="selected"><a href="../login.jsp">ЛИЧНЫЙ КАБИНЕТ</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../index.html">ГЛАВНАЯ</a></li>
-				<li><a href="../structure.html">СТРУКТУРА</a></li>
-				<li><a href="../services.html">УСЛУГИ</a></li>
-				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
-				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../index.jsp">ГЛАВНАЯ</a></li>
+				<li><a href="../structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../services.jsp">УСЛУГИ</a></li>
+				<li><a href="../news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../login.jsp">ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li><a href="../contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
@@ -43,18 +42,23 @@
 						После авторизации пользователь перенаправляется в личный кабинет, в соответсвии со своей ролью:
 						<br>
 						<br>
-						<a href="../customer/customer.html">Заказчик</a>
+						<a href="../customer/customer.jsp">Заказчик</a>
+						<br>
+						<a href="../manager/manager.jsp">Менеджер</a>
+						<br>
+						<a href="../employee/employee.jsp">Исполнитель</a>
+						<br>
+						<a href="../admin/admin.jsp">Администратор</a>
 						<br>
 						<br>
-						<br>
-						Страница так же содержит ссылку на страницу <a href="../registration.html">Регистрации</a> в системе нового пользователя с ролью Заказчика(Customer).
+						Страница так же содержит ссылку на страницу <a href="../registration.jsp">Регистрации</a> в системе нового пользователя с ролью Заказчика(Customer).
 						<br>
 						Сотрудников регистрировать на данной странице нет смысла, т.к. это будет делать либо Менеджер, либо Админ.
 					</p>
 					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>
