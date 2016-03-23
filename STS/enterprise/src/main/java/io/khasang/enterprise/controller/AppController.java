@@ -13,6 +13,7 @@ import java.util.Map;
 
 @Controller
 public class AppController {
+
     ProjectTrackingService trackingService;
     ChatService chatService;
 
@@ -22,8 +23,13 @@ public class AppController {
         this.chatService = chatService;
     }
 
-    @RequestMapping(value = {"/", "/index"})
+    @RequestMapping("/")
     public String home(Model model) {
+        return "index";
+    }
+
+    @RequestMapping("/index")
+    public String index(Model model) {
         return "index";
     }
 
@@ -41,7 +47,6 @@ public class AppController {
     public String news(Model model) {
         return "news";
     }
-
     @RequestMapping("/projects")
     public String projects(Model model) {
         return "projects";
@@ -52,24 +57,25 @@ public class AppController {
         return "login";
     }
 
-    @RequestMapping("/registration")
-    public String registration(Model model) {
-        return "registration";
-    }
-
     @RequestMapping("/contacts")
     public String contacts(Model model) {
         return "contacts";
     }
 
-    @RequestMapping("/customer/customer")
-    public String customer() {
-        return "customer/customer";
+    @RequestMapping("/track")
+    public String home1(Model model) {
+        trackingService.setProgress("Done 5% of Enterprise app");
+        model.addAttribute("trackPoint", trackingService.getProgress());
+        return "index";
     }
 
-    @RequestMapping("/customer/chat")
-    public String chat() {
-        return "customer/chat";
+    @RequestMapping("/chat")
+    public String chat(Model model) {
+        chatService.setMessage("Сообщение 1");
+        model.addAttribute("chatMessage1", chatService.send("Андрей"));
+        chatService.setMessage("Сообщение 2");
+        model.addAttribute("chatMessage2", chatService.send());
+        return "chat";
     }
 
 }
