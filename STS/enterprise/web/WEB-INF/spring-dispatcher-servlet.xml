@@ -21,10 +21,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <bean name="chatService" class="io.khasang.enterprise.service.ChatService"/>
 
-
     <!-- resources exclusions from servlet mapping -->
     <mvc:resources mapping="/css/**" location="/WEB-INF/views/css/"/>
     <mvc:resources mapping="/gif/**" location="/WEB-INF/views/css"/>
     <mvc:resources mapping="/js/**" location="/WEB-INF/views/css/"/>
-    <mvc:resources mapping="/images/*" location="WEB-INF/views/css/"/>
+    <mvc:resources mapping="/images/**" location="WEB-INF/views/images/"/>
 </beans>
