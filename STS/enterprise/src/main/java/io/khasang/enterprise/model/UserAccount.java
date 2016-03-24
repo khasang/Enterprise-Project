@@ -8,6 +8,14 @@ public abstract class UserAccount implements Account {
     private String login;
     private String password;
 
+    public void performLogin() {
+
+    }
+
+    public void performLogout() {
+
+    }
+
     public String getFullName() {
         return fullName;
     }
