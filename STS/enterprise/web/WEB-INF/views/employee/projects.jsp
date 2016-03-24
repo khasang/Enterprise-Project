@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -11,42 +10,41 @@
 	<body>
 		<header class="top">
 			<img id="headerLogo"
-					 src="images/headerLogo.png" alt="Enterprise header logo image">
+					 src="../images/headerLogo.png" alt="Enterprise header logo image">
 			<img id="headerSlogan"
-					src="images/headerSlogan.png" alt="Слоган">
+					src="../images/headerSlogan.png" alt="Слоган">
 		</header>
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href=<c:url value='/login'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="<c:url value='/index'/>">ГЛАВНАЯ</a></li>
-				<li><a href=<c:url value='/structure'/>>СТРУКТУРА</a></li>
-				<li><a href=<c:url value='/services'/>>УСЛУГИ</a></li>
-				<li><a href=<c:url value='/news'/>>НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href=<c:url value='/projects'/>>НАШИ ПРОЕКТЫ</a></li>
-				<li><a href=<c:url value='/login'/>>ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li class="selected"><a href=<c:url value='/contacts'/>>КОНТАКТЫ</a></li>
+				<li><a href="../employee/employee.jsp">ЛИЧНЫЙ КАБИНЕТ ИСПОЛНИТЕЛЯ</a></li>
+				<li><a href="../employee/chat.jsp">ЧАТ</a></li>
+				<li><a href="../employee/structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../employee/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li class="selected"><a href="../employee/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../employee/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Контакты организации</h1>
+					<h1>Наши проекты</h1>
 					<p>
-						Основные контакты организации.
+						Презентации выполненных проектов.
 						<br>
-						Адрес, телефоны для контактов, e-mail-ы, описание проезда к организации, карта Google Map/Yandex Map.
+						Описания проектов со ссылками на рабочий сайт/приложение в Store.
 					</p>
 					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href=<c:url value='/news'/>><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../employee/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

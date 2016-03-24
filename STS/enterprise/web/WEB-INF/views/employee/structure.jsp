@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -18,40 +17,32 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.html">ВЫХОД</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li class="selected"><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
-				<li><a href=<c:url value='/customer/chat'/>>ЧАТ</a></li>
-				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../employee/employee.jsp">ЛИЧНЫЙ КАБИНЕТ ИСПОЛНИТЕЛЯ</a></li>
+				<li><a href="../employee/chat.jsp">ЧАТ</a></li>
+				<li class="selected"><a href="../employee/structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../employee/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../employee/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../employee/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Личный кабинет Заказчика</h1>
+					<h1>Структура организации</h1>
 					<p>
-						Список заказов Заказчика с их реквизитами.
-						<br>
-						Можно организовать в виде 2-х таблиц.
-						<br>
-						В первой таблице список Заказов со следующими полями: Номер(наименование) заказа, Имя проекта заказа, процент выполнения.
-						<br>
-						При выборе в первой таблице конкретного Заказа, во второй отображается история прогресса по заказу с соответсвующими descriprion.
-						<br>
-						Заказы из первой таблицы с прогрессом 100% Заказчик может подтвердить.
+						Исполнителю доступен список сотрудников с их реквизитами (должность, телефон, e-mail, и т.д.).
 					</p>
 					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../employee/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

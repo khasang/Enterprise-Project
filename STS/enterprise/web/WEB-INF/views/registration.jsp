@@ -18,19 +18,19 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li class="selected"><a href="../login.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li class="selected"><a href=<c:url value='/login'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../index.html">ГЛАВНАЯ</a></li>
-				<li><a href="../structure.html">СТРУКТУРА</a></li>
-				<li><a href="../services.html">УСЛУГИ</a></li>
-				<li><a href="../news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../projects.html">НАШИ ПРОЕКТЫ</a></li>
-				<li><a href="../login.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="<c:url value='/index'/>">ГЛАВНАЯ</a></li>
+				<li><a href=<c:url value='/structure'/>>СТРУКТУРА</a></li>
+				<li><a href=<c:url value='/services'/>>УСЛУГИ</a></li>
+				<li><a href=<c:url value='/news'/>>НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href=<c:url value='/projects'/>>НАШИ ПРОЕКТЫ</a></li>
+				<li><a href=<c:url value='/login'/>>ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li><a href=<c:url value='/contacts'/>>КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
@@ -46,7 +46,7 @@
 					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href=<c:url value='/news'/>><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

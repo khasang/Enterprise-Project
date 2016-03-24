@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,7 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.html">ВЫХОД</a></li>
+				<li><a href=<c:url value='/index'/>>ВЫХОД</a></li>
 			</ul>
 		</nav>
 
