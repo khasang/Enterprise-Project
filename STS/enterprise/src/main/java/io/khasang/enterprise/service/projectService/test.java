@@ -25,7 +25,5 @@ public class test {
         System.out.println("---------------------");
         blog.setStatus(Status.FINISHED);
         System.out.println(blog.getStatus());
-
-
     }
 }
