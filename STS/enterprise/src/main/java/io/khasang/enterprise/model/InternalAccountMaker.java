@@ -4,7 +4,7 @@ import io.khasang.enterprise.model.employee.*;
 
 public class InternalAccountMaker extends AccountFactory {
 
-    UserAccount createAccount(String accountType) {
+    public UserAccount create(String accountType) {
         switch (accountType) {
             case "developer":
                 return new Developer();

@@ -5,7 +5,7 @@ import io.khasang.enterprise.model.client.Customer;
 
 public class ExternalAccountMaker extends AccountFactory {
 
-    UserAccount createAccount(String accountType) {
+    public UserAccount create(String accountType) {
         switch (accountType) {
             case "customer":
                 return new Customer();
