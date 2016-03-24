@@ -16,7 +16,7 @@ public class test {
         System.out.println(blog.getPrice());
         System.out.println(blog.getStatus());
 
-        System.out.println("---------------------");
+        System.out.println("--------------------");
         System.out.println(payment.getDescription());
         System.out.println(payment.getTitle());
         System.out.println(payment.getPrice());
