@@ -1,4 +1,4 @@
 package io.khasang.enterprise.model;
 
-public interface Account {
+public interface EntityFactory {
 }

@@ -17,34 +17,32 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.html">ВЫХОД</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
-				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li class="selected"><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../employee/employee.jsp">ЛИЧНЫЙ КАБИНЕТ ИСПОЛНИТЕЛЯ</a></li>
+				<li><a href="../employee/chat.jsp">ЧАТ</a></li>
+				<li><a href="../employee/structure.jsp">СТРУКТУРА</a></li>
+				<li class="selected"><a href="../employee/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../employee/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../employee/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Контакты организации</h1>
+					<h1>Новости и статьи</h1>
 					<p>
-						Основные контакты организации.
-						<br>
-						Адрес, телефоны для контактов, e-mail-ы, описание проезда к организации, карта Google Map/Yandex Map.
+						В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой. 
 					</p>
-					<h2>Статическая HTML-страница</h2>
+					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../employee/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

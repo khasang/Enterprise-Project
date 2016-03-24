@@ -1,4 +1,4 @@
 package io.khasang.enterprise.model.employee;
 
-public class AppAdmin extends Employee {
+public class TechLead extends Employee {
 }

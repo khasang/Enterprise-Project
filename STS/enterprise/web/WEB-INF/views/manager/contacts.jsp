@@ -17,18 +17,19 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.html">ВЫХОД</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
-				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li class="selected"><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../manager/manager.jsp">ЛИЧНЫЙ КАБИНЕТ МЕНЕДЖЕРА</a></li>
+				<li><a href="../manager/chat.jsp">ЧАТ</a></li>
+				<li><a href="../manager/structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../manager/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../manager/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../manager/employ.jsp">НАНЯТЬ РАБОТНИКА</a></li>
+				<li class="selected"><a href="../manager/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
@@ -44,7 +45,7 @@
 					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../manager/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>

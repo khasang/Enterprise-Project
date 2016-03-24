@@ -17,34 +17,33 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.html">ВЫХОД</a></li>
+				<li><a href="../index.jsp">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
-				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li class="selected"><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../manager/manager.jsp">ЛИЧНЫЙ КАБИНЕТ МЕНЕДЖЕРА</a></li>
+				<li class="selected"><a href="../manager/chat.jsp">ЧАТ</a></li>
+				<li><a href="../manager/structure.jsp">СТРУКТУРА</a></li>
+				<li><a href="../manager/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../manager/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
+				<li><a href="../manager/employ.jsp">НАНЯТЬ РАБОТНИКА</a></li>
+				<li><a href="../manager/contacts.jsp">КОНТАКТЫ</a></li>
 			</ul>
 		</nav>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Контакты организации</h1>
+					<h1>Чат</h1>
 					<p>
-						Основные контакты организации.
-						<br>
-						Адрес, телефоны для контактов, e-mail-ы, описание проезда к организации, карта Google Map/Yandex Map.
+						Концепция чата представлена в отдельном документе.
 					</p>
-					<h2>Статическая HTML-страница</h2>
+					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
+					<a href="../manager/news.jsp"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
 					<article>
 						<header>
 							<h2>Новость 1</h2>
