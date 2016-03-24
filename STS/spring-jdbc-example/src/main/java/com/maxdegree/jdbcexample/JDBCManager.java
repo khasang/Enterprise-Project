@@ -24,7 +24,7 @@ public class JDBCManager {
                     "(1, 'Max', 'max@gmail.com'), (2, 'Jim', 'jim@gmail.com')");
             return "table users created";
         } catch (Exception e) {
-            return "something wrong" + e;
+            return "something wrong: " + e;
         }
     }
 
@@ -47,7 +47,7 @@ public class JDBCManager {
                     user.getUserId(), user.getUserName(), user.getUserEmail()
             });
         } catch (Exception e) {
-            return "something wrong with add User" + e;
+            return "something wrong with add User: " + e;
         }
         return  "new user created";
     }

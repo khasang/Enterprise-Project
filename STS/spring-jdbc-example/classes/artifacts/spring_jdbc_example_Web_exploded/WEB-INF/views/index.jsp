@@ -6,6 +6,6 @@
 <body>
     <p>Massage = ${massage}</p> <br/>
     <a href="/users">Show all Users</a> <br/>
-    <a href="/WEB-INF/views/user.jsp">Add User</a> <br/>
+    <a href="/addUser">Add User</a> <br/>
 </body>
 </html>
