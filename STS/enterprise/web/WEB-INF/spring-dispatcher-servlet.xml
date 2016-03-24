@@ -32,6 +32,8 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
         <constructor-arg ref="dataSource"/>
     </bean>
 
+    <bean class="io.khasang.enterprise.SQLTest.CreateEnterprise"/>
+
     <!-- resources exclusions from servlet mapping -->
     <mvc:resources mapping="/css/**" location="/WEB-INF/views/css/"/>
     <mvc:resources mapping="/gif/**" location="/WEB-INF/views/css"/>

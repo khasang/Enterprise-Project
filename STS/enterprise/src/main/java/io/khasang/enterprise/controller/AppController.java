@@ -1,5 +1,6 @@
 package io.khasang.enterprise.controller;
 
+import io.khasang.enterprise.SQLTest.CreateEnterprise;
 import io.khasang.enterprise.service.ChatService;
 import io.khasang.enterprise.service.ProjectTrackingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     ProjectTrackingService trackingService;
     ChatService chatService;
+
+    @Autowired
+    CreateEnterprise createEnterprise;
 
     @Autowired
     public AppController(ProjectTrackingService trackingService, ChatService chatService) {
@@ -67,5 +71,14 @@ public class AppController {
     public String chat() {
         return "customer/chat";
     }
+
+    @RequestMapping("/SQLTest")
+    public String create(Model model){
+        model.addAttribute("test",createEnterprise.creaneEnterpriseDB());
+        model.addAttribute("add", createEnterprise.addData());
+        return "SQLTest";
+    }
+
+
 
 }
