@@ -1,22 +1,19 @@
 package io.khasang.enterprise.controller;
 
-import io.khasang.enterprise.service.ChatService;
-import io.khasang.enterprise.service.ProjectTrackingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
-    ProjectTrackingService trackingService;
-    ChatService chatService;
+//    ProjectTrackingService trackingService;
+//    ChatService chatService;
 
-    @Autowired
-    public AppController(ProjectTrackingService trackingService, ChatService chatService) {
-        this.trackingService = trackingService;
-        this.chatService = chatService;
-    }
+//    @Autowired
+//    public AppController(ProjectTrackingService trackingService, ChatService chatService) {
+//        this.trackingService = trackingService;
+//        this.chatService = chatService;
+//    }
 
     @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
@@ -35,6 +32,7 @@ public class AppController {
 
     @RequestMapping("/news")
     public String news(Model model) {
+        model.addAttribute("allnews", "что то динамичное");
         return "news";
     }
 
