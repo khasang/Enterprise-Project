@@ -13,6 +13,10 @@ public class JDBCManager {
 
     public JDBCManager() {}
 
+    public JDBCManager(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     public String createTableUsers() {
         try {
             jdbcTemplate.execute("DROP TABLE IF EXISTS users");
