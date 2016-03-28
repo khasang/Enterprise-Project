@@ -61,9 +61,29 @@ public class AppController {
         return "customer/customer";
     }
 
+    @RequestMapping("/customer/order")
+    public String customerOrder() {
+        return "customer/order";
+    }
+
     @RequestMapping("/customer/chat")
-    public String chat() {
+    public String customerChat() {
         return "customer/chat";
+    }
+
+    @RequestMapping("/customer/structure")
+    public String customerStructure() {
+        return "customer/structure";
+    }
+
+    @RequestMapping("/customer/news")
+    public String customerNews() {
+        return "customer/news";
+    }
+
+    @RequestMapping("/customer/contacts")
+    public String customerContacts() {
+        return "customer/contacts";
     }
 
 }
