@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,18 +18,20 @@
 
 		<nav id="privateArea">
 			<ul>
-				<li><a href="../index.html">ВЫХОД</a></li>
+				<c:url value="/logout" var="logoutURL"/>
+				<li><a href="${logoutURL}">ВЫХОД</a></li>
 			</ul>
 		</nav>
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ ЗАКАЗЧИКА</a></li>
+				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
 				<li><a href="../customer/chat.html">ЧАТ</a></li>
 				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li class="selected"><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li class="selected"><a href=<c:url value='/customer/news'/>>НОВОСТИ И СТАТЬИ</a></li>
 				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
 				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="/index">НА ГЛАВНУЮ</a></li>
 			</ul>
 		</nav>
 
