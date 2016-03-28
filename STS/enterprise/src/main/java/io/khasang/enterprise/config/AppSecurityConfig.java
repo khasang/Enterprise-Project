@@ -20,8 +20,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/client/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/confidential/**").access("hasRole('ROLE_SUPERADMIN')")
-                .and().formLogin().defaultSuccessUrl("/customer/customer", false);
+                .antMatchers("/customer/**").access("hasRole('ROLE_USER')")
+                .and().formLogin().loginPage("/login").failureUrl("/login?error")
+                .usernameParameter("username").passwordParameter("password")
+                .and().logout().logoutSuccessUrl("/logout")
+                .and().exceptionHandling().accessDeniedPage("/403")
+                .and().formLogin().defaultSuccessUrl("/customer/customer", false).and().csrf();
     }
 }

@@ -38,21 +38,34 @@
 			<div id="mainRow">
 				<section id="main">
 					<h1>Авторизация пользователя</h1>
-					<p>
-						Авторизация пользователя login/password для доступа в личный кабинет.
-						<br>
-						После авторизации пользователь перенаправляется в личный кабинет, в соответсвии со своей ролью:
-						<br>
-						<br>
-						<a href=<c:url value='/customer/customer'/>>Заказчик</a>
-						<br>
-						<br>
-						<br>
-						Страница так же содержит ссылку на страницу <a href=<c:url value='/registration'/>>Регистрации</a> в системе нового пользователя с ролью Заказчика(Customer).
-						<br>
-						Сотрудников регистрировать на данной странице нет смысла, т.к. это будет делать либо Менеджер, либо Админ.
-					</p>
-					<h2>Статическая HTML-страница</h2>
+					<c:if test="${not empty error}">
+						<div class="error">${error}</div>
+					</c:if>
+					<c:if test="${not empty msg}">
+						<div class="msg">${msg}</div>
+					</c:if>
+					<form name='loginForm'
+						  action="<c:url value='/login' />" method='POST'>
+
+						<table>
+							<tr>
+								<td>User:</td>
+								<td><input type='text' name='username'></td>
+							</tr>
+							<tr>
+								<td>Password:</td>
+								<td><input type='password' name='password' /></td>
+							</tr>
+							<tr>
+								<td colspan='2'><input name="submit" type="submit"
+													   value="submit" /></td>
+							</tr>
+						</table>
+
+						<input type="hidden" name="${_csrf.parameterName}"
+							   value="${_csrf.token}" />
+
+					</form>
 				</section>
 				<section id="news">
 					<a href=<c:url value='/news'/>><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
