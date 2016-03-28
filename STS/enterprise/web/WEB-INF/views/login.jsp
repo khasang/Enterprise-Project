@@ -2,118 +2,46 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Enterprise Solution</title>
-		<link rel="stylesheet" type="text/css" href="../css/main.css">
-	</head> 
+	<jsp:include page="fragments/header.jsp"/>
 
 	<body>
-		<header class="top">
-			<img id="headerLogo"
-					 src="images/headerLogo.png" alt="Enterprise header logo image">
-			<img id="headerSlogan"
-					src="images/headerSlogan.png" alt="Слоган">
-		</header>
-
-		<nav id="privateArea">
-			<ul>
-				<li class="selected"><a href=<c:url value='/login'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
-			</ul>
-		</nav>
-
-		<nav id="publicArea">
-			<ul>
-				<li><a href=<c:url value='/index'/>>ГЛАВНАЯ</a></li>
-				<li><a href=<c:url value='/structure'/>>СТРУКТУРА</a></li>
-				<li><a href=<c:url value='/services'/>>УСЛУГИ</a></li>
-				<li><a href=<c:url value='/news'/>>НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href=<c:url value='/projects'/>>НАШИ ПРОЕКТЫ</a></li>
-				<li><a href=<c:url value='/login'/>>ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href=<c:url value='/contacts'/>>КОНТАКТЫ</a></li>
-			</ul>
-		</nav>
+		<jsp:include page="fragments/navigationbar.jsp"/>
 
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
 					<h1>Авторизация пользователя</h1>
+					<c:if test="${not empty error}">
+						<div class="error">${error}</div>
+					</c:if>
+					<c:if test="${not empty msg}">
+						<div class="msg">${msg}</div>
+					</c:if>
+					<form name='loginForm'
+						  action="<c:url value='/login' />" method='POST'>
 
+						<table>
+							<tr>
+								<td>User:</td>
+								<td><input type='text' name='username'></td>
+							</tr>
+							<tr>
+								<td>Password:</td>
+								<td><input type='password' name='password' /></td>
+							</tr>
+							<tr>
+								<td colspan='2'><input name="submit" type="submit"
+													   value="submit" /></td>
+							</tr>
+						</table>
 
+						<input type="hidden" name="${_csrf.parameterName}"
+							   value="${_csrf.token}" />
 
-					<c:url value="/login" var="loginUrl"/>
-					<form action="${loginUrl}" method="post">
-						<c:if test="${param.error != null}">
-							<p>
-								Invalid username and password.
-							</p>
-						</c:if>
-						<c:if test="${param.logout != null}">
-							<p>
-								You have been logged out.
-							</p>
-						</c:if>
-						<p>
-							<label for="username">Username</label>
-							<input type="text" id="username" name="username"/>
-						</p>
-						<p>
-							<label for="password">Password</label>
-							<input type="password" id="password" name="password"/>
-						</p>
-						<input type="hidden"
-							   name="${_csrf.parameterName}"
-							   value="${_csrf.token}"/>
-						<button type="submit" class="btn">Log in</button>
 					</form>
-
-
-
-					<p>
-						Авторизация пользователя login/password для доступа в личный кабинет.
-						<br>
-						После авторизации пользователь перенаправляется в личный кабинет, в соответсвии со своей ролью:
-						<br>
-						<br>
-						<a href=<c:url value='/customer/customer'/>>Заказчик</a>
-						<br>
-						<br>
-						<br>
-						Страница так же содержит ссылку на страницу <a href=<c:url value='/registration'/>>Регистрации</a> в системе нового пользователя с ролью Заказчика(Customer).
-						<br>
-						Сотрудников регистрировать на данной странице нет смысла, т.к. это будет делать либо Менеджер, либо Админ.
-					</p>
-					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href=<c:url value='/news'/>><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
-					<article>
-						<header>
-							<h2>Новость 1</h2>
-							<time datetime="2016-03-09 12:00">9.03.2016 12:00</time>
-						</header>
-						<p>
-							Содержимое новости 1
-						</p>
-					</article>
-					<article>
-						<header>
-							<h2>Новость 2</h2>
-							<time datetime="2016-03-09 16:00">9.03.2016 16:00</time>
-						</header>
-						<p>
-							Содержимое новости 2
-						</p>
-					</article>
-					<article>
-						<header>
-							<h2>Новость 3</h2>
-							<time datetime="2016-03-09 23:20">9.03.2016 23:20</time>
-						</header>
-						<p>
-							Содержимое новости 3
-						</p>
-					</article>
+					<jsp:include page="fragments/newssection.jsp"/>
 				</section>
 			</div> <!-- mainRow -->
 		</div> <!-- mainContainer -->
