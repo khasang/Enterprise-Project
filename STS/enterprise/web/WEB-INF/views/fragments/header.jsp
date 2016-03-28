@@ -1,16 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Павел
-  Date: 28.03.2016
-  Time: 19:22
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
 <head>
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Enterprise solutions</title>
+    <spring:url value="resources/css/main.css" var="maincss"/>
+    <link href="${maincss}" rel="stylesheet"/>
 </head>
-<body>
-
-</body>
-</html>
