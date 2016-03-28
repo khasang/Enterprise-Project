@@ -25,7 +25,6 @@
 <nav id="publicArea">
     <ul>
         <li class="selected"><a href="<c:url value='/index'/>">ГЛАВНАЯ</a></li>
-        <li><a href="http://yandex.ru">Перейти на сайт</a></li>
         <li><a href=<c:url value='/structure'/>>СТРУКТУРА</a></li>
         <li><a href=<c:url value='/services'/>>УСЛУГИ</a></li>
         <li><a href=<c:url value='/news'/>>НОВОСТИ И СТАТЬИ</a></li>
