@@ -14,7 +14,7 @@
 
 <nav id="privateArea">
     <ul>
-        <li><a href=<c:url value='/login'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li><a href=<c:url value='/customer/customer'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
     </ul>
 </nav>
 
@@ -24,7 +24,7 @@
         <li><a href=<c:url value='/structure'/>>СТРУКТУРА</a></li>
         <li><a href=<c:url value='/services'/>>УСЛУГИ</a></li>
         <li><a href=<c:url value='/news'/>>НОВОСТИ И СТАТЬИ</a></li>
-        <li><a href=<c:url value='/login'/>>ЗАКАЗАТЬ ПРОЕКТ</a></li>
+        <li><a href=<c:url value='/services'/>>ЗАКАЗАТЬ ПРОЕКТ</a></li>
         <li><a href=<c:url value='/contacts'/>>КОНТАКТЫ</a></li>
     </ul>
 </nav>
