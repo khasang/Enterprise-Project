@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -7,9 +8,9 @@
 	<body>
 		<header class="top">
 			<img id="headerLogo"
-					 src="../images/headerLogo.png" alt="Enterprise header logo image">
+				 src="../resources/images/headerLogo.png" alt="Enterprise header logo image">
 			<img id="headerSlogan"
-					src="../images/headerSlogan.png" alt="Слоган">
+				 src="../resources/images/headerSlogan.png" alt="Слоган">
 		</header>
 
 		<nav id="privateArea">

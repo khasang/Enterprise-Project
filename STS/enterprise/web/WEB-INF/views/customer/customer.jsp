@@ -7,9 +7,9 @@
 	<body>
 		<header class="top">
 			<img id="headerLogo"
-					 src="../images/headerLogo.png" alt="Enterprise header logo image">
+					 src="../resources/images/headerLogo.png" alt="Enterprise header logo image">
 			<img id="headerSlogan"
-					src="../images/headerSlogan.png" alt="Слоган">
+					src="../resources/images/headerSlogan.png" alt="Слоган">
 		</header>
 
 		<nav id="privateArea">
