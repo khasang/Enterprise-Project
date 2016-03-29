@@ -2,11 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Enterprise Solution</title>
-		<link rel="stylesheet" type="text/css" href="../css/main.css">
-	</head> 
+	<jsp:include page="../fragments/header.jsp"/>
 
 	<body>
 		<header class="top">
@@ -45,34 +41,7 @@
 					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
-					<a href="../customer/news.html"><h1>ПОСЛЕДНИЕ НОВОСТИ</h1></a>
-					<article>
-						<header>
-							<h2>Новость 1</h2>
-							<time datetime="2016-03-09 12:00">9.03.2016 12:00</time>
-						</header>
-						<p>
-							Содержимое новости 1
-						</p>
-					</article>
-					<article>
-						<header>
-							<h2>Новость 2</h2>
-							<time datetime="2016-03-09 16:00">9.03.2016 16:00</time>
-						</header>
-						<p>
-							Содержимое новости 2
-						</p>
-					</article>
-					<article>
-						<header>
-							<h2>Новость 3</h2>
-							<time datetime="2016-03-09 23:20">9.03.2016 23:20</time>
-						</header>
-						<p>
-							Содержимое новости 3
-						</p>
-					</article>
+					<jsp:include page="../fragments/newssection.jsp"/>
 				</section>
 			</div> <!-- mainRow -->
 		</div> <!-- mainContainer -->

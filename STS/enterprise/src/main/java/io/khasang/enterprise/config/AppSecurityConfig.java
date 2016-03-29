@@ -26,6 +26,5 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().logout().logoutSuccessUrl("/logout")
                 .and().exceptionHandling().accessDeniedPage("/403")
                 .and().formLogin().defaultSuccessUrl("/customer/customer", false).and().csrf();
-
     }
 }
