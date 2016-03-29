@@ -9,7 +9,8 @@
             <div id="mainRow">
                 <h1>Error 403</h1> <br/>
                 <h2>Недостаточно прав!</h2> <br/>
-                <a href=<c:url value='/index'/>>Вернуться</a>
+                <c:url value="/logout" var="redirect"/>
+                <a href="${redirect}">Вернуться</a>
             </div>
         </div>
     </body>
