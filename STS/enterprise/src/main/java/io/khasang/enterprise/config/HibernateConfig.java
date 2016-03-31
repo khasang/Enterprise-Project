@@ -1,12 +1,10 @@
 package io.khasang.enterprise.config;
 
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -17,21 +15,15 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "io.khasang.enterprise.config" })
-//@PropertySource(value = { "classpath:application.properties" })
+@ComponentScan({"io.khasang.enterprise.config"})
 public class HibernateConfig {
-
-    @Autowired
-    private Environment environment;
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("io.khasang.enterprise.model");
-//        sessionFactory.setMappingResources("io.khasang.enterprise.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
-//        sessionFactory.afterPropertiesSet();
         return sessionFactory;
      }
 	
@@ -47,12 +39,10 @@ public class HibernateConfig {
     
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect"); //"org.hibernate.dialect.MySQL5InnoDBDialect"
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         properties.put("hibernate.show_sql", true);
         properties.put("hibernate.format_sql", true);
         properties.put("hibernate.hbm2ddl.auto", "update");
-//        properties.put("hibernate.use_sql_comments", false);
-//        properties.put("hibernate.generate_statistics", false);
         return properties;
     }
     
