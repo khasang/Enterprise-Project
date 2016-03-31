@@ -31,23 +31,23 @@ public class AppController {
         return "index";
     }
 
-    @RequestMapping("/structure")
+    @RequestMapping(value = "/structure", method = RequestMethod.GET)
     public String structure(Model model) {
         return "structure";
     }
 
-    @RequestMapping("/services")
+    @RequestMapping(value = "/services", method = RequestMethod.GET)
     public String services(Model model) {
         return "services";
     }
 
-    @RequestMapping("/news")
+    @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news(Model model) {
         model.addAttribute("allnews", "что то динамичное");
         return "news";
     }
 
-    @RequestMapping("/projects")
+    @RequestMapping(value = "/projects", method = RequestMethod.GET)
     public String projects(Model model) {
         return "projects";
     }
@@ -90,7 +90,7 @@ public class AppController {
         return "registration";
     }
 
-    @RequestMapping("/contacts")
+    @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String contacts(Model model) {
         return "contacts";
     }
