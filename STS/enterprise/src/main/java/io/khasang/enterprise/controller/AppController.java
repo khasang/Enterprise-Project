@@ -1,58 +1,102 @@
 package io.khasang.enterprise.controller;
 
-import io.khasang.enterprise.model.AccessToNewBase;
-import io.khasang.enterprise.service.ChatService;
-import io.khasang.enterprise.service.ProjectTrackingService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class AppController {
-    @Autowired
-    AccessToNewBase accessToNewBase;
+//    ProjectTrackingService trackingService;
+//    ChatService chatService;
 
-    @RequestMapping("/")
+//    @Autowired
+//    public AppController(ProjectTrackingService trackingService, ChatService chatService) {
+//        this.trackingService = trackingService;
+//        this.chatService = chatService;
+//    }
+
+    @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
-        String hello = "Hello World";
-        model.addAttribute("xxx", hello);
         return "index";
     }
 
-    @RequestMapping("/track")
-    public String home1(Model model) {
-        ProjectTrackingService trackingService = new ProjectTrackingService();
-        trackingService.setProgress("Done 5% of Enterprise app");
-        model.addAttribute("trackPoint", trackingService.getProgress());
-        return "index";
+    @RequestMapping(value = "/structure", method = RequestMethod.GET)
+    public String structure(Model model) {
+        return "structure";
     }
 
-    @RequestMapping("/home2")
-    public String home2(Model model) {
-        String hello = "Hello World";
-        model.addAttribute("xxx", hello);
-        model.addAttribute("xx1", hello);
-        model.addAttribute("xx2", hello);
-        model.addAttribute("xx3", hello);
-        model.addAttribute("xx4", hello);
-        model.addAttribute("xx5", hello);
-        return "index";
+    @RequestMapping(value = "/services", method = RequestMethod.GET)
+    public String services(Model model) {
+        return "services";
     }
 
-    @RequestMapping("/home3")
-    public String home3(Model model) {
-        model.addAttribute("xxx", accessToNewBase.getStatus());
-        return "index";
+    @RequestMapping(value = "/news", method = RequestMethod.GET)
+    public String news(Model model) {
+        model.addAttribute("allnews", "что то динамичное");
+        return "news";
     }
 
-    @RequestMapping("/chat")
-    public String chat(Model model) {
-        ChatService chat = new ChatService();
-        chat.setMessage("Сообщение 1");
-        model.addAttribute("chatMessage1", chat.send("Андрей"));
-        chat.setMessage("Сообщение 2");
-        model.addAttribute("chatMessage2", chat.send());
-        return "chat";
+    @RequestMapping(value = "/projects", method = RequestMethod.GET)
+    public String projects(Model model) {
+        return "projects";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+                              HttpServletRequest request) {
+        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+        }
+        model.setViewName("login");
+        return model;
+    }
+
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+        return "redirect:/login";
+    }
+
+    private String getErrorMessage(HttpServletRequest request, String key) {
+        Exception exception = (Exception) request.getSession().getAttribute(key);
+        String error = "";
+        if (exception instanceof BadCredentialsException) {
+            error = "Неверный логин или пароль!";
+        } else if (exception instanceof LockedException) {
+            error = exception.getMessage();
+        } else {
+            error = "Неверный логин или пароль!";
+        }
+        return error;
+    }
+
+    @RequestMapping("/registration")
+    public String registration(Model model) {
+        return "registration";
+    }
+
+    @RequestMapping(value = "/contacts", method = RequestMethod.GET)
+    public String contacts(Model model) {
+        return "contacts";
+    }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDenied() {
+        return "/403";
     }
 }

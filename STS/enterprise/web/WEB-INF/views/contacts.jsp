@@ -10,11 +10,13 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Новости и статьи</h1>
+					<h1>Контакты организации</h1>
 					<p>
-						${allnews} В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой.
+						Основные контакты организации.
+						<br>
+						Адрес, телефоны для контактов, e-mail-ы, описание проезда к организации, карта Google Map/Yandex Map.
 					</p>
-					<h2>Динамическая HTML-страница</h2>
+					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
 					<jsp:include page="fragments/newssection.jsp"/>

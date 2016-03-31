@@ -1,0 +1,116 @@
+body { 
+  background-color: #b5a789;
+  font-family:      Georgia, "Times New Roman", Times, serif;
+  font-size:        small;
+  margin:           0px;
+}
+
+html, body {
+  height: 100%;
+}
+
+header.top {
+  background-color: #6d617e;
+  margin:           10px 10px 0px 10px;
+  height:           75px;
+}
+
+header.top img#headerSlogan {
+  float:            right;
+}
+
+div#mainContainer {
+  display:          table;
+  border-spacing:   10px;
+  width:            100%;
+  height:           79%;
+}
+
+div#mainRow {
+  display:          table-row;
+}
+
+section#main {
+  display:          table-cell;
+  background-color: #efe5d0;
+
+  font-size:        105%;
+  padding:          15px;
+  vertical-align:   top;
+}
+
+section#news {
+  display:          table-cell;
+  background-color: #efe5d0;
+  font-size:        105%;
+  padding:          15px;
+  width:            300px;
+  vertical-align:   top;
+}
+
+footer {
+  background-color: #6d617e;
+  color:            #efe5d0;
+  text-align:       center;
+  padding:          15px;
+  margin:           0px 10px 10px 10px;
+  font-size:        90%;
+  float:            bottom;
+}
+
+h1 {
+  font-size:        120%;
+  color:            #954b4b;
+}
+
+h2 { font-size:     110%; }
+
+.slogan { color:    #954b4b; }
+
+.beanheading {
+  text-align:       center;
+  line-height:      1.8em;
+}
+
+a:link {
+  color:            #b76666;
+  text-decoration:  none;
+  border-bottom:    thin dotted #b76666;
+}
+
+a:visited {
+  color:            #675c47;
+  text-decoration:  none;
+  border-bottom:    thin dotted #675c47;
+}
+
+nav {
+  background-color: #efe5d0;
+  margin:           10px 10px 0px 10px;
+}
+
+nav ul {
+  margin:           0px;
+  list-style-type:  none;
+  padding:          5px 0px 5px 0px;
+}
+
+nav ul li {
+  display:          inline;
+  padding:          5px 10px 5px 10px;
+}
+
+nav ul li a:link, nav ul li a:visited {
+  color:            #954b4b;
+  border-bottom:    none;
+  font-weight:      bold;
+}
+
+nav ul li.selected {
+  background-color: #c8b99c;
+}
+
+nav#privateArea {
+  float:            right;
+
+}
