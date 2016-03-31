@@ -14,17 +14,16 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("superadmin").password("superadmin").roles("SUPERADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/customer/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/client/**").access("hasRole('ROLE_USER')")
                 .and().formLogin().loginPage("/login").failureUrl("/login?error")
                 .usernameParameter("username").passwordParameter("password")
                 .and().logout().logoutSuccessUrl("/logout")
                 .and().exceptionHandling().accessDeniedPage("/403")
-                .and().formLogin().defaultSuccessUrl("/customer/customer", false).and().csrf();
+                .and().formLogin().defaultSuccessUrl("/client/account", false).and().csrf();
     }
 }
