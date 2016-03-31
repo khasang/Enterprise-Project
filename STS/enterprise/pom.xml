@@ -37,6 +37,11 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+             <groupId>org.springframework</groupId>
+             <artifactId>spring-orm</artifactId>
+             <version>${spring.version}</version>
+        </dependency>
 
         <!--Tests-->
         <dependency>
@@ -83,6 +88,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate-version}</version>
+        </dependency>
+        <!--jta nesessary for LocalSessionFactoryBean-->
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
         </dependency>
 
         <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->

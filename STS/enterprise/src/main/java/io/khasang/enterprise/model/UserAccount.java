@@ -1,12 +1,27 @@
 package io.khasang.enterprise.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public abstract class UserAccount implements Account {
+
+    @Id
+    private int id;
     private String fullName;
     private int phone;
     private String email;
     private String address;
     private String login;
     private String password;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFullName() {
         return fullName;
@@ -48,11 +63,11 @@ public abstract class UserAccount implements Account {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
