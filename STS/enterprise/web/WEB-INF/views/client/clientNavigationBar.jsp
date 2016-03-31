@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 
 <header class="top">
-    <spring:url value="resources/images/headerLogo.png" var="clogo"/>
-    <spring:url value="resources/images/headerSlogan.png" var="cslogan"/>
+    <spring:url value="/resources/images/headerLogo.png" var="clogo"/>
+    <spring:url value="/resources/images/headerSlogan.png" var="cslogan"/>
     <img id="headerLogo"
          src="${clogo}" alt="Enterprise header logo image">
     <img id="headerSlogan"
