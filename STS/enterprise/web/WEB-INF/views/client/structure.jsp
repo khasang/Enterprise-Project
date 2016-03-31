@@ -5,31 +5,7 @@
 	<jsp:include page="../fragments/header.jsp"/>
 
 	<body>
-		<header class="top">
-			<img id="headerLogo"
-				 src="../resources/images/headerLogo.png" alt="Enterprise header logo image">
-			<img id="headerSlogan"
-				 src="../resources/images/headerSlogan.png" alt="Слоган">
-		</header>
-
-		<nav id="privateArea">
-			<ul>
-				<c:url value="/logout" var="logoutURL"/>
-				<li><a href="${logoutURL}">ВЫХОД</a></li>
-			</ul>
-		</nav>
-
-		<nav id="publicArea">
-			<ul>
-				<li><a href="../client/account.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
-				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li class="selected"><a href=<c:url value='/client/structure'/>>СТРУКТУРА</a></li>
-				<li><a href="../client/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../client/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../client/contacts.html">КОНТАКТЫ</a></li>
-				<li><a href="/index">НА ГЛАВНУЮ</a></li>
-			</ul>
-		</nav>
+		<jsp:include page="clientNavigationBar.jsp"/>
 
 		<div id="mainContainer">
 			<div id="mainRow">

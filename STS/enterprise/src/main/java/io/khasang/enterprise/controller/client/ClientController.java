@@ -1,4 +1,4 @@
-package io.khasang.enterprise.controller;
+package io.khasang.enterprise.controller.client;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
