@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"io.khasang.enterprise.config", "io.khasang.enterprise.controller"})
+@ComponentScan(basePackages = {"io.khasang.enterprise.config", "io.khasang.enterprise.controller"})
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {
@@ -25,8 +25,5 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
             registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
-//            registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/resources/css/");
-//            registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
-
     }
 }
