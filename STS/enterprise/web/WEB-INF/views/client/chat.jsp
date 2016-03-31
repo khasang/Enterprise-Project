@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 	<jsp:include page="../fragments/header.jsp"/>
@@ -21,12 +22,12 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
-				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li class="selected"><a href=<c:url value='/customer/order'/>>ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../client/account.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li class="selected"><a href=<c:url value='/client/chat'/>>ЧАТ</a></li>
+				<li><a href="../client/structure.html">СТРУКТУРА</a></li>
+				<li><a href="../client/news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../client/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li><a href="../client/contacts.html">КОНТАКТЫ</a></li>
 				<li><a href="/index">НА ГЛАВНУЮ</a></li>
 			</ul>
 		</nav>
@@ -34,11 +35,11 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Заказ нового проекта</h1>
+					<h1>Чат с менеджером</h1>
 					<p>
-						На странице доступна форма для заполнения реквизитов нового Заказа.
+						Форма чата.
 					</p>
-					<h2>Статическая HTML-страница с формой ввода</h2>
+					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
 					<jsp:include page="../fragments/newssection.jsp"/>

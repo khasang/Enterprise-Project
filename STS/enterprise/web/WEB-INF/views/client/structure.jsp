@@ -21,12 +21,12 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li><a href="../client/account.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
 				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li class="selected"><a href=<c:url value='/customer/news'/>>НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li class="selected"><a href=<c:url value='/client/structure'/>>СТРУКТУРА</a></li>
+				<li><a href="../client/news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../client/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li><a href="../client/contacts.html">КОНТАКТЫ</a></li>
 				<li><a href="/index">НА ГЛАВНУЮ</a></li>
 			</ul>
 		</nav>
@@ -34,11 +34,9 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Новости и статьи</h1>
+					<h1>Структура организации</h1>
 					<p>
-						Заказчику доступен раздел новостей.
-						<br>
-						В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой. 
+						Заказчику в ЛК доступен список сотрудников с их реквизитами (должность, телефон, e-mail, и т.д.).
 					</p>
 					<h2>Динамическая HTML-страница</h2>
 				</section>

@@ -21,12 +21,12 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li class="selected"><a href=<c:url value='/customer/customer'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
-				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li><a href="../customer/structure.html">СТРУКТУРА</a></li>
-				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li class="selected"><a href=<c:url value='/client/account'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li><a href="../client/chat.html">ЧАТ</a></li>
+				<li><a href="../client/structure.html">СТРУКТУРА</a></li>
+				<li><a href="../client/news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../client/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li><a href="../client/contacts.html">КОНТАКТЫ</a></li>
 				<li><a href="/index">НА ГЛАВНУЮ</a></li>
 			</ul>
 		</nav>

@@ -21,12 +21,12 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../customer/customer.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
-				<li><a href="../customer/chat.html">ЧАТ</a></li>
-				<li class="selected"><a href=<c:url value='/customer/structure'/>>СТРУКТУРА</a></li>
-				<li><a href="../customer/news.html">НОВОСТИ И СТАТЬИ</a></li>
-				<li><a href="../customer/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
-				<li><a href="../customer/contacts.html">КОНТАКТЫ</a></li>
+				<li><a href="../client/account.html">ЛИЧНЫЙ КАБИНЕТ</a></li>
+				<li><a href="../client/chat.html">ЧАТ</a></li>
+				<li><a href="../client/structure.html">СТРУКТУРА</a></li>
+				<li><a href="../client/news.html">НОВОСТИ И СТАТЬИ</a></li>
+				<li><a href="../client/order.html">ЗАКАЗАТЬ ПРОЕКТ</a></li>
+				<li class="selected"><a href=<c:url value='/client/contacts'/>>КОНТАКТЫ</a></li>
 				<li><a href="/index">НА ГЛАВНУЮ</a></li>
 			</ul>
 		</nav>
@@ -34,11 +34,13 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<h1>Структура организации</h1>
+					<h1>Контакты организации</h1>
 					<p>
-						Заказчику в ЛК доступен список сотрудников с их реквизитами (должность, телефон, e-mail, и т.д.).
+						Основные контакты организации.
+						<br>
+						Адрес, телефоны для контактов, e-mail-ы, описание проезда к организации, карта Google Map/Yandex Map.
 					</p>
-					<h2>Динамическая HTML-страница</h2>
+					<h2>Статическая HTML-страница</h2>
 				</section>
 				<section id="news">
 					<jsp:include page="../fragments/newssection.jsp"/>
