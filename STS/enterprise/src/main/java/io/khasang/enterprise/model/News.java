@@ -1,4 +1,4 @@
-package io.khasang.enterprise.model.newmodel;
+package io.khasang.enterprise.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

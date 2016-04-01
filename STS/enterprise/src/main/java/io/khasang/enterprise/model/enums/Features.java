@@ -1,4 +1,4 @@
-package io.khasang.enterprise.model.newmodel.enums;
+package io.khasang.enterprise.model.enums;
 
 public enum Features {
     PHOTOGALLERY,

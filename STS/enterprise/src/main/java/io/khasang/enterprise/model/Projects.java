@@ -1,6 +1,6 @@
-package io.khasang.enterprise.model.newmodel;
+package io.khasang.enterprise.model;
 
-import io.khasang.enterprise.model.newmodel.enums.ProjectBasis;
+import io.khasang.enterprise.model.enums.ProjectBasis;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

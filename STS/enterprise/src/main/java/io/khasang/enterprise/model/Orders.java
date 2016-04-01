@@ -1,6 +1,6 @@
-package io.khasang.enterprise.model.newmodel;
+package io.khasang.enterprise.model;
 
-import io.khasang.enterprise.model.newmodel.enums.Features;
+import io.khasang.enterprise.model.enums.Features;
 
 import javax.persistence.*;
 
