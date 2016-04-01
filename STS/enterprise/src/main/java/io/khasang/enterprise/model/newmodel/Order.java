@@ -1,19 +1,21 @@
 package io.khasang.enterprise.model.newmodel;
 
+import io.khasang.enterprise.model.newmodel.enums.Feature;
+
 import javax.persistence.*;
 
 @Entity
-public class Orders {
+public class Order {
 
     @Id
     @GeneratedValue
     private int id;
 
     @ManyToOne
-    private Projects project;
+    private Project project;
 
     @Enumerated(EnumType.STRING)
-    private Features feature;
+    private Feature feature;
 
     public int getId() {
         return id;
@@ -23,19 +25,19 @@ public class Orders {
         this.id = id;
     }
 
-    public Projects getProject() {
+    public Project getProject() {
         return project;
     }
 
-    public void setProject(Projects project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 
-    public Features getFeature() {
+    public Feature getFeature() {
         return feature;
     }
 
-    public void setFeature(Features features) {
-        this.feature = features;
+    public void setFeature(Feature feature) {
+        this.feature = feature;
     }
 }

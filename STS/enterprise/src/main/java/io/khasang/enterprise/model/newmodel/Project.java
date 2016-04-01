@@ -1,11 +1,13 @@
 package io.khasang.enterprise.model.newmodel;
 
+import io.khasang.enterprise.model.newmodel.enums.ProjectBasis;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-public class Projects {
+public class Project {
 
     @Id
     @GeneratedValue
@@ -16,7 +18,7 @@ public class Projects {
     private ProjectBasis projectBasis;
 
     @ManyToOne
-    private Clients customer;
+    private Client customer;
 
     private String title;
 
@@ -32,7 +34,7 @@ public class Projects {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    public Projects() {
+    public Project() {
     }
 
     public int getId() {
@@ -51,11 +53,11 @@ public class Projects {
         this.projectBasis = projectBasis;
     }
 
-    public Clients getCustomer() {
+    public Client getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Clients customer) {
+    public void setCustomer(Client customer) {
         this.customer = customer;
     }
 
