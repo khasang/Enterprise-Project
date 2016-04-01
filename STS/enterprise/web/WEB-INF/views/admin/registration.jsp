@@ -10,14 +10,9 @@
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <h1>CRUD по новостям</h1>
+            <h1>ФОРМА ДЛЯ РЕГИСТРАЦИИ НОВОГО РАБОТНИКА</h1>
             <p>
-                getAll
-                <br>
-                удалить/добавить
-                <br>
-                getById
-                <br>
+                some shit...
             </p>
             <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
         </section>

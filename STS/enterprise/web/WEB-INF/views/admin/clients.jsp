@@ -10,7 +10,7 @@
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <h1>CRUD по новостям</h1>
+            <h1>CRUD по клиентам</h1>
             <p>
                 getAll
                 <br>

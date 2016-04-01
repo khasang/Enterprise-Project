@@ -10,13 +10,13 @@
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <h1>CRUD по новостям</h1>
+            <h1>СТАТИСТИКА ПО ФИНАНСАМ</h1>
             <p>
-                getAll
+                прибыль за месяц
                 <br>
-                удалить/добавить
+                всего прибыль
                 <br>
-                getById
+                управление ценами готовых продуктов
                 <br>
             </p>
             <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
