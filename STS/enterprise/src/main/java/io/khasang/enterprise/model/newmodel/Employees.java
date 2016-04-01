@@ -1,5 +1,7 @@
 package io.khasang.enterprise.model.newmodel;
 
+import io.khasang.enterprise.model.newmodel.enums.Department;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;

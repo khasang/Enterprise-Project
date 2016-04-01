@@ -1,5 +1,7 @@
 package io.khasang.enterprise.model.newmodel;
 
+import io.khasang.enterprise.model.newmodel.enums.Features;
+
 import javax.persistence.*;
 
 @Entity

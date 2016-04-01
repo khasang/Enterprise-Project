@@ -1,5 +1,7 @@
 package io.khasang.enterprise.model.newmodel;
 
+import io.khasang.enterprise.model.newmodel.enums.ClientType;
+
 import javax.persistence.*;
 
 @Entity
