@@ -16,10 +16,7 @@ public class Projects {
     @Column(name = "project_basis")
     @Enumerated(EnumType.STRING)
     private ProjectBasis projectBasis;
-
-    @OneToMany
-    private Set<Orders> orders = new HashSet<>(); // под вопросом оставлять или нет
-
+    
     @ManyToOne
     private Clients customer;
 
@@ -54,14 +51,6 @@ public class Projects {
 
     public void setProjectBasis(ProjectBasis projectBasis) {
         this.projectBasis = projectBasis;
-    }
-
-    public Set<Orders> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Set<Orders> orders) {
-        this.orders = orders;
     }
 
     public Clients getCustomer() {
