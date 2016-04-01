@@ -1,5 +1,6 @@
 package io.khasang.enterprise.controller;
 
+import io.khasang.enterprise.model.client.Customer;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,6 +27,12 @@ public class AppController {
 //        this.trackingService = trackingService;
 //        this.chatService = chatService;
 //    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String registerClient(Model model){
+        model.addAttribute("customer",new Customer());
+        return "registration";
+    }
 
     @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
@@ -83,11 +91,6 @@ public class AppController {
             error = "Неверный логин или пароль!";
         }
         return error;
-    }
-
-    @RequestMapping("/registration")
-    public String registration(Model model) {
-        return "registration";
     }
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)

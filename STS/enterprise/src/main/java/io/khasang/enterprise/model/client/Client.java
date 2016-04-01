@@ -5,6 +5,17 @@ import io.khasang.enterprise.model.UserAccount;
 public abstract class Client extends UserAccount {
     private String companyName;
     private String compamyType;
+    private String authority;
+
+
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
 
     public String getCompamyType() {
         return compamyType;

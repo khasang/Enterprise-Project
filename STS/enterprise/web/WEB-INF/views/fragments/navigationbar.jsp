@@ -14,6 +14,7 @@
 
 <nav id="privateArea">
     <ul>
+        <li><a href=<c:url value='/registration'/>>РЕГИСТРАЦИЯ</a></li>
         <li><a href=<c:url value='/client/account'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
     </ul>
 </nav>

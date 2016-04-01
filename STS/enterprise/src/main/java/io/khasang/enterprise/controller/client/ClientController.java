@@ -1,12 +1,19 @@
 package io.khasang.enterprise.controller.client;
 
+import io.khasang.enterprise.model.client.Customer;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "/client")
 public class ClientController {
+
+/*    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
+    public String createClient(Model model){
+        return "welcome";
+    }*/
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String customer() {

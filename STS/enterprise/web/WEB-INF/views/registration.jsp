@@ -10,7 +10,7 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<form method="post" action="${pageContext.request.contextPath}client/createAccount" commandName="customer">
+					<form name="regForm" method="get" action="/client/account" commandName="customer">
 						<center>
 							<table border="1" width="30%" cellpadding="5">
 								<thead>
@@ -20,12 +20,8 @@
 								</thead>
 								<tbody>
 								<tr>
-									<td>First Name</td>
-									<td><input type="text" name="fname" value="" /></td>
-								</tr>
-								<tr>
-									<td>Last Name</td>
-									<td><input type="text" name="lname" value="" /></td>
+									<td>Full Name</td>
+									<td><input type="text" name="fullname" value="" /></td>
 								</tr>
 								<tr>
 									<td>Phone</td>
@@ -38,6 +34,10 @@
 								<tr>
 									<td>Address</td>
 									<td><input type="text" name="address" value="" /></td>
+								</tr>
+								<tr>
+									<td>Company Name</td>
+									<td><input type="text" name="compName" value="" /></td>
 								</tr>
 								<tr>
 									<td>Login</td>
