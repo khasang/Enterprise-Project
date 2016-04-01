@@ -5,6 +5,8 @@ import io.khasang.enterprise.model.newmodel.enums.ProjectBasis;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Project {
@@ -16,7 +18,7 @@ public class Project {
     @Column(name = "project_basis")
     @Enumerated(EnumType.STRING)
     private ProjectBasis projectBasis;
-
+    
     @ManyToOne
     private Client customer;
 

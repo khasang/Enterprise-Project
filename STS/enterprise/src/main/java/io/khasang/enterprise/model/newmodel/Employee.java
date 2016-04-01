@@ -16,7 +16,7 @@ public class Employee {
     @Column(name = "full_name")
     private String fullName;
 
-    private int age;
+    private String age;
 
     private String email;
 
@@ -32,6 +32,7 @@ public class Employee {
     @Temporal(TemporalType.DATE)
     private Date fireDate;
 
+    @Column(name = "department_id")
     @Enumerated(EnumType.STRING)
     private Department department;
 
@@ -56,11 +57,11 @@ public class Employee {
         this.fullName = fullName;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

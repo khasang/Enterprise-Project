@@ -11,21 +11,17 @@ public class Client {
     @GeneratedValue
     private int id;
 
-    @Column(name = "contactperson_name")
     private String contactPersonName;
 
-    @Column(name = "company_name")
     private String companyName;
 
-    @Column(name = "company_description")
     private String companyDescription;
 
     private String email;
 
-    @Column(name = "phone_number")
-    private int phoneNumber;
+    private String phoneNumber;
 
-    @Column(name = "client_type")
+    @Column(name = "client_type_id")
     @Enumerated(EnumType.STRING)
     private ClientType clientType;
 
@@ -76,11 +72,11 @@ public class Client {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
