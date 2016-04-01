@@ -18,7 +18,7 @@ public class Projects {
     private ProjectBasis projectBasis;
     
     @ManyToOne
-    private Clients customer;
+    private Client customer;
 
     private String title;
 
@@ -53,11 +53,11 @@ public class Projects {
         this.projectBasis = projectBasis;
     }
 
-    public Clients getCustomer() {
+    public Client getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Clients customer) {
+    public void setCustomer(Client customer) {
         this.customer = customer;
     }
 

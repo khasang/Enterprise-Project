@@ -5,7 +5,7 @@ import io.khasang.enterprise.model.enums.ClientType;
 import javax.persistence.*;
 
 @Entity
-public class Clients {
+public class Client {
 
     @Id
     @GeneratedValue
@@ -29,7 +29,7 @@ public class Clients {
 
     private String password;
 
-    public Clients() {
+    public Client() {
     }
 
     public int getId() {
