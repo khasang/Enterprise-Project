@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @Entity
-public class PriceList {
+public class Services {
 
     @Id
     @GeneratedValue
@@ -18,7 +18,7 @@ public class PriceList {
 
     private BigDecimal price;
 
-    public PriceList() {
+    public Services() {
     }
 
     public int getId() {

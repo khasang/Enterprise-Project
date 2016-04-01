@@ -1,4 +1,4 @@
-//package io.khasang.enterprise.model.client;
-//
-//public class Buyer extends Client {
-//}
+package io.khasang.enterprise.model.client;
+
+public class Buyer extends Client {
+}

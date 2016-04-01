@@ -1,13 +1,11 @@
 package io.khasang.enterprise.model.newmodel;
 
-import io.khasang.enterprise.model.newmodel.enums.Department;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-public class Employee {
+public class Employees {
 
     @Id
     @GeneratedValue
@@ -38,7 +36,7 @@ public class Employee {
 
     private BigDecimal tax;
 
-    public Employee() {
+    public Employees() {
     }
 
     public int getId() {

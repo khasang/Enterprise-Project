@@ -1,6 +1,6 @@
-package io.khasang.enterprise.model.newmodel.enums;
+package io.khasang.enterprise.model.newmodel;
 
-public enum Feature {
+public enum Features {
     PHOTOGALLERY,
     ONLINEPAYMENTS,
     HEADLINENEWS,
@@ -11,6 +11,6 @@ public enum Feature {
     LIVECHAT,
     EMAILFORMS;
 
-    Feature() {
+    Features() {
     }
 }

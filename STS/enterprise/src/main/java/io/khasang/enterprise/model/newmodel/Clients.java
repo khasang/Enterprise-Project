@@ -1,11 +1,9 @@
 package io.khasang.enterprise.model.newmodel;
 
-import io.khasang.enterprise.model.newmodel.enums.ClientType;
-
 import javax.persistence.*;
 
 @Entity
-public class Client {
+public class Clients {
 
     @Id
     @GeneratedValue
@@ -29,7 +27,7 @@ public class Client {
 
     private String password;
 
-    public Client() {
+    public Clients() {
     }
 
     public int getId() {
