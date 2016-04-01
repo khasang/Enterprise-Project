@@ -1,8 +1,6 @@
 package io.khasang.enterprise.model.newmodel;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Orders {
@@ -11,14 +9,11 @@ public class Orders {
     @GeneratedValue
     private int id;
 
-    @ManyToMany
-    @JoinTable(name="project_orders",
-            joinColumns = @JoinColumn(name="orderFeature_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name="project_id", referencedColumnName="id"))
-    private Set<Projects> project = new HashSet<>();
+    @ManyToOne
+    private Projects project;
 
     @Enumerated(EnumType.STRING)
-    private Features features;
+    private Features feature;
 
     public int getId() {
         return id;
@@ -28,19 +23,19 @@ public class Orders {
         this.id = id;
     }
 
-    public Set<Projects> getProject() {
+    public Projects getProject() {
         return project;
     }
 
-    public void setProject(Set<Projects> project) {
+    public void setProject(Projects project) {
         this.project = project;
     }
 
-    public Features getFeatures() {
-        return features;
+    public Features getFeature() {
+        return feature;
     }
 
-    public void setFeatures(Features features) {
-        this.features = features;
+    public void setFeature(Features features) {
+        this.feature = features;
     }
 }

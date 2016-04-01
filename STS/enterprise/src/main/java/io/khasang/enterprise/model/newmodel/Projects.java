@@ -1,8 +1,5 @@
 package io.khasang.enterprise.model.newmodel;
 
-import com.sun.org.apache.bcel.internal.generic.DADD;
-import com.sun.xml.internal.ws.spi.db.DatabindingException;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,15 +13,14 @@ public class Projects {
     @GeneratedValue
     private int id;
 
-    @Column(name = "basic_order_id")
+    @Column(name = "project_basis")
     @Enumerated(EnumType.STRING)
-    private BasicOrder basicOrder;
+    private ProjectBasis projectBasis;
 
-    @ManyToMany(mappedBy = "project")
-    private Set<Orders> orderFeature = new HashSet<>();
+    @OneToMany
+    private Set<Orders> orders = new HashSet<>(); // под вопросом оставлять или нет
 
     @ManyToOne
-//    @Column(name = "customer_id")
     private Clients customer;
 
     private String title;
@@ -52,12 +48,20 @@ public class Projects {
         this.id = id;
     }
 
-    public Set<Orders> getOrder() {
-        return orderFeature;
+    public ProjectBasis getProjectBasis() {
+        return projectBasis;
     }
 
-    public void setOrder(Set<Orders> orderFeature) {
-        this.orderFeature = orderFeature;
+    public void setProjectBasis(ProjectBasis projectBasis) {
+        this.projectBasis = projectBasis;
+    }
+
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
     }
 
     public Clients getCustomer() {

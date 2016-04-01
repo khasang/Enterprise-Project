@@ -11,6 +11,7 @@ public class Employees {
     @GeneratedValue
     private int id;
 
+    @Column(name = "full_name")
     private String fullName;
 
     private String age;
@@ -21,9 +22,11 @@ public class Employees {
 
     private BigDecimal salary;
 
+    @Column(name = "hire_date")
     @Temporal(TemporalType.DATE)
     private Date hiredate;
 
+    @Column(name = "fire_date")
     @Temporal(TemporalType.DATE)
     private Date fireDate;
 

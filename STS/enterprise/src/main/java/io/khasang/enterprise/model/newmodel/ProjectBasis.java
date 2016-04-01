@@ -1,8 +1,8 @@
 package io.khasang.enterprise.model.newmodel;
 
-public enum BasicOrder {
+public enum ProjectBasis {
     FORUM, BLOG, SOCIALNETWORK, BUSINESS, PORTFOLIO;
 
-    BasicOrder() {
+    ProjectBasis() {
     }
 }
