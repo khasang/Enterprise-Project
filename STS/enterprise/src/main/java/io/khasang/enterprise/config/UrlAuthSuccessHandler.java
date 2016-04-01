@@ -22,11 +22,11 @@ import java.util.Collection;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({"io.khasang.enterprise.config"})
-public class EnterpriseUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class UrlAuthSuccessHandler implements AuthenticationSuccessHandler {
     protected final Log logger = LogFactory.getLog(this.getClass());
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-    public EnterpriseUrlAuthenticationSuccessHandler() {
+    public UrlAuthSuccessHandler() {
         super();
     }
 
