@@ -12,7 +12,7 @@ public class Orders {
     private int id;
 
     @ManyToOne
-    private Projects project;
+    private Project project;
 
     @Enumerated(EnumType.STRING)
     private Features feature;
@@ -25,11 +25,11 @@ public class Orders {
         this.id = id;
     }
 
-    public Projects getProject() {
+    public Project getProject() {
         return project;
     }
 
-    public void setProject(Projects project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 

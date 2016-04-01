@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-public class Employees {
+public class Employee {
 
     @Id
     @GeneratedValue
@@ -38,7 +38,7 @@ public class Employees {
 
     private BigDecimal tax;
 
-    public Employees() {
+    public Employee() {
     }
 
     public int getId() {

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-public class Projects {
+public class Project {
 
     @Id
     @GeneratedValue
@@ -34,7 +34,7 @@ public class Projects {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    public Projects() {
+    public Project() {
     }
 
     public int getId() {
