@@ -1,7 +1,12 @@
 package io.khasang.enterprise.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public abstract class UserAccount implements Account {
@@ -10,9 +15,19 @@ public abstract class UserAccount implements Account {
     private int id;
     private String fullName;
     private int phone;
+
+    @Email
     private String email;
     private String address;
+
+    @NotBlank(message = "Username cannot be blank.")
+    @Size(min=8, max=15, message = "Username must be between 8 and 15 characters long.")
+    @Pattern(regexp = "^\\w{8,}$", message = "Username can only consist of numbers, letters and underscore character.")
     private String login;
+
+    @NotBlank
+    @Size(min = 8,max = 15, message = "Password must be between 8 and 15 characters long.")
+    @Pattern(regexp = "^\\S+$")
     private String password;
 
     public int getId() {
