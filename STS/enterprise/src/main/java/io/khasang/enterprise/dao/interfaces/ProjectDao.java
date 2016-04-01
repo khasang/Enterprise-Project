@@ -1,4 +1,4 @@
 package io.khasang.enterprise.dao.interfaces;
 
-public class ProjectDao {
+public interface ProjectDao {
 }
