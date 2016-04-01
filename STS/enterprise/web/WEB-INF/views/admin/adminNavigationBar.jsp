@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 
 <header class="top">
-    <spring:url value="/resources/images/headerLogo.png" var="clogo"/>
-    <spring:url value="/resources/images/headerSlogan.png" var="cslogan"/>
+    <spring:url value="/resources/images/headerLogo.png" var="logo"/>
+    <spring:url value="/resources/images/headerSlogan.png" var="slogan"/>
     <img id="headerLogo"
-         src="${clogo}" alt="Enterprise header logo image">
+         src="${logo}" alt="Enterprise header logo image">
     <img id="headerSlogan"
-         src="${cslogan}" alt="slogan">
+         src="${slogan}" alt="slogan">
 </header>
 
 <nav id="privateArea">
@@ -23,6 +23,6 @@
     <ul>
         <li><a href=<c:url value='/admin/account'/>>ЛИЧНЫЙ КАБИНЕТ АДМИНИСТРАТОРА</a></li>
         <li><a href=<c:url value='/admin/chat'/>>ЧАТ</a></li>
-        <li><a href=<c:url value='/admin/index'/>>НА ГЛАВНУЮ</a></li>
+        <li><a href=<c:url value='/index'/>>НА ГЛАВНУЮ</a></li>
     </ul>
 </nav>

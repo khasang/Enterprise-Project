@@ -10,19 +10,14 @@
 <div id="mainContainer">
 	<div id="mainRow">
 		<section id="main">
-			<h1>Личный кабинет ADMIN</h1>
-			<p>
-				Список заказов Заказчика с их реквизитами.
-				<br>
-				Можно организовать в виде 2-х таблиц.
-				<br>
-				В первой таблице список Заказов со следующими полями: Номер(наименование) заказа, Имя проекта заказа, процент выполнения.
-				<br>
-				При выборе в первой таблице конкретного Заказа, во второй отображается история прогресса по заказу с соответсвующими descriprion.
-				<br>
-				Заказы из первой таблицы с прогрессом 100% Заказчик может подтвердить.
-			</p>
-			<h2>Динамическая HTML-страница</h2>
+			<center>
+				<a href=<c:url value='/admin/clients'/>>КЛИЕНТЫ</a> <br/>
+				<a href=<c:url value='/admin/organization'/>>ОРГАНИЗАЦИЯ</a> <br/>
+				<a href=<c:url value='/admin/registration'/>>НОВЫЙ СОТРУДНИК</a> <br/>
+				<a href=<c:url value='/admin/projects'/>>ПРОЕКТЫ</a> <br/>
+				<a href=<c:url value='/admin/news'/>>НОВОСТИ</a> <br/>
+				<a href=<c:url value='/admin/finance'/>>ФИНАНСЫ</a> <br/>
+			</center>
 		</section>
 		<section id="news">
 			<jsp:include page="../fragments/newssection.jsp"/>

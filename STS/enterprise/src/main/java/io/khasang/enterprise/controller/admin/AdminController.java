@@ -11,4 +11,39 @@ public class AdminController {
     public String adminHome() {
         return "admin/account";
     }
+
+    @RequestMapping(value = "/chat", method = RequestMethod.GET)
+    public String adminChat() {
+        return "admin/chat";
+    }
+
+    @RequestMapping(value = "/clients", method = RequestMethod.GET)
+    public String adminClients() {
+        return "admin/clients";
+    }
+
+    @RequestMapping(value = "/organization", method = RequestMethod.GET)
+    public String adminOrganization() {
+        return "admin/organization";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String adminRegistration() {
+        return "admin/registration";
+    }
+
+    @RequestMapping(value = "/projects", method = RequestMethod.GET)
+    public String adminProjects() {
+        return "admin/projects";
+    }
+
+    @RequestMapping(value = "/news", method = RequestMethod.GET)
+    public String adminNews() {
+        return "admin/news";
+    }
+
+    @RequestMapping(value = "/finance", method = RequestMethod.GET)
+    public String adminFinance() {
+        return "admin/finance";
+    }
 }
