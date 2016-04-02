@@ -14,8 +14,12 @@
 
 <nav id="privateArea">
     <ul>
+<<<<<<< HEAD
         <li><a href=<c:url value='/registration'/>>РЕГИСТРАЦИЯ</a></li>
         <li><a href=<c:url value='/client/account'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
+=======
+        <li><a href=<c:url value='/login'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
+>>>>>>> mgarbuz
     </ul>
 </nav>
 

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping(value = "/client")
 public class ClientController {
-
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String customer() {
         return "client/account";
