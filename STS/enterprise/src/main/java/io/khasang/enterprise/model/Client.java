@@ -11,17 +11,22 @@ public class Client {
     @GeneratedValue
     private int id;
 
+    @Column(name = "contactperson_name")
     private String contactPersonName;
 
+    @Column(name = "company_name")
     private String companyName;
 
+    @Column(name = "company_description")
     private String companyDescription;
 
+    @Column
     private String email;
 
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "client_type_id")
+    @Column(name = "client_type")
     @Enumerated(EnumType.STRING)
     private ClientType clientType;
 

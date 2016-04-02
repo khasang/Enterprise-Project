@@ -32,7 +32,7 @@ public class Employee {
     @Temporal(TemporalType.DATE)
     private Date fireDate;
 
-    @Column(name = "department_id")
+    @Column(name = "department")
     @Enumerated(EnumType.STRING)
     private Department department;
 
