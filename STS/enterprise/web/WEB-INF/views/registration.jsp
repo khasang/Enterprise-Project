@@ -10,7 +10,7 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<form name="regForm" method="get" action="/client/account" commandName="customer">
+					<form name="regForm" method="get" action="/client/registration">
 						<center>
 							<table border="1" width="30%" cellpadding="5">
 								<thead>
@@ -37,7 +37,7 @@
 								</tr>
 								<tr>
 									<td>Company Name</td>
-									<td><input type="text" name="compName" value="" /></td>
+									<td><input type="text" name="companyName" value="" /></td>
 								</tr>
 								<tr>
 									<td>Login</td>
@@ -45,7 +45,7 @@
 								</tr>
 								<tr>
 									<td>Password</td>
-									<td><input type="password" name="pass" value="" /></td>
+									<td><input type="password" name="password" value="" /></td>
 								</tr>
 								<tr>
 									<td>Confirm Password</td>

@@ -7,8 +7,6 @@ public abstract class Client extends UserAccount {
     private String compamyType;
     private String authority;
 
-
-
     public String getAuthority() {
         return authority;
     }

@@ -5,15 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/client")
 public class ClientController {
-
-/*    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
-    public String createClient(Model model){
-        return "welcome";
-    }*/
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String customer() {
@@ -44,4 +40,18 @@ public class ClientController {
     public String customerContacts() {
         return "client/contacts";
     }
+
+    @RequestMapping("/registration")
+    public String registrationCustomer(@RequestParam("fullname") String fullName,
+                                       @RequestParam("phone") String phone,
+                                       @RequestParam("email") String email,
+                                       @RequestParam("address") String address,
+                                       @RequestParam("companyName") String companyName,
+                                       @RequestParam("login") String login,
+                                       @RequestParam("password") String password,
+                                       Model model, Customer customer){
+        System.out.println(address);
+        return "client/account";
+    }
+
 }
