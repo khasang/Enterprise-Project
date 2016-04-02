@@ -14,17 +14,14 @@ public abstract class AbstractProject implements ProjectInterface {
         return id;
     }
 
-    @Override
     public String getTitle() {
         return title;
     }
 
-    @Override
     public String getDescription(){
         return description;
     }
 
-    @Override
     public BigDecimal getPrice(){
         return price;
     }
