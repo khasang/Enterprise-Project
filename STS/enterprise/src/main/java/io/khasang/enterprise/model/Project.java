@@ -1,31 +1,24 @@
-package io.khasang.enterprise.model.newmodel;
+package io.khasang.enterprise.model;
 
-import com.sun.org.apache.bcel.internal.generic.DADD;
-import com.sun.xml.internal.ws.spi.db.DatabindingException;
+import io.khasang.enterprise.model.enums.ProjectBasis;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-public class Projects {
+public class Project {
 
     @Id
     @GeneratedValue
     private int id;
 
-    @Column(name = "basic_order_id")
+    @Column(name = "project_basis")
     @Enumerated(EnumType.STRING)
-    private BasicOrder basicOrder;
-
-    @ManyToMany(mappedBy = "project")
-    private Set<Orders> orderFeature = new HashSet<>();
-
+    private ProjectBasis projectBasis;
+    
     @ManyToOne
-//    @Column(name = "customer_id")
-    private Clients customer;
+    private Client customer;
 
     private String title;
 
@@ -41,7 +34,7 @@ public class Projects {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    public Projects() {
+    public Project() {
     }
 
     public int getId() {
@@ -52,19 +45,19 @@ public class Projects {
         this.id = id;
     }
 
-    public Set<Orders> getOrder() {
-        return orderFeature;
+    public ProjectBasis getProjectBasis() {
+        return projectBasis;
     }
 
-    public void setOrder(Set<Orders> orderFeature) {
-        this.orderFeature = orderFeature;
+    public void setProjectBasis(ProjectBasis projectBasis) {
+        this.projectBasis = projectBasis;
     }
 
-    public Clients getCustomer() {
+    public Client getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Clients customer) {
+    public void setCustomer(Client customer) {
         this.customer = customer;
     }
 

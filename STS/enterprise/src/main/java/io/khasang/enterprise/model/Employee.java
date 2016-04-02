@@ -1,16 +1,19 @@
-package io.khasang.enterprise.model.newmodel;
+package io.khasang.enterprise.model;
+
+import io.khasang.enterprise.model.enums.Department;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-public class Employees {
+public class Employee {
 
     @Id
     @GeneratedValue
     private int id;
 
+    @Column(name = "full_name")
     private String fullName;
 
     private String age;
@@ -21,9 +24,11 @@ public class Employees {
 
     private BigDecimal salary;
 
+    @Column(name = "hire_date")
     @Temporal(TemporalType.DATE)
     private Date hiredate;
 
+    @Column(name = "fire_date")
     @Temporal(TemporalType.DATE)
     private Date fireDate;
 
@@ -33,7 +38,7 @@ public class Employees {
 
     private BigDecimal tax;
 
-    public Employees() {
+    public Employee() {
     }
 
     public int getId() {
