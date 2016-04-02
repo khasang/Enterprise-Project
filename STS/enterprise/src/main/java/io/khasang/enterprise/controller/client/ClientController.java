@@ -1,12 +1,16 @@
 package io.khasang.enterprise.controller.client;
 
+import io.khasang.enterprise.model.Client;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/client")
 public class ClientController {
+
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String customer() {
         return "client/account";
@@ -36,4 +40,25 @@ public class ClientController {
     public String customerContacts() {
         return "client/contacts";
     }
+
+//    @RequestMapping("/registration")
+//    public String ClientRegistration(@RequestParam("fullname") String fullName,
+//                                       @RequestParam("phone") String phone,
+//                                       @RequestParam("email") String email,
+//                                       @RequestParam("address") String address,
+//                                       @RequestParam("companyName") String companyName,
+//                                       @RequestParam("login") String login,
+//                                       @RequestParam("password") String password,
+//                                       Model model, Client customer){
+//        return "client/account";
+//    }
+    @RequestMapping("/registration")
+    public String ClientRegistration(@RequestParam("email") String email,
+                                     @RequestParam("login") String login,
+                                     @RequestParam("password") String password,
+                                     Model model, Client client) {
+
+        return "client/account";
+    }
+
 }

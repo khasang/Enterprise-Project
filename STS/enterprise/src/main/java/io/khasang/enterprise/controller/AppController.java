@@ -1,5 +1,7 @@
 package io.khasang.enterprise.controller;
 
+import io.khasang.enterprise.service.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,8 @@ public class AppController {
 //        this.trackingService = trackingService;
 //        this.chatService = chatService;
 //    }
+    @Autowired
+    NewsService newsService;
 
     @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
@@ -43,7 +47,7 @@ public class AppController {
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news(Model model) {
-        model.addAttribute("allnews", "что то динамичное");
+        model.addAttribute("allnews", newsService.findAll());
         return "news";
     }
 
