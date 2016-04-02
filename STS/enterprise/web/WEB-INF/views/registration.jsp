@@ -19,25 +19,26 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>Full Name</td>
-									<td><input type="text" name="fullname" value="" /></td>
-								</tr>
-								<tr>
-									<td>Phone</td>
-									<td><input type="text" name="phone" value="" /></td>
-								</tr>
+								<%--<tr>--%>
+									<%--<td>Full Name</td>--%>
+									<%--<td><input type="text" name="fullname" value="" /></td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td>Phone</td>--%>
+									<%--<td><input type="text" name="phone" value="" /></td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+								<%--<tr>--%>
+									<%--<td>Company Name</td>--%>
+									<%--<td><input type="text" name="companyName" value="" /></td>--%>
+								<%--</tr>--%>
+								<%--<tr>--%>
+									<%--<td>Address</td>--%>
+									<%--<td><input type="text" name="address" value="" /></td>--%>
+								<%--</tr>--%>
 								<tr>
 									<td>Email</td>
 									<td><input type="text" name="email" value="" /></td>
-								</tr>
-								<tr>
-									<td>Address</td>
-									<td><input type="text" name="address" value="" /></td>
-								</tr>
-								<tr>
-									<td>Company Name</td>
-									<td><input type="text" name="companyName" value="" /></td>
 								</tr>
 								<tr>
 									<td>Login</td>
@@ -47,16 +48,16 @@
 									<td>Password</td>
 									<td><input type="password" name="password" value="" /></td>
 								</tr>
-								<tr>
-									<td>Confirm Password</td>
-									<td><input type="password" name="confirmpass" value="" /></td>
-								</tr>
+								<%--<tr>--%>
+									<%--<td>Confirm Password</td>--%>
+									<%--<td><input type="password" name="confirmpass" value="" /></td>--%>
+								<%--</tr>--%>
 								<tr>
 									<td><input type="submit" value="Submit" /></td>
 									<td><input type="reset" value="Reset" /></td>
 								</tr>
 								<tr>
-									<td colspan="2">Already registered!! <a href=<c:url value ='/login'/>>Login Here</a></td>
+									<td colspan="2">already registered? <a href=<c:url value ='/login'/>>Login Here</a></td>
 								</tr>
 								</tbody>
 							</table>
