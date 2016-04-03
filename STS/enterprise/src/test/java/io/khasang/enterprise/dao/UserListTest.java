@@ -49,7 +49,7 @@ public class UserListTest {
     @Before
     public void setupDB() {
         userList.clearTable();
-        userList.saveEntity(new Client("client@mail.ru", "login" , "password"));
+        userList.saveEntity(new Client("client@mail.ru", "login", "password"));
     }
 
     @Test
@@ -80,12 +80,11 @@ public class UserListTest {
     public void customerNewsTest() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/news");
         ResultActions result = mockMvc.perform(request);
-
-               result.andExpect(status().isOk())
+        result.andExpect(status().isOk())
                 .andExpect(view().name("news"))
                 .andExpect(forwardedUrl("/WEB-INF/views/news.jsp"))
-                .andExpect(model().attribute("allnews", hasItem (
-                        allOf (
+                .andExpect(model().attribute("allnews", hasItem(
+                        allOf(
                                 hasProperty("email", is("client@mail.ru")),
                                 hasProperty("login", is("login")),
                                 hasProperty("password", is("password"))
