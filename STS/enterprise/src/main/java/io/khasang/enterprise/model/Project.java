@@ -17,8 +17,8 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private ProjectBasis projectBasis;
     
-    @ManyToOne
-    private Client customer;
+//    @ManyToOne
+//    private Client customer;
 
     private String title;
 
@@ -53,13 +53,13 @@ public class Project {
         this.projectBasis = projectBasis;
     }
 
-    public Client getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Client customer) {
-        this.customer = customer;
-    }
+//    public Client getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Client customer) {
+//        this.customer = customer;
+//    }
 
     public String getTitle() {
         return title;

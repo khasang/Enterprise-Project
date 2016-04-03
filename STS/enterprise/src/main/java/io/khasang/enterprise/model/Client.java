@@ -8,7 +8,8 @@ import javax.persistence.*;
 public class Client {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int id;
 
     @Column(name = "contactperson_name")
