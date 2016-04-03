@@ -2,9 +2,11 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Employee;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class EmployeeDaoImpl implements EmployeeDao {
     public Employee findById(int id) {
         return null;
