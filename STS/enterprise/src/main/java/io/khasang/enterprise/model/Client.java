@@ -38,6 +38,12 @@ public class Client {
     public Client() {
     }
 
+    public Client(String email, String login, String password) {
+        this.email = email;
+        this.login = login;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }

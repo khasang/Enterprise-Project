@@ -1,5 +1,6 @@
 package io.khasang.enterprise.dao;
 
+//import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import org.hibernate.Criteria;
@@ -27,6 +28,13 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
     public List<Client> findAllClients() {
         Criteria criteria = getSession().createCriteria(Client.class);
         return (List<Client>) criteria.list();
+    }
+
+    @Override
+    public Client findByLogin(String login) {
+        Query query = getSession().createQuery("FROM Client u WHERE u.login = :login");
+        query.setString("login", login);
+        return (Client) query.list().get(0);
     }
 
     public void saveClient(Client client) {
