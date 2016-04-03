@@ -26,4 +26,8 @@ public class UserList {
     public void clearTable() {
         clientDao.deleteAllClients();
     }
+
+    public Client findByLogin(String login) {
+        return clientDao.findByLogin(login);
+    }
 }

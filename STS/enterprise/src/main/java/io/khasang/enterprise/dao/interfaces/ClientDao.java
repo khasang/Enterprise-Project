@@ -12,6 +12,8 @@ public interface ClientDao {
 
     List<Client> findAllClients();
 
+    Client findByLogin(String login);
+
     void saveClient(Client client);
 
     void deleteClientByLogin(String login);
