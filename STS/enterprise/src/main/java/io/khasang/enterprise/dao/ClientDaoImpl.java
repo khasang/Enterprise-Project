@@ -1,27 +1,26 @@
 package io.khasang.enterprise.dao;
 
-//import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository("clientDao")
+@Transactional // костыль, чтобы тесты проходили. Как появится сервис, использующий СlientDao - транзакционность выставим в нем.
 public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
-
     public Client findById(int id) {
         return getSession().get(Client.class, id);
     }
 
     public Client findClientByLoginAndPassword(String login, String password) {
-        Query query = getSession().createSQLQuery("SELECT * FROM client WHERE login = :login AND password = :password");
+        Query query = getSession().createQuery("FROM Client u WHERE u.login = :login AND u.password = :password");
         query.setString("login", login);
         query.setString("password", password);
-        query.executeUpdate();
-        return (Client) query.list(); // todo make it work
+        return (Client) query.list().get(0);
     }
 
     @SuppressWarnings("unchecked")

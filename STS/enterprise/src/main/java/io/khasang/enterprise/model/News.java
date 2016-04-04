@@ -1,21 +1,35 @@
 package io.khasang.enterprise.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
+@Table(name = "news")
 public class News {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String title;
 
     private String content;
 
+    private String description;
+
     private String author;
+
+    @Column(name = "publish_date")
+    private Date publishDate;
+
+    public News() {
+    }
+
+    public News(String title, String description, Date publishDate) {
+        this.title = title;
+        this.description = description;
+        this.publishDate = publishDate;
+    }
 
     public int getId() {
         return id;
@@ -41,11 +55,39 @@ public class News {
         this.content = content;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getAuthor() {
         return author;
     }
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", publishDate=" + publishDate +
+                '}';
     }
 }

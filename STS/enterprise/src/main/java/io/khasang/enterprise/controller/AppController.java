@@ -48,7 +48,7 @@ public class AppController {
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news(Model model) {
-        model.addAttribute("allnews", newsService.findAll());
+        model.addAttribute("news", newsService.findLatestNews());
         return "news";
     }
 
@@ -95,7 +95,7 @@ public class AppController {
         return "registration";
     }
 
-    @RequestMapping(value = {"/regsuccess"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/regsuccess", method = RequestMethod.POST)
     public String submitUserRegistration(@Valid Client client, BindingResult result) {
         if (result.hasErrors()) {
             return "registration";
