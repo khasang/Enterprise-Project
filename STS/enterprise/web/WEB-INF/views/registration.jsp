@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -10,65 +11,71 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<form name="regForm" method="get" action="/client/registration">
-						<center>
-							<table border="1" width="30%" cellpadding="5">
-								<thead>
-								<tr>
-									<th colspan="2">Enter Information Here</th>
-								</tr>
-								</thead>
-								<tbody>
+					<%--<form method="post" action=<c:url value ='/regsuccess'/>>--%>
+						<%--&lt;%&ndash;<center>&ndash;%&gt;--%>
+							<%--<table align="center" border="1" width="30%" cellpadding="5">--%>
+								<%--<thead>--%>
 								<%--<tr>--%>
-									<%--<td>Full Name</td>--%>
-									<%--<td><input type="text" name="fullname" value="" /></td>--%>
+									<%--<th colspan="2">Enter Information Here</th>--%>
+								<%--</tr>--%>
+								<%--</thead>--%>
+
+								<%--<tbody>--%>
+								<%--<tr>--%>
+									<%--<td>Email</td>--%>
+									<%--<td><input type="text" name="email" value="" /></td>--%>
 								<%--</tr>--%>
 								<%--<tr>--%>
-									<%--<td>Phone</td>--%>
-									<%--<td><input type="text" name="phone" value="" /></td>--%>
+									<%--<td>Login</td>--%>
+									<%--<td><input type="text" name="login" value="" /></td>--%>
 								<%--</tr>--%>
 								<%--<tr>--%>
-								<%--<tr>--%>
-									<%--<td>Company Name</td>--%>
-									<%--<td><input type="text" name="companyName" value="" /></td>--%>
+									<%--<td>Password</td>--%>
+									<%--<td><input type="password" name="password" value="" /></td>--%>
 								<%--</tr>--%>
 								<%--<tr>--%>
-									<%--<td>Address</td>--%>
-									<%--<td><input type="text" name="address" value="" /></td>--%>
+									<%--<td><input type="submit" value="Submit" /></td>--%>
 								<%--</tr>--%>
-								<tr>
-									<td>Email</td>
-									<td><input type="text" name="email" value="" /></td>
-								</tr>
-								<tr>
-									<td>Login</td>
-									<td><input type="text" name="login" value="" /></td>
-								</tr>
-								<tr>
-									<td>Password</td>
-									<td><input type="password" name="password" value="" /></td>
-								</tr>
 								<%--<tr>--%>
-									<%--<td>Confirm Password</td>--%>
-									<%--<td><input type="password" name="confirmpass" value="" /></td>--%>
+									<%--<td colspan="2">Already have account? <a href=<c:url value ='/login'/>>Login Here</a></td>--%>
 								<%--</tr>--%>
+								<%--</tbody>--%>
+							<%--</table>--%>
+						<%--&lt;%&ndash;</center>&ndash;%&gt;--%>
+					<%--</form>--%>
+						<form id="client" action="<c:url value ='/regsuccess'/>" method="POST">
+							<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
+							<table>
 								<tr>
-									<td><input type="submit" value="Submit" /></td>
-									<td><input type="reset" value="Reset" /></td>
+									<td><label for="email">Email: </label> </td>
+									<td><input id="email" name="email" type="text" value=""/></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<td><label for="login">Login: </label> </td>
+									<td><input id="login" name="login" type="text" value=""/></td>
+									<td></td>
+								</tr>
+
+								<tr>
+									<td><label for="password">Password: </label> </td>
+									<td><input id="password" name="password" type="text" value=""/></td>
+									<td></td>
 								</tr>
 								<tr>
-									<td colspan="2">already registered? <a href=<c:url value ='/login'/>>Login Here</a></td>
+									<td colspan="3">
+										<input type="submit" value="Register"/>
+									</td>
 								</tr>
-								</tbody>
 							</table>
-						</center>
-					</form>
+						</form>
 				</section>
 				<section id="news">
 					<jsp:include page="fragments/newssection.jsp"/>
 				</section>
-			</div> <!-- mainRow -->
-		</div> <!-- mainContainer -->
+			</div>
+		</div>
 
 		<footer>
 			&copy; 2016, Enterprise co.
