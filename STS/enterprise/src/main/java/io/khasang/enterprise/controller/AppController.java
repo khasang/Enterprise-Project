@@ -48,7 +48,7 @@ public class AppController {
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news(Model model) {
-        model.addAttribute("allnews", newsService.findAll());
+        model.addAttribute("news", newsService.findLatestNews());
         return "news";
     }
 

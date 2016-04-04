@@ -8,7 +8,7 @@ public interface NewsDao {
 
     List<News> findAllNews();
 
-    List<News> findLatestNews();
+    List<News> findLastNews();
 
     void saveNews(News news);
 

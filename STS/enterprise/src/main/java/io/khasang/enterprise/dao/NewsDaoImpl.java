@@ -2,6 +2,7 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.NewsDao;
 import io.khasang.enterprise.model.News;
+import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,8 +13,10 @@ public class NewsDaoImpl extends AbstractDao<News> implements NewsDao {
         return null;
     }
 
-    public List<News> findLatestNews() {
-        return null;
+    @SuppressWarnings("unchecked")
+    public List<News> findLastNews() {
+        Criteria criteria = getSession().createCriteria(News.class);
+        return (List<News>) criteria.list();
     }
 
     public void saveNews(News news) {

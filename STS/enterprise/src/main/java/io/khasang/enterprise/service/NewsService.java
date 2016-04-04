@@ -1,7 +1,7 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.interfaces.ClientDao;
-import io.khasang.enterprise.model.Client;
+import io.khasang.enterprise.dao.interfaces.NewsDao;
+import io.khasang.enterprise.model.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,9 +13,9 @@ import java.util.List;
 public class NewsService {
 
     @Autowired
-    ClientDao clientDao;
+    NewsDao newsDao;
 
-    public List<Client> findAll() {
-        return clientDao.findAllClients();
+    public List<News> findLatestNews() {
+        return newsDao.findLastNews();
     }
 }
