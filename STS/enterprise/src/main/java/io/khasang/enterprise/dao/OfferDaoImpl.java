@@ -1,6 +1,8 @@
 package io.khasang.enterprise.dao;
 
+import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.dao.interfaces.ProjectDao;
+import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.Project;
 import io.khasang.enterprise.model.enums.ProjectBasis;
 import org.springframework.stereotype.Repository;
@@ -9,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
-public class PriceListDaoImpl implements ProjectDao {
+public class OfferDaoImpl extends AbstractDao<Project> implements ProjectDao {
     public Project findById(int id) {
         return null;
     }

@@ -5,7 +5,7 @@ import io.khasang.enterprise.model.Offer;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface PriceListDao {
+public interface OfferDao {
 
     Offer findById(int id);
 
