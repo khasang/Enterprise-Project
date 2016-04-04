@@ -90,7 +90,7 @@ public class AppController {
     }
 
     @RequestMapping("/registration")
-    public String registration(Model model) {
+    public String registration() {
         return "registration";
     }
 

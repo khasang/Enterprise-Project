@@ -1,15 +1,28 @@
 package io.khasang.enterprise.controller.client;
 
+import io.khasang.enterprise.dao.ClientDaoImpl;
 import io.khasang.enterprise.model.Client;
+import io.khasang.enterprise.service.UserList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Valid;
+import java.util.Set;
+
 @Controller
 @RequestMapping(value = "/client")
 public class ClientController {
+
+    @Autowired
+    UserList clientDao;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String customer() {
@@ -41,24 +54,23 @@ public class ClientController {
         return "client/contacts";
     }
 
-//    @RequestMapping("/registration")
-//    public String ClientRegistration(@RequestParam("fullname") String fullName,
-//                                       @RequestParam("phone") String phone,
-//                                       @RequestParam("email") String email,
-//                                       @RequestParam("address") String address,
-//                                       @RequestParam("companyName") String companyName,
-//                                       @RequestParam("login") String login,
-//                                       @RequestParam("password") String password,
-//                                       Model model, Client customer){
-//        return "client/account";
-//    }
-    @RequestMapping("/registration")
-    public String ClientRegistration(@RequestParam("email") String email,
-                                     @RequestParam("login") String login,
-                                     @RequestParam("password") String password,
-                                     Model model, Client client) {
+    @InitBinder("client")
+    public void initPetBinder(WebDataBinder dataBinder) {
+        dataBinder.setValidator(new ClientValidator());
+    }
 
-        return "client/account";
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String ClientRegistration(Model model, @Valid Client client, BindingResult result) {
+
+        if (result.hasErrors()){
+            System.out.println("Wrong enter");
+        }else {
+            System.out.println("Correct input");
+            System.out.println(client.toString());
+            clientDao.saveEntity(client);
+            return "client/account";
+        }
+        return "/registration";
     }
 
 }

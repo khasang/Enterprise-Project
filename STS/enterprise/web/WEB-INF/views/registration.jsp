@@ -10,7 +10,7 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<form name="regForm" method="get" action="/client/registration">
+					<form name="regForm" method="POST" action="/client/registration">
 						<center>
 							<table border="1" width="30%" cellpadding="5">
 								<thead>
@@ -42,7 +42,7 @@
 								</tr>
 								<tr>
 									<td>Login</td>
-									<td><input type="text" name="login" value="" /></td>
+									<td><input type="text" name="login" value="" required="true" /></td>
 								</tr>
 								<tr>
 									<td>Password</td>
@@ -62,6 +62,8 @@
 								</tbody>
 							</table>
 						</center>
+						<input type="hidden" name="${_csrf.parameterName}"
+							   value="${_csrf.token}" />
 					</form>
 				</section>
 				<section id="news">

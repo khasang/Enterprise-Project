@@ -1,8 +1,15 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.ClientType;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 public class Client {
@@ -22,9 +29,11 @@ public class Client {
     private String companyDescription;
 
     @Column
+    @NotEmpty
     private String email;
 
     @Column(name = "phone_number")
+    @NotNull
     private String phoneNumber;
 
     @Column(name = "client_type")
@@ -114,5 +123,20 @@ public class Client {
 
     public void setClientType(ClientType clientType) {
         this.clientType = clientType;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", contactPersonName='" + contactPersonName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", companyDescription='" + companyDescription + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", clientType=" + clientType +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
