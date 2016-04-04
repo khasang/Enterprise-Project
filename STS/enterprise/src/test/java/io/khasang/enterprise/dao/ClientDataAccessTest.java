@@ -2,8 +2,8 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.config.HibernateConfig;
 import io.khasang.enterprise.config.application.WebConfig;
+import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
-import io.khasang.enterprise.service.UserList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,17 +30,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class, HibernateConfig.class})
-public class UserListTest {
+public class ClientDataAccessTest {
 
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
 
     @Autowired
-    UserList userList;
+    ClientDao clientDao;
 
     @Before
-    public void setup() {
+    public void setupMock() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
     }
@@ -48,36 +48,42 @@ public class UserListTest {
 
     @Before
     public void setupDB() {
-        userList.clearTable();
-        userList.saveEntity(new Client("client@mail.ru", "login", "password"));
+        clientDao.deleteAllClients();
+        clientDao.saveClient(new Client("client@mail.ru", "login", "password"));
     }
 
     @Test
-    public void testUserList() {
-        Assert.assertNotNull(new UserList());
+    public void notNullTest() {
+        Assert.assertNotNull(clientDao);
     }
 
     @Test
-    public void testTypeOfResultSet() {
-        Object list = userList.findAll();
+    public void typeOfResultSetTest() {
+        Object list = clientDao.findAllClients();
         Assert.assertTrue(list instanceof List);
     }
 
     @Test
-    public void testInvalidData() {
-        List<Client> list = userList.findAll();
+    public void invalidDataTest() {
+        List<Client> list = clientDao.findAllClients();
         Assert.assertTrue(list.size() == 1);
     }
 
     @Test
-    public void testCorrectFieldSave() {
-        Client client = userList.findByLogin("login");
+    public void findByLoginTest() {
+        Client client = clientDao.findByLogin("login");
         Assert.assertEquals("client@mail.ru", client.getEmail());
         Assert.assertEquals("password", client.getPassword());
     }
 
     @Test
-    public void customerNewsTest() throws Exception {
+    public void findByLoginAndPasswordTest() {
+        Client client = clientDao.findClientByLoginAndPassword("login", "password");
+        Assert.assertEquals("client@mail.ru", client.getEmail());
+    }
+
+    @Test
+    public void attributePropertiesTest() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/news");
         ResultActions result = mockMvc.perform(request);
         result.andExpect(status().isOk())
@@ -94,8 +100,8 @@ public class UserListTest {
 
     @Test
     public void deleteTest() {
-        userList.clearTable();
-        List<Client> list = userList.findAll();
+        clientDao.deleteAllClients();
+        List<Client> list = clientDao.findAllClients();
         Assert.assertTrue(list.isEmpty());
     }
 }
