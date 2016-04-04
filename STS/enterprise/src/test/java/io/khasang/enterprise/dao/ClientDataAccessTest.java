@@ -4,6 +4,8 @@ import io.khasang.enterprise.config.HibernateConfig;
 import io.khasang.enterprise.config.application.WebConfig;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
+import io.khasang.enterprise.model.News;
+import io.khasang.enterprise.service.NewsService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +22,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.sql.Date;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
@@ -37,7 +40,12 @@ public class ClientDataAccessTest {
     private MockMvc mockMvc;
 
     @Autowired
-    ClientDao clientDao;
+    private ClientDao clientDao;
+
+    @Autowired
+    NewsService newsService;
+
+    private static final Date DATE = new java.sql.Date(999999*999999L);
 
     @Before
     public void setupMock() {
@@ -45,22 +53,24 @@ public class ClientDataAccessTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
     }
 
-
     @Before
     public void setupDB() {
         clientDao.deleteAllClients();
+        newsService.deleteAllNews();
         clientDao.saveClient(new Client("client@mail.ru", "login", "password"));
+        newsService.saveNewsToDB(new News("BeautifulTitle", "ShortDescription", DATE));
     }
 
     @Test
     public void notNullTest() {
         Assert.assertNotNull(clientDao);
+        Assert.assertNotNull(newsService);
     }
 
     @Test
     public void typeOfResultSetTest() {
         Object list = clientDao.findAllClients();
-        Assert.assertTrue(list instanceof List);
+        Assert.assertTrue(list instanceof List); // todo fix this sh.t
     }
 
     @Test
@@ -89,19 +99,25 @@ public class ClientDataAccessTest {
         result.andExpect(status().isOk())
                 .andExpect(view().name("news"))
                 .andExpect(forwardedUrl("/WEB-INF/views/news.jsp"))
-                .andExpect(model().attribute("allnews", hasItem(
+                .andExpect(model().attribute("news", hasItem(
                         allOf(
-                                hasProperty("email", is("client@mail.ru")),
-                                hasProperty("login", is("login")),
-                                hasProperty("password", is("password"))
+                                hasProperty("title", is("BeautifulTitle")),
+                                hasProperty("description", is("ShortDescription"))
                         )
                 )));
+        Assert.assertEquals(DATE.toString(), newsService.findLatestNews().get(0).getPublishDate().toString());
     }
 
     @Test
-    public void deleteTest() {
+    public void deletedClientTest() {
         clientDao.deleteAllClients();
         List<Client> list = clientDao.findAllClients();
+        Assert.assertTrue(list.isEmpty());
+    }
+    @Test
+    public void deletedNewsTest() {
+        newsService.deleteAllNews();
+        List<News> list = newsService.getAllNews();
         Assert.assertTrue(list.isEmpty());
     }
 }

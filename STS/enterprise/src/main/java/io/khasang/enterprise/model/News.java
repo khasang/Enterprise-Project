@@ -22,6 +22,15 @@ public class News {
     @Column(name = "publish_date")
     private Date publishDate;
 
+    public News() {
+    }
+
+    public News(String title, String description, Date publishDate) {
+        this.title = title;
+        this.description = description;
+        this.publishDate = publishDate;
+    }
+
     public int getId() {
         return id;
     }

@@ -18,4 +18,16 @@ public class NewsService {
     public List<News> findLatestNews() {
         return newsDao.findLastNews();
     }
+
+    public List<News> getAllNews() {
+        return newsDao.findAllNews();
+    }
+
+    public void deleteAllNews() {
+        newsDao.deleteAll();
+    }
+
+    public void saveNewsToDB(News news) {
+        newsDao.saveNews(news);
+    }
 }
