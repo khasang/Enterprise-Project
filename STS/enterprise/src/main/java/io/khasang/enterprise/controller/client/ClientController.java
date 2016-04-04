@@ -40,25 +40,4 @@ public class ClientController {
     public String customerContacts() {
         return "client/contacts";
     }
-
-//    @RequestMapping("/registration")
-//    public String ClientRegistration(@RequestParam("fullname") String fullName,
-//                                       @RequestParam("phone") String phone,
-//                                       @RequestParam("email") String email,
-//                                       @RequestParam("address") String address,
-//                                       @RequestParam("companyName") String companyName,
-//                                       @RequestParam("login") String login,
-//                                       @RequestParam("password") String password,
-//                                       Model model, Client customer){
-//        return "client/account";
-//    }
-    @RequestMapping("/registration")
-    public String ClientRegistration(@RequestParam("email") String email,
-                                     @RequestParam("login") String login,
-                                     @RequestParam("password") String password,
-                                     Model model, Client client) {
-
-        return "client/account";
-    }
-
 }

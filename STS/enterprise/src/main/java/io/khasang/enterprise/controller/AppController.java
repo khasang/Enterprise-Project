@@ -95,7 +95,7 @@ public class AppController {
         return "registration";
     }
 
-    @RequestMapping(value = {"/regsuccess"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/regsuccess", method = RequestMethod.POST)
     public String submitUserRegistration(@Valid Client client, BindingResult result) {
         if (result.hasErrors()) {
             return "registration";
