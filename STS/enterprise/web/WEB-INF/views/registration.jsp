@@ -44,7 +44,7 @@
 						<%--&lt;%&ndash;</center>&ndash;%&gt;--%>
 					<%--</form>--%>
 						<form id="client" action="<c:url value ='/regsuccess'/>" method="POST">
-							<input id="id" name="id" type="hidden" value="0"/>
+							<input type="hidden" name="${_csrf.parameterName}"value="${_csrf.token}" />
 							<table>
 								<tr>
 									<td><label for="email">Email: </label> </td>
