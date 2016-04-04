@@ -15,6 +15,9 @@ public class EmployeeRole {
 
     private String role;
 
+    public EmployeeRole() {
+    }
+
     public int getId() {
         return id;
     }

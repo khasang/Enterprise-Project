@@ -13,8 +13,10 @@ public class ClientRole {
     @ManyToOne
     private Client client;
 
-
     private String role;
+
+    public ClientRole() {
+    }
 
     public int getId() {
         return id;

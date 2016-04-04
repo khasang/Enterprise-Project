@@ -18,6 +18,9 @@ public class CustomerOrder {
     @Enumerated(EnumType.STRING)
     private Features feature;
 
+    public CustomerOrder() {
+    }
+
     public int getId() {
         return id;
     }
