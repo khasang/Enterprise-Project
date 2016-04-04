@@ -5,6 +5,7 @@ import io.khasang.enterprise.model.enums.ClientType;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "client")
 public class Client {
 
     @Id
@@ -36,6 +37,12 @@ public class Client {
     private String password;
 
     public Client() {
+    }
+
+    public Client(String email, String login, String password) {
+        this.email = email;
+        this.login = login;
+        this.password = password;
     }
 
     public int getId() {
@@ -108,5 +115,20 @@ public class Client {
 
     public void setClientType(ClientType clientType) {
         this.clientType = clientType;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", contactPersonName='" + contactPersonName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", companyDescription='" + companyDescription + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", clientType=" + clientType +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
