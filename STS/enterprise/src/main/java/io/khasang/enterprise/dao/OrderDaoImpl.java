@@ -1,13 +1,15 @@
 package io.khasang.enterprise.dao;
 
+import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.dao.interfaces.OrderDao;
+import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.CustomerOrder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class OrderDaoImpl implements OrderDao {
+public class OrderDaoImpl extends AbstractDao<CustomerOrder> implements OrderDao {
     public CustomerOrder findById(int id) {
         return null;
     }

@@ -1,50 +1,39 @@
 package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.OfferDao;
 import io.khasang.enterprise.dao.interfaces.ProjectDao;
 import io.khasang.enterprise.model.Client;
-import io.khasang.enterprise.model.Project;
-import io.khasang.enterprise.model.enums.ProjectBasis;
+import io.khasang.enterprise.model.Offer;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
-public class OfferDaoImpl extends AbstractDao<Project> implements ProjectDao {
-    public Project findById(int id) {
+public class OfferDaoImpl extends AbstractDao<Offer> implements OfferDao {
+
+    public Offer findById(int id) {
         return null;
     }
 
-    public List<Project> findByProjectBasis(ProjectBasis basis) {
+    public Offer findOfferByPrice(BigDecimal price) {
         return null;
     }
 
-    public List<Project> findByPrice(BigDecimal price) {
+    public List<Offer> findAllOffers() {
         return null;
     }
 
-    public List<Project> findUnfinishedProjects() {
-        return null;
-    }
-
-    public List<Project> findFinishedProjects() {
-        return null;
-    }
-
-    public List<Project> findAllProjects() {
-        return null;
-    }
-
-    public void saveProject(Project project) {
+    public void saveOffer(Offer offer) {
 
     }
 
-    public void deleteProjectById(int id) {
+    public void deleteOfferById(int id) {
 
     }
 
-    public void deleteAllProjects() {
+    public void deleteAllOffers() {
 
     }
 }

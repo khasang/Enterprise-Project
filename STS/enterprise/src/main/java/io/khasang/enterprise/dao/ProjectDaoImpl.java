@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
-public class ProjectDaoImpl implements ProjectDao{
+public class ProjectDaoImpl extends AbstractDao<Project> implements ProjectDao {
     public Project findById(int id) {
         return null;
     }

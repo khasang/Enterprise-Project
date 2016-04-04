@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository("clientDao")
 public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
-
     public Client findById(int id) {
         return getSession().get(Client.class, id);
     }

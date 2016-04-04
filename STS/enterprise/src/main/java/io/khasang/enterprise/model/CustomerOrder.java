@@ -5,6 +5,7 @@ import io.khasang.enterprise.model.enums.Features;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "customer_order")
 public class CustomerOrder {
 
     @Id
