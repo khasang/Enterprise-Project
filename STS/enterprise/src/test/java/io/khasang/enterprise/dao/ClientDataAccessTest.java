@@ -121,5 +121,3 @@ public class ClientDataAccessTest {
         Assert.assertTrue(list.isEmpty());
     }
 }
-
-

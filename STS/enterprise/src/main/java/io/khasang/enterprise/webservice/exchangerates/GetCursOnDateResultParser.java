@@ -1,18 +1,17 @@
 package io.khasang.enterprise.webservice.exchangerates;
 
-import java.math.BigDecimal;
-import java.util.GregorianCalendar;
-import java.util.List;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
+import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.GetCursOnDateXMLResponse.GetCursOnDateXMLResult;
 import org.apache.xerces.dom.ElementNSImpl;
 import org.apache.xerces.dom.TextImpl;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.GetCursOnDateXMLResponse.GetCursOnDateXMLResult;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+import java.math.BigDecimal;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 public class GetCursOnDateResultParser {
 
@@ -23,11 +22,10 @@ public class GetCursOnDateResultParser {
         public BigDecimal nom;
         public BigDecimal curs;
 
-        public Valute(){
-
+        public Valute() {
         }
 
-        public Valute(String vname, String vchcode, int vcode, BigDecimal vnom, BigDecimal vcurs){
+        public Valute(String vname, String vchcode, int vcode, BigDecimal vnom, BigDecimal vcurs) {
             this.name = vname;
             this.chCode = vchcode;
             this.code = vcode;
@@ -36,48 +34,41 @@ public class GetCursOnDateResultParser {
         }
     }
 
-    public static Valute getValuteByValuteCh(String valuteCh, GetCursOnDateXMLResult result) throws Exception{
-
+    public static Valute getValuteByValuteCh(String currencyChange, GetCursOnDateXMLResult result) throws Exception {
         Valute answer = new Valute();
-
         List<Object> list = result.getContent();
         ElementNSImpl e = (ElementNSImpl) list.get(0);
-        NodeList chCodeList =   e.getElementsByTagName("VchCode");
+        NodeList chCodeList = e.getElementsByTagName("VchCode");
         int length = chCodeList.getLength();
-
         boolean isFound = false;
-        for (int i = 0; i< length; i++){
+        for (int i = 0; i < length; i++) {
             if (isFound) break;
-
             Node valuteChNode = chCodeList.item(i);
-            TextImpl textimpl = (TextImpl)valuteChNode.getFirstChild();
+            TextImpl textimpl = (TextImpl) valuteChNode.getFirstChild();
             String chVal = textimpl.getData();
-
-            if (chVal.equalsIgnoreCase(valuteCh)){
+            if (chVal.equalsIgnoreCase(currencyChange)) {
                 isFound = true;
                 Node parent = valuteChNode.getParentNode();
                 NodeList nodeList = parent.getChildNodes();
                 int paramLength = nodeList.getLength();
-
-                for (int j=0; j<paramLength; j++){
+                for (int j = 0; j < paramLength; j++) {
                     Node currentNode = nodeList.item(j);
-
                     String name = currentNode.getNodeName();
                     Node currentValue = currentNode.getFirstChild();
                     String value = currentValue.getNodeValue();
-                    if (name.equalsIgnoreCase("Vname")){
+                    if (name.equalsIgnoreCase("Vname")) {
                         answer.name = value;
                     }
-                    if (name.equalsIgnoreCase("Vnom")){
+                    if (name.equalsIgnoreCase("Vnom")) {
                         answer.nom = new BigDecimal(value);
                     }
-                    if (name.equalsIgnoreCase("Vcurs")){
+                    if (name.equalsIgnoreCase("Vcurs")) {
                         answer.curs = new BigDecimal(value);
                     }
-                    if (name.equalsIgnoreCase("Vcode")){
+                    if (name.equalsIgnoreCase("Vcode")) {
                         answer.code = Integer.parseInt(value);
                     }
-                    if (name.equalsIgnoreCase("VchCode")){
+                    if (name.equalsIgnoreCase("VchCode")) {
                         answer.chCode = value;
                     }
                 }
@@ -87,8 +78,7 @@ public class GetCursOnDateResultParser {
     }
 
     public static XMLGregorianCalendar getXMLGregorianCalendarNow()
-            throws DatatypeConfigurationException
-    {
+            throws DatatypeConfigurationException {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar now =
