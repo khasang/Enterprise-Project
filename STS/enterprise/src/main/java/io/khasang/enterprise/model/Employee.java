@@ -10,7 +10,7 @@ import java.util.Date;
 public class Employee {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "full_name")
@@ -37,6 +37,10 @@ public class Employee {
     private Department department;
 
     private BigDecimal tax;
+
+    private String login;
+
+    private String password;
 
     public Employee() {
     }
@@ -105,6 +109,14 @@ public class Employee {
         this.fireDate = fireDate;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     public BigDecimal getTax() {
         return tax;
     }
@@ -113,12 +125,20 @@ public class Employee {
         this.tax = tax;
     }
 
-    public Department getDepartment() {
-        return department;
+    public String getLogin() {
+        return login;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 

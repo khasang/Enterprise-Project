@@ -13,6 +13,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
+@Table(name = "client")
 public class Client {
 
     @Id

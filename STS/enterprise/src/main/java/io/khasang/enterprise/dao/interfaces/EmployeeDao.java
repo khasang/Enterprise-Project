@@ -12,7 +12,7 @@ public interface EmployeeDao {
 
     List<Employee> findAllEmployees();
 
-    void saveClient(Employee employee);
+    void saveEmployee(Employee employee);
 
     void deleteEmployeeByLogin(String login);
 

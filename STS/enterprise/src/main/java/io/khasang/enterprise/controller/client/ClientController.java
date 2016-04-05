@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/client")
 public class ClientController {
 
+    @Autowired
+    private Rates rates;
+
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public String customer() {
+    public String customer(Model model) {
+        model.addAttribute("USD", rates.getRate("USD"));
+        model.addAttribute("EUR", rates.getRate("EUR"));
         return "client/account";
     }
 
