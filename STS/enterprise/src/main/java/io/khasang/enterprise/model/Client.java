@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -33,13 +34,13 @@ public class Client {
     private String email;
 
     @Column(name = "phone_number")
-    @NotNull
     private String phoneNumber;
 
     @Column(name = "client_type")
     @Enumerated(EnumType.STRING)
     private ClientType clientType;
 
+    @NotEmpty(message = "it can't be empty")
     private String login;
 
     private String password;

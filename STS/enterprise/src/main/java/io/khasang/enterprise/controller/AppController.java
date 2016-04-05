@@ -19,14 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class AppController {
-//    ProjectTrackingService trackingService;
-//    ChatService chatService;
 
-//    @Autowired
-//    public AppController(ProjectTrackingService trackingService, ChatService chatService) {
-//        this.trackingService = trackingService;
-//        this.chatService = chatService;
-//    }
     @Autowired
     NewsService newsService;
 
@@ -56,44 +49,6 @@ public class AppController {
         return "projects";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-                              HttpServletRequest request) {
-        ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
-        }
-        model.setViewName("login");
-        return model;
-    }
-
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/login";
-    }
-
-    private String getErrorMessage(HttpServletRequest request, String key) {
-        Exception exception = (Exception) request.getSession().getAttribute(key);
-        String error = "";
-        if (exception instanceof BadCredentialsException) {
-            error = "Неверный логин или пароль!";
-        } else if (exception instanceof LockedException) {
-            error = exception.getMessage();
-        } else {
-            error = "Неверный логин или пароль!";
-        }
-        return error;
-    }
-
-    @RequestMapping("/registration")
-    public String registration() {
-        return "registration";
-    }
-
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String contacts(Model model) {
         return "contacts";
@@ -102,5 +57,10 @@ public class AppController {
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDenied() {
         return "/403";
+    }
+
+    @RequestMapping("/registration")
+    public String registrationPage(){
+        return "/registration";
     }
 }

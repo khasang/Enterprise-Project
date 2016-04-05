@@ -1,7 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
+<head>
+	<style>
+		.error {
+			color: #ff0000;
+		}
+
+		.errorblock {
+			color: #000;
+			background-color: #ffEEEE;
+			border: 3px solid #ff0000;
+			padding: 8px;
+			margin: 16px;
+		}
+	</style>
+</head>
 	<jsp:include page="fragments/header.jsp"/>
 
 	<body>
@@ -10,7 +27,8 @@
 		<div id="mainContainer">
 			<div id="mainRow">
 				<section id="main">
-					<form name="regForm" method="POST" action="/client/registration">
+					<form:form method="POST" action="/reg/registration" modelAttribute="client">
+						<form:errors path="*" cssClass="errorblock" element="div" />
 						<center>
 							<table border="1" width="30%" cellpadding="5">
 								<thead>
@@ -19,6 +37,7 @@
 								</tr>
 								</thead>
 								<tbody>
+
 								<%--<tr>--%>
 									<%--<td>Full Name</td>--%>
 									<%--<td><input type="text" name="fullname" value="" /></td>--%>
@@ -38,15 +57,21 @@
 								<%--</tr>--%>
 								<tr>
 									<td>Email</td>
-									<td><input type="text" name="email" value="" /></td>
+									<td><input path="email" type="text" name="email" />
+										<br><form:errors path="email" cssClass="error" />
+									</td>
 								</tr>
 								<tr>
 									<td>Login</td>
-									<td><input type="text" name="login" value="" required="true" /></td>
+									<td><input path="login" type="text" name="login" value="" />
+										<br><form:errors path="login" cssClass="error"/>
+									</td>
 								</tr>
 								<tr>
 									<td>Password</td>
-									<td><input type="password" name="password" value="" /></td>
+									<td><input path="password" type="password" name="password" value="" />
+										<br><form:errors path="password" cssClass="error"/>
+									</td>
 								</tr>
 								<%--<tr>--%>
 									<%--<td>Confirm Password</td>--%>
@@ -64,7 +89,7 @@
 						</center>
 						<input type="hidden" name="${_csrf.parameterName}"
 							   value="${_csrf.token}" />
-					</form>
+					</form:form>
 				</section>
 				<section id="news">
 					<jsp:include page="fragments/newssection.jsp"/>
