@@ -19,6 +19,8 @@ public class Rates {
 
     public String getRate(String code) {
 
+
+
         DailyInfo service = new DailyInfo();
         DailyInfoSoap port = service.getDailyInfoSoap();
 
