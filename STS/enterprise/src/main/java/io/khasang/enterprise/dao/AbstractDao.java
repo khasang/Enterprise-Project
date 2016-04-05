@@ -26,6 +26,4 @@ public abstract class AbstractDao<T> {
     public void update(T entity) {
         getSession().update(entity);
     }
-
-
 }

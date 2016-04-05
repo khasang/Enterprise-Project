@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public class OrderDaoImpl implements OrderDao {
+@Repository("orderDao")
+public class OrderDaoImpl extends AbstractDao<CustomerOrder> implements OrderDao {
     public CustomerOrder findById(int id) {
         return null;
     }
@@ -21,10 +21,8 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     public void saveOrder(CustomerOrder order) {
-
     }
 
     public void deleteAllOrders() {
-
     }
 }

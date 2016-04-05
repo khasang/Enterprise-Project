@@ -5,6 +5,7 @@ import io.khasang.enterprise.model.enums.Features;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "customer_order")
 public class CustomerOrder {
 
     @Id
@@ -16,6 +17,9 @@ public class CustomerOrder {
 
     @Enumerated(EnumType.STRING)
     private Features feature;
+
+    public CustomerOrder() {
+    }
 
     public int getId() {
         return id;

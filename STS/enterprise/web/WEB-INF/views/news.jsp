@@ -12,9 +12,18 @@
 				<section id="main">
 					<h1>Новости и статьи</h1>
 					<p>
-						${allnews} В отличие от колонки "ПОСЛЕДНИЕ НОВОСТИ" содержит полный список новостей и статей с прокруткой.
+						<c:forEach items="${news}" var="news">
+						<article>
+							<header>
+								<h2>${news.title}</h2>
+								<p>Дата: ${news.publishDate}</p>
+							</header>
+								<p>
+									${news.description}
+								</p>
+						</article>
+						</c:forEach>
 					</p>
-					<h2>Динамическая HTML-страница</h2>
 				</section>
 				<section id="news">
 					<jsp:include page="fragments/newssection.jsp"/>
