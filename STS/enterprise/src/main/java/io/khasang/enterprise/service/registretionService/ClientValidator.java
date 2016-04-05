@@ -35,9 +35,9 @@ public class ClientValidator implements Validator {
         if (login.length()<6 || login.length()>15) {
             errors.rejectValue("login", "required", "Login must be between 8 and 15 characters long.");
         }
-/*        if (!(clientDao.findByLogin(login) == null)){
+        if (!(clientDao.findByLogin(login) == null)){
             errors.rejectValue("login", "required", "Such login already in use");
-        }*/
+        }
 
         /*------ PASSWORD VALIDATOR -------*/
         if (client.getPassword().isEmpty()) {
@@ -47,7 +47,7 @@ public class ClientValidator implements Validator {
             errors.rejectValue("password", "required", "Password can't contains space characters.");
         }
         if (password.length()<4 || password.length()>15) {
-            errors.rejectValue("password", "required", "Password must be between 4 and 15 characters long.");
+            errors.rejectValue("password", "required", "Password must be between 8 and 15 characters long.");
         }
 
         /*------ EMAIL VALIDATOR -------*/
