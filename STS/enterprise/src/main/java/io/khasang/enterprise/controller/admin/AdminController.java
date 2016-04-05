@@ -1,14 +1,23 @@
 package io.khasang.enterprise.controller.admin;
 
+import io.khasang.enterprise.webservice.exchangerates.Rates;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
+
+    @Autowired
+    private Rates rates;
+
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public String adminHome() {
+    public String adminHome(Model model) {
+        model.addAttribute("USD", rates.getRate("USD"));
+        model.addAttribute("EUR", rates.getRate("EUR"));
         return "admin/account";
     }
 

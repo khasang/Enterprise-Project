@@ -3,6 +3,7 @@ package io.khasang.enterprise.controller;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.service.NewsService;
 import io.khasang.enterprise.service.RegistrationService;
+import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -31,8 +32,13 @@ public class AppController {
     @Autowired
     RegistrationService registrationService;
 
+    @Autowired
+    private Rates rates;
+
     @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
+        model.addAttribute("USD", rates.getRate("USD"));
+        model.addAttribute("EUR", rates.getRate("EUR"));
         return "index";
     }
 
@@ -90,7 +96,7 @@ public class AppController {
         return error;
     }
 
-    @RequestMapping("/registration")
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         return "registration";
     }
