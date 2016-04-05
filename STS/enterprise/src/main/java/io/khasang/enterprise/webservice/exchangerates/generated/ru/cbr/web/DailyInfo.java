@@ -20,7 +20,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "DailyInfo", targetNamespace = "http://web.cbr.ru/", wsdlLocation = "file:/E:/JAVAcourse/enterprise/STS/enterprise/src/DailyInfo.asmx.xml")
+@WebServiceClient(name = "DailyInfo", targetNamespace = "http://web.cbr.ru/", wsdlLocation = "classpath:/DailyInfo.asmx.xml")
 public class DailyInfo
     extends Service
 {
@@ -33,7 +33,7 @@ public class DailyInfo
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/E:/JAVAcourse/enterprise/STS/enterprise/src/DailyInfo.asmx.xml");
+            url = new URL("classpath:/DailyInfo.asmx.xml");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
