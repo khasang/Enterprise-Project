@@ -16,7 +16,7 @@ import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.GetCu
 
 public class GetCursOnDateResultParser {
 
-    public static class Valute{
+    public static class Valute {
         public String name;
         public String chCode;
         public int code;
@@ -85,8 +85,6 @@ public class GetCursOnDateResultParser {
         }
         return answer;
     }
-
-
 
     public static XMLGregorianCalendar getXMLGregorianCalendarNow()
             throws DatatypeConfigurationException

@@ -6,19 +6,21 @@ import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import java.math.BigDecimal;
 
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({"io.khasang.enterprise.webservice"})
 public class Rates {
+    private String number;
 
     public Rates() {
     }
 
     public String getRate(String code) {
 
-//        System.setProperty("http.proxyHost", "192.168.0.1");
-//        System.setProperty("http.proxyPort", "3128");
+        System.setProperty("http.proxyHost", "192.168.0.1");
+        System.setProperty("http.proxyPort", "3128");
 
         DailyInfo service = new DailyInfo();
         DailyInfoSoap port = service.getDailyInfoSoap();
@@ -42,6 +44,6 @@ public class Rates {
         } catch (Exception e){
 
         }
-        return list.curs.toString();
+        return number = list.curs.setScale(2, BigDecimal.ROUND_DOWN).toString();
     }
 }
