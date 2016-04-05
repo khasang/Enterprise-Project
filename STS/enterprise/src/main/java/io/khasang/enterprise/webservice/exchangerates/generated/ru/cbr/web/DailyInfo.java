@@ -18,7 +18,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  *
  */
-@WebServiceClient(name = "DailyInfo", targetNamespace = "http://web.cbr.ru/", wsdlLocation = "META-INF/DailyInfo.asmx.xml")
+@WebServiceClient(name = "DailyInfo", targetNamespace = "http://web.cbr.ru/", wsdlLocation = "DailyInfo.asmx.xml")
 public class DailyInfo
         extends Service
 {
@@ -28,7 +28,7 @@ public class DailyInfo
     private final static QName DAILYINFO_QNAME = new QName("http://web.cbr.ru/", "DailyInfo");
 
     static {
-        DAILYINFO_WSDL_LOCATION = io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.DailyInfo.class.getClassLoader().getResource("META-INF/DailyInfo.asmx.xml");
+        DAILYINFO_WSDL_LOCATION = io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.DailyInfo.class.getClassLoader().getResource("DailyInfo.asmx.xml");
         WebServiceException e = null;
         if (DAILYINFO_WSDL_LOCATION == null) {
             e = new WebServiceException("Cannot find 'META-INF/DailyInfo.asmx.xml' wsdl. Place the resource correctly in the classpath.");
