@@ -1,5 +1,6 @@
 package io.khasang.enterprise.service.registretionService;
 
+import io.khasang.enterprise.controller.AppController;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.validation.Validator;
 public class ClientValidator implements Validator {
 
     @Autowired
-    RegistrationService registrationService;
+    private RegistrationService registrationService;
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -48,7 +49,7 @@ public class ClientValidator implements Validator {
         if (login.length()<4 || login.length()>15) {
             errors.rejectValue("login", "required", "Login must be between 4 and 15 characters long.");
         }
-        if (registrationService.isLoginExist(login)){
+        if (registrationService.isLoginExist(login)) {
             errors.rejectValue("login", "required", "Such login already in use");
         }
 

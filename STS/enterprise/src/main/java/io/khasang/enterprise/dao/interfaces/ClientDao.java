@@ -1,6 +1,7 @@
 package io.khasang.enterprise.dao.interfaces;
 
 import io.khasang.enterprise.model.Client;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 

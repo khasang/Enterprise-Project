@@ -29,6 +29,9 @@ public class AppController {
     NewsService newsService;
 
     @Autowired
+    ClientValidator clientValidator;
+
+    @Autowired
     RegistrationService registrationService;
 
     @Autowired
@@ -122,6 +125,6 @@ public class AppController {
 
     @InitBinder("client")
     public void initClientBinder(WebDataBinder dataBinder) {
-        dataBinder.setValidator(new ClientValidator());
+        dataBinder.setValidator(clientValidator);
     }
 }
