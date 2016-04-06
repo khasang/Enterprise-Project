@@ -5,29 +5,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        .error {
-            color: #ff0000;
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        function onLoad() {
+
+            $("#password").keyup(checkPasswordsMatch);
+            $("#confirmpass").keyup(checkPasswordsMatch);
+
+            $("#details").submit(canSubmit);
         }
 
-        .errorblock {
-            color: #000;
-            background-color: #ffEEEE;
-            border: 3px solid #ff0000;
-            padding: 8px;
-            margin: 16px;
+        function canSubmit() {
+            var password = $("#password").val();
+            var confirmpass = $("#confirmpass").val();
+
+            if (password != confirmpass) {
+                alert("PASSWORDS DO NOT MATCH. PLEASE TRY AGAIN.")
+                return false;
+            }
+            else {
+                return true;
+            }
         }
-    </style>
+
+        function checkPasswordsMatch() {
+            var password = $("#password").val();
+            var confirmpass = $("#confirmpass").val();
+
+            if (password.length > 3 || confirmpass.length > 3) {
+
+                if (password == confirmpass) {
+                    $("#matchpass").text("Passwords match.");
+                    $("#matchpass").addClass("valid");
+                    $("#matchpass").removeClass("error");
+                } else {
+                    $("#matchpass").text("Passwords do not match.");
+                    $("#matchpass").addClass("error");
+                    $("#matchpass").removeClass("valid");
+                }
+            }
+        }
+
+        $(document).ready(onLoad);
+    </script>
 </head>
 <jsp:include page="fragments/header.jsp"/>
 
 <body>
 <jsp:include page="fragments/navigationbar.jsp"/>
-
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <form:form method="POST" action="/reg/registration" modelAttribute="client">
+            <form:form id="details" method="POST" action="/reg/registration" modelAttribute="client">
                 <form:errors path="*" cssClass="errorblock" element="div"/>
                 <center>
                     <table border="1" width="30%" cellpadding="5">
@@ -75,13 +104,15 @@
                         </tr>
                         <tr>
                             <td>Password</td>
-                            <td><input path="password" type="password" name="password" value=""/>
+                            <td><input path="password" id="password" type="password" name="password" value=""/>
                                 <br><form:errors path="password" cssClass="error"/>
                             </td>
                         </tr>
                         <tr>
                             <td>Confirm Password</td>
-                            <td><input type="password" name="confirmpass" value=""/></td>
+                            <td><input type="password" id="confirmpass" name="confirmpass" value=""/>
+                                <div id="matchpass"></div>
+                            </td>
                         </tr>
                         <tr>
                             <td><input type="submit" value="Submit"/></td>
