@@ -21,5 +21,5 @@ public interface ClientDao {
 
     void deleteAllClients();
 
-    boolean isLoginExist(String login);
+    void addClientRole(int id);
 }

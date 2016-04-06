@@ -4,6 +4,7 @@ import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +35,11 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
     public Client findByLogin(String login) {
         Query query = getSession().createQuery("FROM Client u WHERE u.login = :login");
         query.setString("login", login);
-        return (Client) query.list().get(0);
+        if (query.list().isEmpty()) {
+            return null;
+        } else {
+            return (Client) query.list().get(0);
+        }
     }
 
     public void saveClient(Client client) {
@@ -52,13 +57,10 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
         query.executeUpdate();
     }
 
-    @Override
-    public boolean isLoginExist(String login) {
-        Query query = getSession().createQuery("FROM Client u WHERE u.login = :login");
-        query.setString("login", login);
-        if (query.list().isEmpty()) {
-            return false;
-        }
-        return true;
+    public void addClientRole(int id) {
+        SQLQuery query = getSession().createSQLQuery("INSERT INTO client_role(role, client_id) " +
+                "VALUES ('ROLE_CLIENT', :client_id)");
+        query.setParameter("client_id", id);
+        query.executeUpdate();
     }
 }

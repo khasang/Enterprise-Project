@@ -7,21 +7,21 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-public class Employee {
+public class Employee extends SuperUser {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "full_name")
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
+    @Column(name = "age", nullable = false)
     private String age;
 
+    @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "salary")
     private BigDecimal salary;
 
     @Column(name = "hire_date")
@@ -36,21 +36,13 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Department department;
 
+    @Column(name = "tax")
     private BigDecimal tax;
 
-    private String login;
-
-    private String password;
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    private boolean enabled = true;
 
     public Employee() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFullName() {
@@ -125,20 +117,11 @@ public class Employee {
         this.tax = tax;
     }
 
-    public String getLogin() {
-        return login;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
-
