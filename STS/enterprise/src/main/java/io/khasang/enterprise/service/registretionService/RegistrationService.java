@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegistrationService {
 
     @Autowired
-    ClientDao clientDao;
+    private ClientDao clientDao;
 
     @Transactional
     public void saveClientToDB(Client client){

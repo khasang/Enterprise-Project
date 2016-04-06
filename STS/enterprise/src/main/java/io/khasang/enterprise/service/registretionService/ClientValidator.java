@@ -7,8 +7,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.validation.constraints.Pattern;
-
 public class ClientValidator implements Validator {
 
     @Autowired
