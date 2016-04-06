@@ -1,9 +1,11 @@
 package io.khasang.enterprise.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "client")
+@Table(name = "client", catalog = "enterprise")
 public class Client extends SuperUser {
 
     @Column(name = "contactperson_name")
@@ -23,6 +25,9 @@ public class Client extends SuperUser {
 
     @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1)")
     private boolean enabled = true;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
+    private Set<ClientRole> clientRoles = new HashSet<>(0);
 
     public Client() {
     }
@@ -79,6 +84,14 @@ public class Client extends SuperUser {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Set<ClientRole> getClientRoles() {
+        return clientRoles;
+    }
+
+    public void setClientRoles(Set<ClientRole> clientRoles) {
+        this.clientRoles = clientRoles;
     }
 
     @Override

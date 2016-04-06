@@ -17,8 +17,8 @@ public class Rates {
     }
 
     public String getRate(String code) {
-        System.setProperty("http.proxyHost", "192.168.0.1");
-        System.setProperty("http.proxyPort", "3128");
+//        System.setProperty("http.proxyHost", "192.168.0.1");
+//        System.setProperty("http.proxyPort", "3128");
         DailyInfo service = new DailyInfo();
         DailyInfoSoap port = service.getDailyInfoSoap();
         XMLGregorianCalendar onDate = null;

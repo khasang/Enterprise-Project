@@ -3,31 +3,38 @@ package io.khasang.enterprise.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client_role")
+@Table(name = "client_role", catalog = "enterprise",
+        uniqueConstraints = @UniqueConstraint(
+                columnNames = {"role", "client_id"}))
 public class ClientRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "client_role_id",
+            unique = true, nullable = false)
+    private int clientRoleId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
+            targetEntity = Client.class)
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
+    @Column(name = "role", nullable = false, length = 45)
     private String role;
 
     public ClientRole() {
     }
 
-    public int getId() {
-        return id;
+    public int getClientRoleId() {
+        return clientRoleId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setClientRoleId(int clientRoleId) {
+        this.clientRoleId = clientRoleId;
     }
 
     public Client getClient() {
-        return client;
+        return this.client;
     }
 
     public void setClient(Client client) {
@@ -35,7 +42,7 @@ public class ClientRole {
     }
 
     public String getRole() {
-        return role;
+        return this.role;
     }
 
     public void setRole(String role) {
