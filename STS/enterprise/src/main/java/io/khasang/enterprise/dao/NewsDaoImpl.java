@@ -10,17 +10,15 @@ import java.util.List;
 
 @Repository("newsDao")
 public class NewsDaoImpl extends AbstractDao<News> implements NewsDao {
-
     @SuppressWarnings("unchecked")
     public List<News> findAllNews() {
         Criteria criteria = getSession().createCriteria(News.class);
         return (List<News>) criteria.list();
     }
-
     @SuppressWarnings("unchecked")
     public List<News> findLastNews() {
         Criteria criteria = getSession().createCriteria(News.class);
-        return (List<News>) criteria.list(); //todo create criteria for latest 3 news
+        return criteria.list(); //todo create criteria for latest 3 news
     }
 
     public void saveNews(News news) {
@@ -28,7 +26,9 @@ public class NewsDaoImpl extends AbstractDao<News> implements NewsDao {
     }
 
     public void deleteNewsById(int id) {
-
+        Query query = getSession().createSQLQuery("DELETE from news where id = :id");
+        query.setInteger("id", id);
+        query.executeUpdate();
     }
 
     public void deleteAll() {

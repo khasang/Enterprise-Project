@@ -51,7 +51,7 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
         Query query = getSession().createSQLQuery("delete from client");
         query.executeUpdate();
     }
-
+    //todo move this method to service layer for client(when it will be done)
     @Override
     public boolean isLoginExist(String login) {
         Query query = getSession().createQuery("FROM Client u WHERE u.login = :login");
