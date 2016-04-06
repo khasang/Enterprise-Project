@@ -10,7 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository("clientDao")
-@Transactional // костыль, чтобы тесты проходили. Как появится сервис, использующий СlientDao - транзакционность выставим в нем.
+@Transactional
+// костыль, чтобы тесты проходили. Как появится сервис, использующий СlientDao - транзакционность выставим в нем.
 public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
     public Client findById(int id) {
         return getSession().get(Client.class, id);
@@ -49,5 +50,15 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
     public void deleteAllClients() {
         Query query = getSession().createSQLQuery("delete from client");
         query.executeUpdate();
+    }
+
+    @Override
+    public boolean isLoginExist(String login) {
+        Query query = getSession().createQuery("FROM Client u WHERE u.login = :login");
+        query.setString("login", login);
+        if (query.list().isEmpty()) {
+            return false;
+        }
+        return true;
     }
 }

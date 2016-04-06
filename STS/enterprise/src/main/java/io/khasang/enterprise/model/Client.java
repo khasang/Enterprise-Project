@@ -31,7 +31,6 @@ public class Client {
     private String companyDescription;
 
     @Column
-    @NotEmpty
     private String email;
 
     @Column(name = "phone_number")

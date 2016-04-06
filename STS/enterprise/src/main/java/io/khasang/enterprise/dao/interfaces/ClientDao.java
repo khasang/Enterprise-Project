@@ -19,4 +19,6 @@ public interface ClientDao {
     void deleteClientByLogin(String login);
 
     void deleteAllClients();
+
+    boolean isLoginExist(String login);
 }

@@ -16,4 +16,9 @@ public class RegistrationService {
     public void saveClientToDB(Client client){
         clientDao.saveClient(client);
     }
+
+    @Transactional
+    public boolean isLoginExist(String login){
+       return clientDao.isLoginExist(login);
+    }
 }
