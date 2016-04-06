@@ -114,3 +114,23 @@ nav#privateArea {
   float:            right;
 
 }
+
+.error {
+  font-size: small;
+  color: red;
+  margin-left: 10px;
+}
+
+.errorblock {
+  color: #000;
+  background-color: #ffEEEE;
+  border: 3px solid #ff0000;
+  padding: 8px;
+  margin: 16px;
+}
+
+.valid {
+  font-size: small;
+  color: green;
+  margin-left: 10px;
+}
