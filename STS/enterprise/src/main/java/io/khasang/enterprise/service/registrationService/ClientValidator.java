@@ -1,7 +1,5 @@
-package io.khasang.enterprise.service.registretionService;
+package io.khasang.enterprise.service.registrationService;
 
-import io.khasang.enterprise.controller.AppController;
-import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

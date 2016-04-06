@@ -1,4 +1,4 @@
-package io.khasang.enterprise.service.registretionService;
+package io.khasang.enterprise.service.registrationService;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;

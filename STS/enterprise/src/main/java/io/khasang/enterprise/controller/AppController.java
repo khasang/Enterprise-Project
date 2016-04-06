@@ -2,8 +2,8 @@ package io.khasang.enterprise.controller;
 
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.service.NewsService;
-import io.khasang.enterprise.service.registretionService.RegistrationService;
-import io.khasang.enterprise.service.registretionService.ClientValidator;
+import io.khasang.enterprise.service.registrationService.RegistrationService;
+import io.khasang.enterprise.service.registrationService.ClientValidator;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
