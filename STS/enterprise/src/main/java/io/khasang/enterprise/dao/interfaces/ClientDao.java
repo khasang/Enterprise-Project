@@ -17,9 +17,13 @@ public interface ClientDao {
 
     void saveClient(Client client);
 
-    void deleteClientByLogin(String login);
+    void deleteClientById(int id);
 
     void deleteAllClients();
 
     void addClientRole(int id);
+
+    void deleteClientRoleById(int id);
+
+    void deleteAllClientRoles();
 }

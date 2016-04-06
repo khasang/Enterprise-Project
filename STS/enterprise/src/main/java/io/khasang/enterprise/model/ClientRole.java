@@ -14,7 +14,7 @@ public class ClientRole {
             unique = true, nullable = false)
     private int clientRoleId;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY,
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             targetEntity = Client.class)
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;

@@ -42,13 +42,27 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
         }
     }
 
+    //  TODO: тупняк
     public void saveClient(Client client) {
         persist(client);
+        addClientRole(client.getId());
     }
 
-    public void deleteClientByLogin(String login) {
-        Query query = getSession().createSQLQuery("delete from client where login = :login");
-        query.setString("login", login);
+    public void deleteClientById(int id) {
+        Query query = getSession().createSQLQuery("delete from client where id = :id");
+        query.setInteger("id", id);
+        query.executeUpdate();
+    }
+
+    public void deleteClientRoleById(int id) {
+        Query query = getSession().createSQLQuery("delete from client_role where client_id = :id");
+        query.setInteger("id", id);
+        query.executeUpdate();
+    }
+
+    @Override
+    public void deleteAllClientRoles() {
+        Query query = getSession().createSQLQuery("delete FROM client_role");
         query.executeUpdate();
     }
 

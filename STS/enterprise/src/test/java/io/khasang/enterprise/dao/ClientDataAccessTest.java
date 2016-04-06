@@ -5,6 +5,7 @@ import io.khasang.enterprise.config.application.WebConfig;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.News;
+import io.khasang.enterprise.service.AdminService;
 import io.khasang.enterprise.service.NewsService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -42,6 +43,9 @@ public class ClientDataAccessTest {
     private MockMvc mockMvc;
 
     @Autowired
+    private AdminService adminService;
+
+    @Autowired
     private ClientDao clientDao;
 
     @Autowired
@@ -57,7 +61,7 @@ public class ClientDataAccessTest {
 
     @Before
     public void setupDB() {
-        clientDao.deleteAllClients();
+        adminService.deleteAllClients();
         newsService.deleteAllNews();
         clientDao.saveClient(new Client("client@mail.ru", "login", "password"));
         newsService.saveNewsToDB(new News("BeautifulTitle", "ShortDescription", DATE));
@@ -112,7 +116,7 @@ public class ClientDataAccessTest {
 
     @Test
     public void deletedClientTest() {
-        clientDao.deleteAllClients();
+        adminService.deleteAllClients();
         List<Client> list = clientDao.findAllClients();
         Assert.assertTrue(list.isEmpty());
     }
