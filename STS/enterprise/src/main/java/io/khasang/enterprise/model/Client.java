@@ -1,8 +1,16 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.ClientType;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 @Table(name = "client")
@@ -32,6 +40,7 @@ public class Client {
     @Enumerated(EnumType.STRING)
     private ClientType clientType;
 
+    @NotEmpty(message = "it can't be empty")
     private String login;
 
     private String password;
