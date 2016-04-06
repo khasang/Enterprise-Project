@@ -2,7 +2,8 @@ package io.khasang.enterprise.controller;
 
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.service.NewsService;
-import io.khasang.enterprise.service.RegistrationService;
+import io.khasang.enterprise.service.registrationService.RegistrationService;
+import io.khasang.enterprise.service.registrationService.ClientValidator;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -12,11 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +27,9 @@ public class AppController {
 
     @Autowired
     NewsService newsService;
+
+    @Autowired
+    ClientValidator clientValidator;
 
     @Autowired
     RegistrationService registrationService;
@@ -63,6 +65,16 @@ public class AppController {
         return "projects";
     }
 
+    @RequestMapping(value = "/contacts", method = RequestMethod.GET)
+    public String contacts(Model model) {
+        return "contacts";
+    }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String accessDenied() {
+        return "/403";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               HttpServletRequest request) {
@@ -74,10 +86,10 @@ public class AppController {
         return model;
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login";
@@ -96,27 +108,23 @@ public class AppController {
         return error;
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        return "registration";
+    @RequestMapping("/registration")
+    public String registrationPage(){
+        return "/registration";
     }
 
-    @RequestMapping(value = "/regsuccess", method = RequestMethod.POST)
-    public String submitUserRegistration(@Valid Client client, BindingResult result) {
+    @RequestMapping(value = "reg/registration", method = RequestMethod.POST)
+    public String ClientRegistration(@ModelAttribute("client") @Valid Client newClient, BindingResult result) {
         if (result.hasErrors()) {
-            return "registration";
+            return "/registration";
+        } else {
+            registrationService.saveClientToDB(newClient);
+            return "welcome";
         }
-        registrationService.createNewClient(client);
-        return "index";
     }
 
-    @RequestMapping(value = "/contacts", method = RequestMethod.GET)
-    public String contacts(Model model) {
-        return "contacts";
-    }
-
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String accessDenied() {
-        return "/403";
+    @InitBinder("client")
+    public void initClientBinder(WebDataBinder dataBinder) {
+        dataBinder.setValidator(clientValidator);
     }
 }

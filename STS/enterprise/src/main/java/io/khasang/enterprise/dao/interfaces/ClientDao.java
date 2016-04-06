@@ -1,6 +1,7 @@
 package io.khasang.enterprise.dao.interfaces;
 
 import io.khasang.enterprise.model.Client;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface ClientDao {
     void deleteClientByLogin(String login);
 
     void deleteAllClients();
+
+    boolean isLoginExist(String login);
 }
