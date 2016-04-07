@@ -5,8 +5,11 @@ import io.khasang.enterprise.model.enums.Department;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "employee", catalog = "enterprise")
 public class Employee extends SuperUser {
 
     @Column(name = "full_name", nullable = false)
@@ -39,8 +42,11 @@ public class Employee extends SuperUser {
     @Column(name = "tax")
     private BigDecimal tax;
 
-    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
     private boolean enabled = true;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<EmployeeRole> employeeRoles = new HashSet<>(0);
 
     public Employee() {
     }
@@ -123,5 +129,13 @@ public class Employee extends SuperUser {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Set<EmployeeRole> getEmployeeRoles() {
+        return employeeRoles;
+    }
+
+    public void setEmployeeRoles(Set<EmployeeRole> employeeRoles) {
+        this.employeeRoles = employeeRoles;
     }
 }

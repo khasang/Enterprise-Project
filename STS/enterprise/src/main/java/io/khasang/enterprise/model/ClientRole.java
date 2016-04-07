@@ -3,16 +3,14 @@ package io.khasang.enterprise.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client_role", catalog = "enterprise",
-        uniqueConstraints = @UniqueConstraint(
-                columnNames = {"role", "client_id"}))
+@Table(name = "client_role")
 public class ClientRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_role_id",
+    @Column(name = "id",
             unique = true, nullable = false)
-    private int clientRoleId;
+    private int id;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             targetEntity = Client.class)
@@ -26,11 +24,11 @@ public class ClientRole {
     }
 
     public int getClientRoleId() {
-        return clientRoleId;
+        return id;
     }
 
     public void setClientRoleId(int clientRoleId) {
-        this.clientRoleId = clientRoleId;
+        this.id = clientRoleId;
     }
 
     public Client getClient() {

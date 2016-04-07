@@ -43,12 +43,7 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
     }
 
     public void saveClient(Client client) {
-        if (client.getId() == null) {
             persist(client);
-            update(client);
-        } else {
-            merge(client);
-        }
     }
 
     public void deleteClientById(int id) {

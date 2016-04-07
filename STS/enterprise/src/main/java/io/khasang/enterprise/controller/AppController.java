@@ -127,4 +127,9 @@ public class AppController {
     public void initClientBinder(WebDataBinder dataBinder) {
         dataBinder.setValidator(clientValidator);
     }
+
+    @RequestMapping(value = "/employee/account")
+    public String homeEmployee(){
+        return "employee/account";
+    }
 }
