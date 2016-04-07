@@ -25,7 +25,7 @@ public class Client extends SuperUser {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1)")
+    @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
     private boolean enabled = true;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
@@ -34,10 +34,14 @@ public class Client extends SuperUser {
     public Client() {
     }
 
-    public Client(String email, String login, String password) {
+    public Client(String login, String password, String contactPersonName, String companyName,
+                  String companyDescription, String email, String phoneNumber) {
+        super(login, password);
+        this.contactPersonName = contactPersonName;
+        this.companyName = companyName;
+        this.companyDescription = companyDescription;
         this.email = email;
-        this.login = login;
-        this.password = password;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getContactPersonName() {

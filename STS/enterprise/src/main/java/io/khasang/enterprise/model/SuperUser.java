@@ -1,15 +1,22 @@
 package io.khasang.enterprise.model;
 
+
 import javax.persistence.*;
+import java.util.Set;
 
 @MappedSuperclass
-public class SuperUser {
+public  class SuperUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    protected int id;
+    @Column(name = "id", nullable = false, unique = true)
+    protected Integer id;
 
     public SuperUser() {
+    }
+
+    public SuperUser(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
     @Column(name = "login", nullable = false)
@@ -18,11 +25,11 @@ public class SuperUser {
     @Column(name = "password", nullable = false)
     protected String password;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -67,7 +67,8 @@ public class ClientDataAccessTest {
     public void setupDB() {
         adminService.deleteAllClients();
         newsService.deleteAllNews();
-        registrationService.saveClientToDB(new Client("client@mail.ru", "login", "password"));
+        registrationService.saveClientToDB(new Client("login", "password", "company_descr", "company name",
+                "contacts", "client@mail.ru", "(222)-555-7777"));
         newsService.saveNewsToDB(new News("BeautifulTitle", "ShortDescription", DATE));
     }
 
