@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("superUserDao")
 public class SuperUserDaoImpl extends AbstractDao<SuperUser> {
-
+    
 }

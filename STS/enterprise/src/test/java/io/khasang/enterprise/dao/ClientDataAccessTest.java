@@ -7,6 +7,7 @@ import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.News;
 import io.khasang.enterprise.service.AdminService;
 import io.khasang.enterprise.service.NewsService;
+import io.khasang.enterprise.service.registrationService.RegistrationService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,6 +52,9 @@ public class ClientDataAccessTest {
     @Autowired
     NewsService newsService;
 
+    @Autowired
+    private RegistrationService registrationService;
+
     private static final Date DATE = new java.sql.Date(999999*999999L);
 
     @Before
@@ -63,13 +67,13 @@ public class ClientDataAccessTest {
     public void setupDB() {
         adminService.deleteAllClients();
         newsService.deleteAllNews();
-        clientDao.saveClient(new Client("client@mail.ru", "login", "password"));
+        registrationService.saveClientToDB(new Client("client@mail.ru", "login", "password"));
         newsService.saveNewsToDB(new News("BeautifulTitle", "ShortDescription", DATE));
     }
 
     @Test
     public void notNullTest() {
-        Assert.assertNotNull(clientDao);
+        Assert.assertNotNull(registrationService);
         Assert.assertNotNull(newsService);
     }
 

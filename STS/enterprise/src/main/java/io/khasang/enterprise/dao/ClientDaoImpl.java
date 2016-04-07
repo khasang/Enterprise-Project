@@ -42,10 +42,8 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
         }
     }
 
-    //  TODO: тупняк
     public void saveClient(Client client) {
         persist(client);
-        addClientRole(client.getId());
     }
 
     public void deleteClientById(int id) {
