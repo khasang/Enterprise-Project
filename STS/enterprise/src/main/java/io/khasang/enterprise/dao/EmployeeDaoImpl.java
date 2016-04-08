@@ -40,4 +40,15 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
         Query query = getSession().createSQLQuery("DELETE FROM employee");
         query.executeUpdate();
     }
+
+    @Override
+    public Employee findByLogin(String login) {
+        Query query = getSession().createQuery("FROM Employee e WHERE e.login = :login");
+        query.setString("login", login);
+        if (query.list().isEmpty()) {
+            return null;
+        } else {
+            return (Employee) query.list().get(0);
+        }
+    }
 }
