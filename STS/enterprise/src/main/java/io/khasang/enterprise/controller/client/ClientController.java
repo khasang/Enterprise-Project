@@ -15,34 +15,34 @@ public class ClientController {
     private Rates rates;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public String customer(Model model) {
+    public String clientHome(Model model) {
         model.addAttribute("USD", rates.getRate("USD"));
         model.addAttribute("EUR", rates.getRate("EUR"));
         return "client/account";
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public String customerOrder() {
+    public String clientOrder() {
         return "client/order";
     }
 
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
-    public String customerChat() {
+    public String clientChat() {
         return "client/chat";
     }
 
     @RequestMapping(value = "/structure", method = RequestMethod.GET)
-    public String customerStructure() {
+    public String clientStructure() {
         return "client/structure";
     }
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
-    public String customerNews() {
+    public String clientNews() {
         return "client/news";
     }
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
-    public String customerContacts() {
+    public String clientContacts() {
         return "client/contacts";
     }
 }

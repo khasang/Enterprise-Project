@@ -1,6 +1,7 @@
 package io.khasang.enterprise.service;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class AdminService {
     @Autowired
     private ClientDao clientDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Transactional
     public void addClientRole(int id) {
@@ -23,7 +26,7 @@ public class AdminService {
     }
 
     @Transactional
-    public void deleteClientRoleById(int id) {
+    private void deleteClientRoleById(int id) {
         clientDao.deleteClientRoleById(id);
     }
 
@@ -34,7 +37,35 @@ public class AdminService {
     }
 
     @Transactional
-    public void deleteAllClientRoles() {
+    private void deleteAllClientRoles() {
         clientDao.deleteAllClientRoles();
+    }
+
+    /**Employee*/
+    @Transactional
+    public void addEmployeeRole(int id) {
+        employeeDao.addEmployeeRole(id);
+    }
+
+    @Transactional
+    public void deleteEmployeeById(int id) {
+        deleteEmployeeRoleById(id);
+        employeeDao.deleteEmployeeById(id);
+    }
+
+    @Transactional
+    private void deleteEmployeeRoleById(int id) {
+        employeeDao.deleteEmployeeRoleById(id);
+    }
+
+    @Transactional
+    public void deleteAllEmployers() {
+        deleteAllEmployersRoles();
+        employeeDao.deleteAllEmployers();
+    }
+
+    @Transactional
+    private void deleteAllEmployersRoles() {
+        employeeDao.deleteAllEmployersRoles();
     }
 }
