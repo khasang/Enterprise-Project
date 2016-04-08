@@ -18,6 +18,7 @@ public class ClientController {
     public String clientHome(Model model) {
         model.addAttribute("USD", rates.getRate("USD"));
         model.addAttribute("EUR", rates.getRate("EUR"));
+        model.addAttribute("currentDay", rates.getCurrentDay());
         return "client/account";
     }
 

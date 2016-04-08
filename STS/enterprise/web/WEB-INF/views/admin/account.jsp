@@ -10,8 +10,9 @@
 <div id="mainContainer">
 	<div id="mainRow">
 		<section id="main">
-			КУРС USD: ${USD} <br/>
-			КУРС EUR: ${EUR} <br/>
+			Курсы валют на ${currentDay} <br/>
+			USD: ${USD} <br/>
+			EUR: ${EUR} <br/>
 			<center>
 				<a href=<c:url value='/admin/clients'/>>КЛИЕНТЫ</a> <br/>
 				<a href=<c:url value='/admin/organization'/>>ОРГАНИЗАЦИЯ</a> <br/>
