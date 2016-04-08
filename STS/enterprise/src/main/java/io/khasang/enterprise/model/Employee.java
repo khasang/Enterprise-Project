@@ -5,23 +5,26 @@ import io.khasang.enterprise.model.enums.Department;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Employee {
+@Table(name = "employee", catalog = "enterprise")
+public class Employee extends SuperUser {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "full_name")
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
+    @Column(name = "age", nullable = false)
     private String age;
 
+    @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "salary")
     private BigDecimal salary;
 
     @Column(name = "hire_date")
@@ -36,21 +39,16 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Department department;
 
+    @Column(name = "tax")
     private BigDecimal tax;
 
-    private String login;
+    @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
+    private boolean enabled = true;
 
-    private String password;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
+    private Set<EmployeeRole> employeeRoles = new HashSet<>(0);
 
     public Employee() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFullName() {
@@ -125,20 +123,19 @@ public class Employee {
         this.tax = tax;
     }
 
-    public String getLogin() {
-        return login;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getPassword() {
-        return password;
+    public Set<EmployeeRole> getEmployeeRoles() {
+        return employeeRoles;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmployeeRoles(Set<EmployeeRole> employeeRoles) {
+        this.employeeRoles = employeeRoles;
     }
 }
-

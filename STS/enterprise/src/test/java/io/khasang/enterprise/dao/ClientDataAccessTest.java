@@ -5,7 +5,9 @@ import io.khasang.enterprise.config.application.WebConfig;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.News;
+import io.khasang.enterprise.service.AdminService;
 import io.khasang.enterprise.service.NewsService;
+import io.khasang.enterprise.service.registrationService.RegistrationService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +22,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.sql.Date;
@@ -30,6 +33,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+@Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class, HibernateConfig.class})
@@ -40,10 +44,16 @@ public class ClientDataAccessTest {
     private MockMvc mockMvc;
 
     @Autowired
+    private AdminService adminService;
+
+    @Autowired
     private ClientDao clientDao;
 
     @Autowired
     NewsService newsService;
+
+    @Autowired
+    private RegistrationService registrationService;
 
     private static final Date DATE = new java.sql.Date(999999*999999L);
 
@@ -55,15 +65,16 @@ public class ClientDataAccessTest {
 
     @Before
     public void setupDB() {
-        clientDao.deleteAllClients();
+        adminService.deleteAllClients();
         newsService.deleteAllNews();
-        clientDao.saveClient(new Client("client@mail.ru", "login", "password"));
+        registrationService.saveClientToDB(new Client("login", "password", "company_descr", "company name",
+                "contacts", "client@mail.ru", "(222)-555-7777"));
         newsService.saveNewsToDB(new News("BeautifulTitle", "ShortDescription", DATE));
     }
 
     @Test
     public void notNullTest() {
-        Assert.assertNotNull(clientDao);
+        Assert.assertNotNull(registrationService);
         Assert.assertNotNull(newsService);
     }
 
@@ -110,7 +121,7 @@ public class ClientDataAccessTest {
 
     @Test
     public void deletedClientTest() {
-        clientDao.deleteAllClients();
+        adminService.deleteAllClients();
         List<Client> list = clientDao.findAllClients();
         Assert.assertTrue(list.isEmpty());
     }

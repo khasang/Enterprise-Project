@@ -8,11 +8,16 @@ public class EmployeeRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",
+            unique = true, nullable = false)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            targetEntity = Employee.class)
+    @JoinColumn(name = "employee", nullable = false)
     private Employee employee;
 
+    @Column(name = "role", nullable = false, length = 45)
     private String role;
 
     public EmployeeRole() {
