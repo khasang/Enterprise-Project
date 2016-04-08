@@ -19,7 +19,7 @@
 
 		<nav id="publicArea">
 			<ul>
-				<li><a href="../employee/employee.jsp">ЛИЧНЫЙ КАБИНЕТ ИСПОЛНИТЕЛЯ</a></li>
+				<li><a href="account.jsp">ЛИЧНЫЙ КАБИНЕТ ИСПОЛНИТЕЛЯ</a></li>
 				<li><a href="../employee/chat.jsp">ЧАТ</a></li>
 				<li><a href="../employee/structure.jsp">СТРУКТУРА</a></li>
 				<li><a href="../employee/news.jsp">НОВОСТИ И СТАТЬИ</a></li>

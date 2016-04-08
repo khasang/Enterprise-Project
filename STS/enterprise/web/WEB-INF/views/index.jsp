@@ -11,8 +11,9 @@
             <section id="main">
                 <h1>Главная страница</h1>
                 <p>
-                    КУРС USD: ${USD} <br/>
-                    КУРС EUR: ${EUR} <br/>
+                    Курсы валют на ${currentDay} <br/>
+                    USD: ${USD} <br/>
+                    EUR: ${EUR} <br/>
                     <br>
                     Сведения об организации.
                 </p>

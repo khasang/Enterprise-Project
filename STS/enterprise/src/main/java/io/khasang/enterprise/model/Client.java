@@ -1,18 +1,14 @@
 package io.khasang.enterprise.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "client")
-public class Client {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private int id;
+@Table(name = "client", catalog = "enterprise")
+public class Client extends SuperUser {
 
     @Column(name = "contactperson_name")
     private String contactPersonName;
@@ -23,32 +19,28 @@ public class Client {
     @Column(name = "company_description")
     private String companyDescription;
 
-    @Column
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(unique = true, nullable = false)
-    @NotEmpty
-    private String login;
+    @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
 
-    @Column(unique = true, nullable = false)
-    @NotEmpty
-    private String password;
-
-    @Column(nullable = false, columnDefinition = "TINYINT(1)")
-    private boolean enabled;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
+    private Set<ClientRole> clientRoles = new HashSet<>(0);
 
     public Client() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Client(String login, String password, String contactPersonName, String companyName,
+                  String companyDescription, String email, String phoneNumber) {
+        super(login, password);
+        this.contactPersonName = contactPersonName;
+        this.companyName = companyName;
+        this.companyDescription = companyDescription;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getContactPersonName() {
@@ -91,28 +83,20 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public boolean isEnabled() {
         return enabled;
     }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Set<ClientRole> getClientRoles() {
+        return clientRoles;
+    }
+
+    public void setClientRoles(Set<ClientRole> clientRoles) {
+        this.clientRoles = clientRoles;
     }
 
     @Override

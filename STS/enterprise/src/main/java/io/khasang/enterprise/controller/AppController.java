@@ -41,6 +41,7 @@ public class AppController {
     public String home(Model model) {
         model.addAttribute("USD", rates.getRate("USD"));
         model.addAttribute("EUR", rates.getRate("EUR"));
+        model.addAttribute("currentDay", rates.getCurrentDay());
         return "index";
     }
 
@@ -126,5 +127,10 @@ public class AppController {
     @InitBinder("client")
     public void initClientBinder(WebDataBinder dataBinder) {
         dataBinder.setValidator(clientValidator);
+    }
+
+    @RequestMapping(value = "/employee/account")
+    public String homeEmployee(){
+        return "employee/account";
     }
 }

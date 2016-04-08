@@ -16,5 +16,15 @@ public interface EmployeeDao {
 
     void deleteEmployeeByLogin(String login);
 
-    void deleteAllEmployees();
+    void deleteAllEmployers();
+
+    Employee findByLogin(String login);
+
+    void addEmployeeRole(int id);
+
+    void deleteEmployeeById(int id);
+
+    void deleteEmployeeRoleById(int id);
+
+    void deleteAllEmployersRoles();
 }
