@@ -26,6 +26,7 @@ public class Client extends SuperUser {
     private String phoneNumber;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
+    private boolean enabled = true;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
     private Set<ClientRole> clientRoles = new HashSet<>(0);
