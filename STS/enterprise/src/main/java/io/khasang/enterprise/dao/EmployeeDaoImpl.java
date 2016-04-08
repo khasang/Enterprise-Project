@@ -13,10 +13,9 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
         return getSession().get(Employee.class, id);
     }
 
-    public Employee findEmployeeByLoginAndPassword(String login, String password) {
-        Query query = getSession().createQuery("FROM Employee u WHERE u.login = :login AND u.password = :password");
+    public Employee findEmployeeByLogin(String login) {
+        Query query = getSession().createQuery("FROM Employee u WHERE u.login = :login");
         query.setString("login", login);
-        query.setString("password", password);
         return (Employee) query.list().get(0);
     }
 

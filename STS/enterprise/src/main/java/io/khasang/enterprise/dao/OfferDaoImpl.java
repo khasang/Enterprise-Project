@@ -1,7 +1,6 @@
 package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.OfferDao;
-import io.khasang.enterprise.model.Employee;
 import io.khasang.enterprise.model.Offer;
 import org.hibernate.Criteria;
 import org.hibernate.Query;

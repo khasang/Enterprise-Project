@@ -1,6 +1,7 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.Department;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -38,9 +39,16 @@ public class Employee {
 
     private BigDecimal tax;
 
+    @Column(unique = true, nullable = false)
+    @NotEmpty
     private String login;
 
+    @Column(unique = true, nullable = false)
+    @NotEmpty
     private String password;
+
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    private boolean enabled;
 
     public Employee() {
     }
@@ -139,6 +147,14 @@ public class Employee {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
 

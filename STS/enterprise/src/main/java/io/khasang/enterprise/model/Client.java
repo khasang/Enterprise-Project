@@ -29,18 +29,18 @@ public class Client {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @NotEmpty(message = "it can't be empty")
+    @Column(unique = true, nullable = false)
+    @NotEmpty
     private String login;
 
+    @Column(unique = true, nullable = false)
+    @NotEmpty
     private String password;
 
-    public Client() {
-    }
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    private boolean enabled;
 
-    public Client(String email, String login, String password) {
-        this.email = email;
-        this.login = login;
-        this.password = password;
+    public Client() {
     }
 
     public int getId() {
@@ -105,6 +105,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override
