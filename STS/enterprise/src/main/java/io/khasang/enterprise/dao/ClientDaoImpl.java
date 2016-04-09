@@ -48,9 +48,8 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
 
     @Override
     public void deleteClientById(int id) {
-        Query query = getSession().createSQLQuery("delete from client where id = :id");
-        query.setInteger("id", id);
-        query.executeUpdate();
+        Client client = findById(id);
+        delete(client);
     }
 
     @Override

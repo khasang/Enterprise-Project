@@ -59,9 +59,9 @@ public class AdminService {
     }
 
     @Transactional
-    public void deleteAllEmployers() {
+    public void deleteAllEmployees() {
         deleteAllEmployersRoles();
-        employeeDao.deleteAllEmployers();
+        employeeDao.deleteAllEmployees();
     }
 
     @Transactional

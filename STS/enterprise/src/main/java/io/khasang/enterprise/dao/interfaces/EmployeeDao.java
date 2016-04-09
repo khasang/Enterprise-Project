@@ -16,7 +16,7 @@ public interface EmployeeDao {
 
     void deleteEmployeeByLogin(String login);
 
-    void deleteAllEmployers();
+    void deleteAllEmployees();
 
     Employee findByLogin(String login);
 

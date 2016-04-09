@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "employee", catalog = "enterprise")
+@Table(name = "employee")
 public class Employee extends SuperUser {
 
     @Column(name = "full_name")
