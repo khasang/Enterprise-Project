@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="js/jquery-2.2.2.min.js"></script>
     <script type="text/javascript">
         function onLoad() {
 
@@ -50,7 +50,7 @@
     </script>
 </head>
 <jsp:include page="fragments/header.jsp"/>
-
+<center></center>
 <body>
 <jsp:include page="fragments/navigationbar.jsp"/>
 <div id="mainContainer">
@@ -58,8 +58,7 @@
         <section id="main">
             <form:form id="details" method="POST" action="/reg/registration" modelAttribute="client">
                 <form:errors path="*" cssClass="errorblock" element="div"/>
-                <center>
-                    <table border="1" width="30%" cellpadding="5">
+                    <table align="center" border="1" width="30%" cellpadding="5">
                         <thead>
                         <tr>
                             <th colspan="2">Enter Information Here</th>
@@ -123,7 +122,6 @@
                         </tr>
                         </tbody>
                     </table>
-                </center>
                 <input type="hidden" name="${_csrf.parameterName}"
                        value="${_csrf.token}"/>
             </form:form>

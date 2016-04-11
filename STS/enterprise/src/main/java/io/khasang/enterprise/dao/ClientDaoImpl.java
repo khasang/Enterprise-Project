@@ -6,13 +6,10 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository("clientDao")
-@Transactional
-// костыль, чтобы тесты проходили. Как появится сервис, использующий СlientDao - транзакционность выставим в нем.
 public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
     @Override
     public Client findById(int id) {
@@ -34,7 +31,6 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
         return (List<Client>) criteria.list();
     }
 
-    @Override
     public Client findByLogin(String login) {
         Query query = getSession().createQuery("FROM Client u WHERE u.login = :login");
         query.setString("login", login);
@@ -52,9 +48,8 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
 
     @Override
     public void deleteClientById(int id) {
-        Query query = getSession().createSQLQuery("delete from client where id = :id");
-        query.setInteger("id", id);
-        query.executeUpdate();
+        Client client = findById(id);
+        delete(client);
     }
 
     @Override
@@ -75,7 +70,7 @@ public class ClientDaoImpl extends AbstractDao<Client> implements ClientDao {
         Query query = getSession().createSQLQuery("delete from client");
         query.executeUpdate();
     }
-
+    //todo move this method to service layer for client(when it will be done)
     @Override
     public void addClientRole(int id) {
         SQLQuery query = getSession().createSQLQuery("INSERT INTO client_role(role, client_id) " +

@@ -16,11 +16,9 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
         return getSession().get(Employee.class, id);
     }
 
-    @Override
-    public Employee findEmployeeByLoginAndPassword(String login, String password) {
-        Query query = getSession().createQuery("FROM Employee u WHERE u.login = :login AND u.password = :password");
+    public Employee findEmployeeByLogin(String login) {
+        Query query = getSession().createQuery("FROM Employee u WHERE u.login = :login");
         query.setString("login", login);
-        query.setString("password", password);
         return (Employee) query.list().get(0);
     }
 
@@ -38,13 +36,12 @@ public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDa
 
     @Override
     public void deleteEmployeeByLogin(String login) {
-        Query query = getSession().createSQLQuery("DELETE from employee where login = :login");
-        query.setString("login", login);
-        query.executeUpdate();
+        Employee employee = findByLogin(login);
+        delete(employee);
     }
 
     @Override
-    public void deleteAllEmployers() {
+    public void deleteAllEmployees() {
         Query query = getSession().createSQLQuery("DELETE FROM employee");
         query.executeUpdate();
     }

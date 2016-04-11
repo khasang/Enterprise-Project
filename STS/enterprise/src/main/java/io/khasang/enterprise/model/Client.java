@@ -1,8 +1,11 @@
 package io.khasang.enterprise.model;
 
-import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,20 +31,16 @@ public class Client extends SuperUser {
     @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
     private boolean enabled = true;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
+    @OneToMany(mappedBy = "client")
+    @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     private Set<ClientRole> clientRoles = new HashSet<>(0);
 
-    public Client() {
-    }
+    @OneToMany(mappedBy = "customer")
+    @Cascade (value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    private Set<Project> projects = new HashSet<>(0);
 
-    public Client(String login, String password, String contactPersonName, String companyName,
-                  String companyDescription, String email, String phoneNumber) {
-        super(login, password);
-        this.contactPersonName = contactPersonName;
-        this.companyName = companyName;
-        this.companyDescription = companyDescription;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+
+    public Client() {
     }
 
     public String getContactPersonName() {
@@ -98,6 +97,14 @@ public class Client extends SuperUser {
 
     public void setClientRoles(Set<ClientRole> clientRoles) {
         this.clientRoles = clientRoles;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 
     @Override

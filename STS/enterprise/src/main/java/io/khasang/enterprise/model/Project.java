@@ -1,10 +1,15 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.ProjectBasis;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Project {
@@ -18,6 +23,7 @@ public class Project {
     private ProjectBasis projectBasis;
     
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Client customer;
 
     private String title;
@@ -33,6 +39,10 @@ public class Project {
     @Column(name = "close_date")
     @Temporal(TemporalType.DATE)
     private Date endDate;
+
+    @OneToMany(mappedBy = "project")
+    @Cascade (value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    private Set<CustomerOrder> customerOrders = new HashSet<>(0);
 
     public Project() {
     }
@@ -99,5 +109,13 @@ public class Project {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Set<CustomerOrder> getCustomerOrders() {
+        return customerOrders;
+    }
+
+    public void setCustomerOrders(Set<CustomerOrder> customerOrders) {
+        this.customerOrders = customerOrders;
     }
 }

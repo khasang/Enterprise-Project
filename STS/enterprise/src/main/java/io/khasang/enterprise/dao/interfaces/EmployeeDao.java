@@ -8,7 +8,7 @@ public interface EmployeeDao {
 
     Employee findById(int id);
 
-    Employee findEmployeeByLoginAndPassword(String login, String password);
+    Employee findEmployeeByLogin(String login);
 
     List<Employee> findAllEmployees();
 
@@ -16,7 +16,7 @@ public interface EmployeeDao {
 
     void deleteEmployeeByLogin(String login);
 
-    void deleteAllEmployers();
+    void deleteAllEmployees();
 
     Employee findByLogin(String login);
 

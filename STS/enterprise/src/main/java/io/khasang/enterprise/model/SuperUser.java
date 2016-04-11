@@ -1,11 +1,10 @@
 package io.khasang.enterprise.model;
 
-
 import javax.persistence.*;
-import java.util.Set;
 
 @MappedSuperclass
 public  class SuperUser {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)

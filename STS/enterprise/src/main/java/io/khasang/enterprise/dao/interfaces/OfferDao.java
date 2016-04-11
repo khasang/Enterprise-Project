@@ -9,7 +9,7 @@ public interface OfferDao {
 
     Offer findById(int id);
 
-    Offer findOfferByPrice(BigDecimal price);
+    List<Offer> findOfferByPrice(BigDecimal price);
 
     List<Offer> findAllOffers();
 

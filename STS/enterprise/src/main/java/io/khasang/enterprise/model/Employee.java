@@ -1,24 +1,28 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.Department;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "employee", catalog = "enterprise")
+@Table(name = "employee")
 public class Employee extends SuperUser {
 
-    @Column(name = "full_name", nullable = false)
+    @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "age", nullable = false)
+    @Column(name = "age")
     private String age;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "address")
@@ -43,12 +47,28 @@ public class Employee extends SuperUser {
     private BigDecimal tax;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
-    private boolean enabled = true;
+    private boolean enabled;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employee")
-    private Set<EmployeeRole> employeeRoles = new HashSet<>(0);
+//    @OneToMany(mappedBy = "employee") //employee = mother
+//    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+
+    //@Cascade({CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DELETE, CascadeType.REMOVE})
+    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", orphanRemoval = true)
+
+//    @OneToMany(mappedBy = "employee")
+//    @OnDelete(action=OnDeleteAction.CASCADE)
+
+    @OneToMany(mappedBy = "employee")
+    @Cascade (value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+//    @JoinColumn(name = "employee_id")
+    private Set<EmployeeRole> employeeRoles = new HashSet<>(); //employee_role = child
 
     public Employee() {
+    }
+
+    public Employee(String login, String password) {
+        super(login, password);
     }
 
     public String getFullName() {
