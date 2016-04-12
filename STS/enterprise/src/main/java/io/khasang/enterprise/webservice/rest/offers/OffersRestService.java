@@ -1,7 +1,5 @@
 package io.khasang.enterprise.webservice.rest.offers;
 
-import io.khasang.enterprise.model.Region;
-
 import javax.annotation.PostConstruct;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
