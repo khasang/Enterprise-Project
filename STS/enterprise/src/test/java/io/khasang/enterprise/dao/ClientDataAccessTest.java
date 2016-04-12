@@ -173,7 +173,7 @@ public class ClientDataAccessTest {
     @Test
     public void invalidDataTest() throws Exception {
         List<Client> list = clientDao.findAllClients();
-        Assert.assertTrue(list.size() == 4);
+        Assert.assertTrue(list.size() >= 4);
     }
 
     @Test
