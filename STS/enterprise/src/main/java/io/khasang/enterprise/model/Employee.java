@@ -1,27 +1,34 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.Department;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Employee {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Table(name = "employee")
+public class Employee extends SuperUser {
 
     @Column(name = "full_name")
     private String fullName;
 
+    @Column(name = "age")
     private String age;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "salary")
     private BigDecimal salary;
 
     @Column(name = "hire_date")
@@ -36,21 +43,32 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Department department;
 
+    @Column(name = "tax")
     private BigDecimal tax;
 
-    private String login;
+    @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
+    private boolean enabled;
 
-    private String password;
+//    @OneToMany(mappedBy = "employee") //employee = mother
+//    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+
+    //@Cascade({CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DELETE, CascadeType.REMOVE})
+    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", orphanRemoval = true)
+
+//    @OneToMany(mappedBy = "employee")
+//    @OnDelete(action=OnDeleteAction.CASCADE)
+
+    @OneToMany(mappedBy = "employee")
+    @Cascade (value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+//    @JoinColumn(name = "employee_id")
+    private Set<EmployeeRole> employeeRoles = new HashSet<>(); //employee_role = child
 
     public Employee() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Employee(String login, String password) {
+        super(login, password);
     }
 
     public String getFullName() {
@@ -125,20 +143,19 @@ public class Employee {
         this.tax = tax;
     }
 
-    public String getLogin() {
-        return login;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getPassword() {
-        return password;
+    public Set<EmployeeRole> getEmployeeRoles() {
+        return employeeRoles;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmployeeRoles(Set<EmployeeRole> employeeRoles) {
+        this.employeeRoles = employeeRoles;
     }
 }
-

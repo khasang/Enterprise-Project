@@ -8,26 +8,29 @@ public class ClientRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
 
     @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
+    @Column(name = "role", nullable = false, length = 45)
     private String role;
 
     public ClientRole() {
     }
 
-    public int getId() {
+    public int getClientRoleId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setClientRoleId(int clientRoleId) {
+        this.id = clientRoleId;
     }
 
     public Client getClient() {
-        return client;
+        return this.client;
     }
 
     public void setClient(Client client) {
@@ -35,7 +38,7 @@ public class ClientRole {
     }
 
     public String getRole() {
-        return role;
+        return this.role;
     }
 
     public void setRole(String role) {

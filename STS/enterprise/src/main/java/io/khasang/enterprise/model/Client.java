@@ -1,25 +1,17 @@
 package io.khasang.enterprise.model;
 
-import io.khasang.enterprise.model.enums.ClientType;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "client")
-public class Client {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private int id;
+@Table(name = "client", catalog = "enterprise")
+public class Client extends SuperUser {
 
     @Column(name = "contactperson_name")
     private String contactPersonName;
@@ -30,36 +22,25 @@ public class Client {
     @Column(name = "company_description")
     private String companyDescription;
 
-    @Column
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "client_type")
-    @Enumerated(EnumType.STRING)
-    private ClientType clientType;
+    @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
+    private boolean enabled = true;
 
-    @NotEmpty(message = "it can't be empty")
-    private String login;
+    @OneToMany(mappedBy = "client")
+    @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
+    private Set<ClientRole> clientRoles = new HashSet<>(0);
 
-    private String password;
+    @OneToMany(mappedBy = "customer")
+    @Cascade (value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    private Set<Project> projects = new HashSet<>(0);
+
 
     public Client() {
-    }
-
-    public Client(String email, String login, String password) {
-        this.email = email;
-        this.login = login;
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getContactPersonName() {
@@ -102,28 +83,28 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getLogin() {
-        return login;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getPassword() {
-        return password;
+    public Set<ClientRole> getClientRoles() {
+        return clientRoles;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setClientRoles(Set<ClientRole> clientRoles) {
+        this.clientRoles = clientRoles;
     }
 
-    public ClientType getClientType() {
-        return clientType;
+    public Set<Project> getProjects() {
+        return projects;
     }
 
-    public void setClientType(ClientType clientType) {
-        this.clientType = clientType;
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 
     @Override
@@ -135,7 +116,6 @@ public class Client {
                 ", companyDescription='" + companyDescription + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", clientType=" + clientType +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
