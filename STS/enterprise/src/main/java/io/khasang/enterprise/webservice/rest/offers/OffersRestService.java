@@ -5,12 +5,10 @@ import io.khasang.enterprise.model.Offer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Controller
 @Path("/offers")
 public class OffersRestService {
 
@@ -23,5 +21,11 @@ public class OffersRestService {
     public List<Offer> getOffers() {
         return offerDao.findAllOffers();
 
+    }
+
+    @GET
+    @Path("/say")
+    public String getMsg() {
+        return "Hello World !! - Jersey 2";
     }
 }
