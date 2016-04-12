@@ -74,20 +74,6 @@
             <scope>test</scope>
         </dependency>
 
-
-        <!--temporary-->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.6.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.6.5</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
@@ -226,6 +212,11 @@
             <artifactId>jaxrs-ri</artifactId>
             <version>${jaxrs.version}</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.glassfish.jersey.media</groupId>-->
+            <!--<artifactId>jersey-media-json-jackson</artifactId>-->
+            <!--<version>${jersey2.version}</version>-->
+        <!--</dependency>-->
         <!--End Jersey rest-->
 
         <!--Parser-->
