@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
-
     @Autowired
     private Rates rates;
 

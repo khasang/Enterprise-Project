@@ -1,11 +1,12 @@
 package io.khasang.enterprise.webservice.exchangerates;
 
-import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.*;
+import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.DailyInfo;
+import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.DailyInfoSoap;
+import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.GetCursOnDateXMLResponse;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;

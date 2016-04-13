@@ -1,10 +1,11 @@
 package io.khasang.enterprise.model;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
@@ -36,7 +37,7 @@ public class Client extends SuperUser {
     private Set<ClientRole> clientRoles = new HashSet<>(0);
 
     @OneToMany(mappedBy = "customer")
-    @Cascade (value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    @Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private Set<Project> projects = new HashSet<>(0);
 
 

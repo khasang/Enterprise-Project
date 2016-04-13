@@ -20,7 +20,6 @@ import java.util.Properties;
 @ComponentScan({"io.khasang.enterprise.config"})
 @PropertySource(value = {"classpath:hibernate.properties"})
 public class HibernateConfig {
-
     @Autowired
     private Environment environment;
 
@@ -31,8 +30,8 @@ public class HibernateConfig {
         sessionFactory.setPackagesToScan("io.khasang.enterprise.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
-     }
-	
+    }
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -51,13 +50,13 @@ public class HibernateConfig {
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return properties;
     }
-    
-	@Bean
+
+    @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory s) {
-       HibernateTransactionManager txManager = new HibernateTransactionManager();
-       txManager.setSessionFactory(s);
-       return txManager;
+        HibernateTransactionManager txManager = new HibernateTransactionManager();
+        txManager.setSessionFactory(s);
+        return txManager;
     }
 }
 

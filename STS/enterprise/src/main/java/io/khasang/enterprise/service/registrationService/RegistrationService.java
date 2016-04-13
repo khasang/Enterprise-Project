@@ -1,7 +1,7 @@
 package io.khasang.enterprise.service.registrationService;
 
-import io.khasang.enterprise.dao.interfaces.ClientDao;
-import io.khasang.enterprise.dao.interfaces.EmployeeDao;
+import io.khasang.enterprise.dao.ClientDaoImpl;
+import io.khasang.enterprise.dao.EmployeeDaoImpl;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.Employee;
 import io.khasang.enterprise.service.AdminService;
@@ -12,29 +12,27 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class RegistrationService {
-
     @Autowired
-    private ClientDao clientDao;
+    private ClientDaoImpl clientDao;
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeDaoImpl employeeDao;
     @Autowired
     private AdminService adminService;
 
     @Transactional
     public void saveClientToDB(Client client) {
-        clientDao.saveClient(client);
+        clientDao.save(client);
         adminService.addClientRole(client.getId());
     }
 
     @Transactional
     public boolean isLoginExist(String login) {
-       if (clientDao.findByLogin(login) == null && employeeDao.findByLogin(login) == null) return false;
-       else return true;
+        return !(clientDao.findByLogin(login) == null && employeeDao.findByLogin(login) == null);
     }
 
     @Transactional
     public void saveEmployeeinDB(Employee employee) {
-        employeeDao.saveEmployee(employee);
+        employeeDao.save(employee);
         adminService.addEmployeeRole(employee.getId());
     }
 }
