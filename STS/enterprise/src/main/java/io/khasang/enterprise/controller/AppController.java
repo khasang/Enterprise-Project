@@ -2,8 +2,8 @@ package io.khasang.enterprise.controller;
 
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.service.NewsService;
-import io.khasang.enterprise.service.registrationService.RegistrationService;
 import io.khasang.enterprise.service.registrationService.ClientValidator;
+import io.khasang.enterprise.service.registrationService.RegistrationService;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -24,16 +24,12 @@ import javax.validation.Valid;
 
 @Controller
 public class AppController {
-
     @Autowired
     NewsService newsService;
-
     @Autowired
     ClientValidator clientValidator;
-
     @Autowired
     RegistrationService registrationService;
-
     @Autowired
     private Rates rates;
 
@@ -110,7 +106,7 @@ public class AppController {
     }
 
     @RequestMapping("/registration")
-    public String registrationPage(){
+    public String registrationPage() {
         return "/registration";
     }
 
@@ -130,7 +126,7 @@ public class AppController {
     }
 
     @RequestMapping(value = "/employee/account")
-    public String homeEmployee(){
+    public String homeEmployee() {
         return "employee/account";
     }
 }

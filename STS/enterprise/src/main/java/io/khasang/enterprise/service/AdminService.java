@@ -1,7 +1,7 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.interfaces.ClientDao;
-import io.khasang.enterprise.dao.interfaces.EmployeeDao;
+import io.khasang.enterprise.dao.ClientDaoImpl;
+import io.khasang.enterprise.dao.EmployeeDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AdminService {
     @Autowired
-    private ClientDao clientDao;
+    private ClientDaoImpl clientDao;
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeDaoImpl employeeDao;
 
     @Transactional
     public void addClientRole(int id) {
@@ -41,7 +41,9 @@ public class AdminService {
         clientDao.deleteAllClientRoles();
     }
 
-    /**Employee*/
+    /**
+     * Employee
+     */
     @Transactional
     public void addEmployeeRole(int id) {
         employeeDao.addEmployeeRole(id);
@@ -60,12 +62,12 @@ public class AdminService {
 
     @Transactional
     public void deleteAllEmployees() {
-        deleteAllEmployersRoles();
+        deleteAllEmployeesRoles();
         employeeDao.deleteAllEmployees();
     }
 
     @Transactional
-    private void deleteAllEmployersRoles() {
+    private void deleteAllEmployeesRoles() {
         employeeDao.deleteAllEmployersRoles();
     }
 }

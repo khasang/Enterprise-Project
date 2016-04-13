@@ -1,12 +1,10 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.Department;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
@@ -49,20 +47,9 @@ public class Employee extends SuperUser {
     @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
     private boolean enabled;
 
-//    @OneToMany(mappedBy = "employee") //employee = mother
-//    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-
-    //@Cascade({CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DELETE, CascadeType.REMOVE})
-    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", orphanRemoval = true)
-
-//    @OneToMany(mappedBy = "employee")
-//    @OnDelete(action=OnDeleteAction.CASCADE)
-
     @OneToMany(mappedBy = "employee")
-    @Cascade (value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-//    @JoinColumn(name = "employee_id")
-    private Set<EmployeeRole> employeeRoles = new HashSet<>(); //employee_role = child
+    @Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    private Set<EmployeeRole> employeeRoles = new HashSet<>();
 
     public Employee() {
     }

@@ -18,11 +18,11 @@ public abstract class AbstractProject implements ProjectInterface {
         return title;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public BigDecimal getPrice(){
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -42,7 +42,7 @@ public abstract class AbstractProject implements ProjectInterface {
         this.description = description;
     }
 
-    public void setPrice(BigDecimal price){
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

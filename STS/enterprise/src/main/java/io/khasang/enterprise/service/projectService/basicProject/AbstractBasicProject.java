@@ -13,5 +13,4 @@ public abstract class AbstractBasicProject extends AbstractProject {
     public void setStatus(Status status) {
         this.status = status;
     }
-
 }

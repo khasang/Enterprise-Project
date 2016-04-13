@@ -1,7 +1,5 @@
 package io.khasang.enterprise.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import io.khasang.enterprise.config.HibernateConfig;
 import io.khasang.enterprise.config.application.WebConfig;
 import org.junit.Before;
@@ -19,6 +17,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -49,28 +49,28 @@ public class AppControllerTest {
     }
 
     @Test
-    public void servicesTest()throws Exception {
+    public void servicesTest() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/services");
         ResultActions result = mockMvc.perform(request);
         result.andExpect(status().isOk());
     }
 
     @Test
-    public void newsTest()throws Exception {
+    public void newsTest() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/news");
         ResultActions result = mockMvc.perform(request);
         result.andExpect(status().isOk());
     }
 
     @Test
-    public void projectsTest()throws Exception {
+    public void projectsTest() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/projects");
         ResultActions result = mockMvc.perform(request);
         result.andExpect(status().isOk());
     }
 
     @Test
-    public void loginTest()throws Exception {
+    public void loginTest() throws Exception {
         //// TODO: TEST
     }
 
@@ -82,19 +82,19 @@ public class AppControllerTest {
     }
 
     @Test
-    public void registrationTest(){
+    public void registrationTest() {
         //// TODO: TEST
     }
 
     @Test
-    public void contactsTest()throws Exception {
+    public void contactsTest() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/contacts");
         ResultActions result = mockMvc.perform(request);
         result.andExpect(status().isOk());
     }
 
     @Test
-    public void accessDeniedTest()throws Exception {
+    public void accessDeniedTest() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/403");
         ResultActions result = mockMvc.perform(request);
         result.andExpect(status().isOk());
