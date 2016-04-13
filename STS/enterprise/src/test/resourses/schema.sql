@@ -21,7 +21,7 @@ INSERT INTO employee_role VALUES (4,'ROLE_ADMIN', 4);
 INSERT INTO project VALUES (1, '2000-01-01', 'ProjectDescription', '2016-01-01', '2000.00', 'PORTFOLIO', 'SuperProject1', 1);
 INSERT INTO project VALUES (2, '2001-01-01', 'ProjectDescription1', '2016-01-01', '3000.00', 'SOCIALNETWORK', 'SuperProject2', 3);
 INSERT INTO project VALUES (3, '2002-01-01', 'ProjectDescription2', '2016-01-01', '4000.00', 'BLOG', 'SuperProject3', 2);
-INSERT INTO project VALUES (4, '2003-01-01', 'ProjectDescription3', '2016-01-01', '5000.00', 'FORUM', 'SuperProject4', 4);
+INSERT INTO project VALUES (4, '2003-01-01', 'ProjectDescription3', NULL , '5000.00', 'FORUM', 'SuperProject4', 4);
 
 INSERT INTO customer_order VALUES (1, 'PHOTOGALLERY', 2);
 INSERT INTO customer_order VALUES (2, 'ONLINEPAYMENTS', 3);
@@ -37,4 +37,3 @@ INSERT INTO news VALUES (1, 'NewsAuthor', 'NewsContent', 'NewsDescription', '201
 INSERT INTO news VALUES (2, 'NewsAuthor1', 'NewsContent1', 'NewsDescription', '2015-12-12', 'NewsTitle1');
 INSERT INTO news VALUES (3, 'NewsAuthor2', 'NewsContent2', 'NewsDescription', '2013-12-12', 'NewsTitle2');
 INSERT INTO news VALUES (4, 'NewsAuthor3', 'NewsContent3', 'NewsDescription', '2012-12-12', 'NewsTitle3');
-
