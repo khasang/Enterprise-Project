@@ -1,4 +1,4 @@
-package io.khasang.enterprise.model;
+package io.khasang.enterprise.webservice.rest.offers;
 
 import javax.xml.bind.annotation.*;
 
