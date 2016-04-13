@@ -6,32 +6,13 @@ import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository("employeeDao")
-public class EmployeeDaoImpl extends AbstractDao<Employee> implements EmployeeDao {
-
-    @Override
-    public Employee findById(int id) {
-        return getSession().get(Employee.class, id);
-    }
+public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements EmployeeDao {
 
     public Employee findEmployeeByLogin(String login) {
         Query query = getSession().createQuery("FROM Employee u WHERE u.login = :login");
         query.setString("login", login);
         return (Employee) query.list().get(0);
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Employee> findAllEmployees() {
-        Query query = getSession().createQuery("FROM Employee");
-        return query.list(); // write test, for checking work without class cast
-    }
-
-    @Override
-    public void saveEmployee(Employee employee) {
-        persist(employee);
     }
 
     @Override

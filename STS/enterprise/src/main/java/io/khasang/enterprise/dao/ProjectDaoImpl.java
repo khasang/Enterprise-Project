@@ -12,15 +12,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Repository("projectDao")
-public class ProjectDaoImpl extends AbstractDao<Project> implements ProjectDao {
-    public Project findById(int id) {
-        return getSession().get(Project.class, id);
-    }
+public class ProjectDaoImpl extends AbstractDao<Integer, Project> implements ProjectDao {
 
     @SuppressWarnings("unchecked")
     public List<Project> findByProjectBasis(ProjectBasis basis) {
         Criteria criteria = getSession().createCriteria(Project.class);
-        criteria.add(Restrictions.eq("project_basis", basis)); //todo TESTS TESTS TESTS! project_basis or projectBasis?
+        criteria.add(Restrictions.eq("projectBasis", basis));
         return (List<Project>) criteria.list();
     }
 
@@ -41,15 +38,6 @@ public class ProjectDaoImpl extends AbstractDao<Project> implements ProjectDao {
     public List<Project> findFinishedProjects() {
         Query query = getSession().createQuery("FROM Project p WHERE p.endDate != null");
         return query.list();
-    }
-    @SuppressWarnings("unchecked")
-    public List<Project> findAllProjects() {
-        Criteria criteria = getSession().createCriteria(Project.class);
-        return criteria.list();
-    }
-
-    public void saveProject(Project project) {
-        persist(project);
     }
 
     public void deleteProjectById(int id) {
