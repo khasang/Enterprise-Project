@@ -18,6 +18,10 @@ public class NewsService {
         return newsDao.findLastNews();
     }
 
+    public List<News> findAllNews() {
+        return newsDao.findAll();
+    }
+
     public List<News> getAllNews() {
         return newsDao.findAll();
     }

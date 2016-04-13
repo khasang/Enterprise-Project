@@ -3,6 +3,7 @@ package io.khasang.enterprise.dao;
 import io.khasang.enterprise.config.HibernateConfig;
 import io.khasang.enterprise.config.application.WebConfig;
 import io.khasang.enterprise.model.*;
+import io.khasang.enterprise.model.enums.Features;
 import io.khasang.enterprise.model.enums.ProjectBasis;
 import org.junit.Assert;
 import org.junit.Before;
@@ -50,6 +51,8 @@ public class DataAccessTest {
     private OfferDaoImpl offerDao;
     @Autowired
     private ProjectDaoImpl projectDao;
+    @Autowired
+    private OrderDaoImpl orderDao;
 
     @Before
     public void setupMock() {
@@ -73,6 +76,8 @@ public class DataAccessTest {
         Assert.assertNotNull(employeeDao);
         Assert.assertNotNull(newsDao);
         Assert.assertNotNull(offerDao);
+        Assert.assertNotNull(projectDao);
+        Assert.assertNotNull(orderDao);
     }
 
     @Test
@@ -139,7 +144,7 @@ public class DataAccessTest {
 
     @Test
     public void findAllOffersTest() throws Exception {
-        Assert.assertEquals(4, offerDao.findAll().size());
+        Assert.assertTrue(offerDao.findAll().size() >= 4);
     }
 
     @Test
@@ -195,7 +200,13 @@ public class DataAccessTest {
                                 hasProperty("description", is("NewsDescription"))
                         )
                 )));
-        Assert.assertEquals("2014-12-12", newsDao.findLastNews().get(0).getPublishDate().toString());
+        Assert.assertEquals("2014-12-12", newsDao.findAll().get(0).getPublishDate().toString());
+    }
+
+    @Test
+    public void findLastNewsTest() throws Exception {
+        List<News> newses = newsDao.findLastNews();
+        Assert.assertTrue(newses.size() == 3);
     }
 
     @Test
@@ -206,13 +217,48 @@ public class DataAccessTest {
     }
 
     @Test
-    public void findByProjectBasisTest() {
+    public void findOrderByProjectIdTest() throws Exception {
+        CustomerOrder order = orderDao.findOrderByProjectId(3);
+        Assert.assertFalse(order == null);
+        Assert.assertEquals(Features.ONLINEPAYMENTS, order.getFeature());
+    }
+
+    @Test
+    public void findByProjectBasisTest() throws Exception {
         List<Project> projects = projectDao.findByProjectBasis(ProjectBasis.BLOG);
         for (Project project : projects) {
             Assert.assertNotEquals(ProjectBasis.BUSINESS, project.getProjectBasis());
             Assert.assertNotEquals(ProjectBasis.FORUM, project.getProjectBasis());
             Assert.assertNotEquals(ProjectBasis.PORTFOLIO, project.getProjectBasis());
             Assert.assertNotEquals(ProjectBasis.SOCIALNETWORK, project.getProjectBasis());
+        }
+    }
+
+    @Test
+    public void findByPriceTest() throws Exception {
+        List<Project> projects = projectDao.findByPrice(new BigDecimal(2000.00));
+        Assert.assertFalse(projects.isEmpty());
+        Assert.assertEquals("SuperProject1", projects.get(0).getTitle());
+    }
+
+    @Test
+    public void findUnfinishedProjectsTest() throws Exception {
+        List<Project> projects = projectDao.findUnfinishedProjects();
+        Assert.assertFalse(projects.isEmpty());
+        Assert.assertTrue(projects.size() >= 1);
+        Assert.assertEquals("SuperProject4", projects.get(0).getTitle());
+        for (Project project : projects) {
+            Assert.assertTrue(project.getEndDate() == null);
+        }
+    }
+
+    @Test
+    public void findFinishedProjectsTest() throws Exception {
+        List<Project> projects = projectDao.findFinishedProjects();
+        Assert.assertFalse(projects.isEmpty());
+        Assert.assertTrue(projects.size() >= 3);
+        for (Project project : projects) {
+            Assert.assertTrue(project.getEndDate() != null);
         }
     }
 }

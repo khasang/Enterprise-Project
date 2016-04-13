@@ -12,8 +12,8 @@ import java.util.List;
 public class NewsDaoImpl extends AbstractDao<Integer, News> implements NewsDao {
     @SuppressWarnings("unchecked")
     public List<News> findLastNews() {
-        Criteria criteria = getSession().createCriteria(News.class);
-        return criteria.list(); //todo create criteria for latest 3 news
+        Query query = getSession().createSQLQuery("SELECT * FROM news ORDER BY id DESC LIMIT 3");
+        return query.list();
     }
 
     public void deleteNewsById(int id) {

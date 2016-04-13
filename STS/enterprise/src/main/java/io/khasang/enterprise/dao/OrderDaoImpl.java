@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 @Repository("orderDao")
 public class OrderDaoImpl extends AbstractDao<Integer, CustomerOrder> implements OrderDao {
 
-    public CustomerOrder findOrderByProjectId(int projectId) {
-        Criteria criteria = getSession().createCriteria(CustomerOrder.class);
-        criteria.add(Restrictions.eq("project", projectId));
-        return (CustomerOrder) criteria.uniqueResult();
+    public CustomerOrder findOrderByProjectId(Integer projectId) {
+        Query query = getSession().createQuery("FROM CustomerOrder u WHERE u.project = :project");
+        query.setInteger("project", projectId);
+        return (CustomerOrder) query.list().get(0);
     }
 
     public void deleteAllOrders() {
