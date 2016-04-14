@@ -2,14 +2,9 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.config.HibernateConfig;
 import io.khasang.enterprise.config.application.WebConfig;
-import io.khasang.enterprise.dao.interfaces.ClientDao;
-import io.khasang.enterprise.dao.interfaces.EmployeeDao;
-import io.khasang.enterprise.dao.interfaces.NewsDao;
-import io.khasang.enterprise.dao.interfaces.OfferDao;
-import io.khasang.enterprise.model.Client;
-import io.khasang.enterprise.model.Employee;
-import io.khasang.enterprise.model.News;
-import io.khasang.enterprise.model.Offer;
+import io.khasang.enterprise.model.*;
+import io.khasang.enterprise.model.enums.Features;
+import io.khasang.enterprise.model.enums.ProjectBasis;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,20 +35,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebConfig.class, HibernateConfig.class})
-public class ClientDataAccessTest {
+public class DataAccessTest {
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
     @Autowired
     private DataSource dataSource;
     @Autowired
-    private ClientDao clientDao;
+    private ClientDaoImpl clientDao;
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeDaoImpl employeeDao;
     @Autowired
-    private NewsDao newsDao;
+    private NewsDaoImpl newsDao;
     @Autowired
-    private OfferDao offerDao;
+    private OfferDaoImpl offerDao;
+    @Autowired
+    private ProjectDaoImpl projectDao;
+    @Autowired
+    private OrderDaoImpl orderDao;
 
     @Before
     public void setupMock() {
@@ -77,6 +76,8 @@ public class ClientDataAccessTest {
         Assert.assertNotNull(employeeDao);
         Assert.assertNotNull(newsDao);
         Assert.assertNotNull(offerDao);
+        Assert.assertNotNull(projectDao);
+        Assert.assertNotNull(orderDao);
     }
 
     @Test
@@ -94,7 +95,7 @@ public class ClientDataAccessTest {
 
     @Test
     public void findAllEmployeesTest() throws Exception {
-        List<Employee> employee = employeeDao.findAllEmployees();
+        List<Employee> employee = employeeDao.findAll();
         Assert.assertNotNull(employee);
         Assert.assertEquals(4, employee.size());
         Assert.assertEquals("employeepassword", employee.get(0).getPassword());
@@ -105,28 +106,28 @@ public class ClientDataAccessTest {
 
     @Test
     public void saveEmployeeTest() throws Exception {
-        employeeDao.saveEmployee(new Employee("testLogin", "testPassword"));
+        employeeDao.save(new Employee("testLogin", "testPassword"));
         Employee employee = employeeDao.findByLogin("testLogin");
         Assert.assertEquals("testPassword", employee.getPassword());
     }
 
     @Test
     public void deleteEmployeeByLoginTest() throws Exception {
-        int employeesAmountBefore = employeeDao.findAllEmployees().size();
+        int employeesAmountBefore = employeeDao.findAll().size();
         employeeDao.deleteEmployeeByLogin("employeelogin4");
-        Assert.assertEquals(employeesAmountBefore - 1, employeeDao.findAllEmployees().size());
+        Assert.assertEquals(employeesAmountBefore - 1, employeeDao.findAll().size());
         Assert.assertNotSame("employeepassword3", employeeDao.findByLogin("employeelogin4"));
     }
 
     @Test
     public void deleteClientById() throws Exception {
-        int clientAmountBefore = clientDao.findAllClients().size();
+        int clientAmountBefore = clientDao.findAll().size();
         clientDao.deleteClientById(4);
-        Assert.assertEquals(clientAmountBefore - 1, clientDao.findAllClients().size());
+        Assert.assertEquals(clientAmountBefore - 1, clientDao.findAll().size());
     }
 
     @Test
-    public void findOfferByIdTest() {
+    public void findOfferByIdTest() throws Exception {
         Assert.assertEquals("OfferTitle", offerDao.findById(1).getTitle());
         Assert.assertEquals("OfferTitle1", offerDao.findById(2).getTitle());
         Assert.assertEquals("OfferTitle2", offerDao.findById(3).getTitle());
@@ -134,45 +135,48 @@ public class ClientDataAccessTest {
     }
 
     @Test
-    public void findOfferByPriceTest() {
+    public void findOfferByPriceTest() throws Exception {
         Assert.assertEquals("OfferTitle", offerDao.findOfferByPrice(new BigDecimal("555.55")).get(0).getTitle());
         Assert.assertEquals("OfferTitle1", offerDao.findOfferByPrice(new BigDecimal("111.55")).get(0).getTitle());
         Assert.assertEquals("OfferTitle2", offerDao.findOfferByPrice(new BigDecimal("222.55")).get(0).getTitle());
         Assert.assertEquals("OfferTitle3", offerDao.findOfferByPrice(new BigDecimal("333.55")).get(0).getTitle());
     }
+
     @Test
-    public void findAllOffersTest() {
-        Assert.assertEquals(4, offerDao.findAllOffers().size());
+    public void findAllOffersTest() throws Exception {
+        Assert.assertTrue(offerDao.findAll().size() >= 4);
     }
+
     @Test
-    public void saveOfferTest() {
-        int offersAmountBefore = offerDao.findAllOffers().size();
-        offerDao.saveOffer(new Offer());
-        Assert.assertEquals(offersAmountBefore + 1, offerDao.findAllOffers().size());
+    public void saveOfferTest() throws Exception {
+        int offersAmountBefore = offerDao.findAll().size();
+        offerDao.save(new Offer());
+        Assert.assertEquals(offersAmountBefore + 1, offerDao.findAll().size());
     }
-//
+
+    //
     @Test
-    public void deleteOfferByIdTest() {
-        int offersAmountBefore = offerDao.findAllOffers().size();
+    public void deleteOfferByIdTest() throws Exception {
+        int offersAmountBefore = offerDao.findAll().size();
         offerDao.deleteOfferById(1);
-        Assert.assertEquals(offersAmountBefore - 1, offerDao.findAllOffers().size());
+        Assert.assertEquals(offersAmountBefore - 1, offerDao.findAll().size());
     }
+
     @Test
-    public void deleteAllOffersTest() {
+    public void deleteAllOffersTest() throws Exception {
         offerDao.deleteAllOffers();
-        Assert.assertTrue(offerDao.findAllOffers().isEmpty());
+        Assert.assertTrue(offerDao.findAll().isEmpty());
     }
-//
 
     @Test
     public void typeOfResultSetTest() throws Exception {
-        List list = clientDao.findAllClients();
+        List list = clientDao.findAll();
         Assert.assertTrue(list != null); // todo fix this sh.t
     }
 
     @Test
     public void invalidDataTest() throws Exception {
-        List<Client> list = clientDao.findAllClients();
+        List<Client> list = clientDao.findAll();
         Assert.assertTrue(list.size() >= 4);
     }
 
@@ -181,12 +185,6 @@ public class ClientDataAccessTest {
         Client client = clientDao.findByLogin("ClientLogin");
         Assert.assertEquals("er@yt.ty", client.getEmail());
         Assert.assertEquals("clientpassword", client.getPassword());
-    }
-
-    @Test
-    public void findByLoginAndPasswordTest() throws Exception {
-        Client client = clientDao.findClientByLoginAndPassword("ClientLogin2", "clientpassword2");
-        Assert.assertEquals("er2@yt.ty", client.getEmail());
     }
 
     @Test
@@ -202,27 +200,65 @@ public class ClientDataAccessTest {
                                 hasProperty("description", is("NewsDescription"))
                         )
                 )));
-        Assert.assertEquals("2014-12-12", newsDao.findLastNews().get(0).getPublishDate().toString());
+        Assert.assertEquals("2014-12-12", newsDao.findAll().get(0).getPublishDate().toString());
     }
 
+    @Test
+    public void findLastNewsTest() throws Exception {
+        List<News> newses = newsDao.findLastNews();
+        Assert.assertTrue(newses.size() == 3);
+    }
 
     @Test
     public void deletedNewsTest() throws Exception {
-        newsDao.deleteAll();
-        List<News> list = newsDao.findAllNews();
+        newsDao.deleteAllNews();
+        List<News> list = newsDao.findAll();
         Assert.assertTrue(list.isEmpty());
     }
 
-//    @Test
-//    public void deletedClientsTest() throws Exception {
-//        clientDao.deleteAllClients();
-//        List<Client> list = clientDao.findAllClients();
-//        Assert.assertTrue(list.isEmpty());
-//    }
-//
-//    @Test
-//    public void deleteAllEmployeesTest() {
-//        employeeDao.deleteAllEmployees();
-//        Assert.assertEquals(0, employeeDao.findAllEmployees().size());
-//    }
+    @Test
+    public void findOrderByProjectIdTest() throws Exception {
+        CustomerOrder order = orderDao.findOrderByProjectId(3);
+        Assert.assertFalse(order == null);
+        Assert.assertEquals(Features.ONLINEPAYMENTS, order.getFeature());
+    }
+
+    @Test
+    public void findByProjectBasisTest() throws Exception {
+        List<Project> projects = projectDao.findByProjectBasis(ProjectBasis.BLOG);
+        for (Project project : projects) {
+            Assert.assertNotEquals(ProjectBasis.BUSINESS, project.getProjectBasis());
+            Assert.assertNotEquals(ProjectBasis.FORUM, project.getProjectBasis());
+            Assert.assertNotEquals(ProjectBasis.PORTFOLIO, project.getProjectBasis());
+            Assert.assertNotEquals(ProjectBasis.SOCIALNETWORK, project.getProjectBasis());
+        }
+    }
+
+    @Test
+    public void findByPriceTest() throws Exception {
+        List<Project> projects = projectDao.findByPrice(new BigDecimal(2000.00));
+        Assert.assertFalse(projects.isEmpty());
+        Assert.assertEquals("SuperProject1", projects.get(0).getTitle());
+    }
+
+    @Test
+    public void findUnfinishedProjectsTest() throws Exception {
+        List<Project> projects = projectDao.findUnfinishedProjects();
+        Assert.assertFalse(projects.isEmpty());
+        Assert.assertTrue(projects.size() >= 1);
+        Assert.assertEquals("SuperProject4", projects.get(0).getTitle());
+        for (Project project : projects) {
+            Assert.assertTrue(project.getEndDate() == null);
+        }
+    }
+
+    @Test
+    public void findFinishedProjectsTest() throws Exception {
+        List<Project> projects = projectDao.findFinishedProjects();
+        Assert.assertFalse(projects.isEmpty());
+        Assert.assertTrue(projects.size() >= 3);
+        for (Project project : projects) {
+            Assert.assertTrue(project.getEndDate() != null);
+        }
+    }
 }

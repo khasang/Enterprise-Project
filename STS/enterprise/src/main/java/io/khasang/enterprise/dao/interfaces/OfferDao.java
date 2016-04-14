@@ -7,13 +7,7 @@ import java.util.List;
 
 public interface OfferDao {
 
-    Offer findById(int id);
-
     List<Offer> findOfferByPrice(BigDecimal price);
-
-    List<Offer> findAllOffers();
-
-    void saveOffer(Offer offer);
 
     void deleteOfferById(int id);
 

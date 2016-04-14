@@ -9,7 +9,7 @@ public class ClientRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private int id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
@@ -21,11 +21,11 @@ public class ClientRole {
     public ClientRole() {
     }
 
-    public int getClientRoleId() {
+    public Integer getClientRoleId() {
         return id;
     }
 
-    public void setClientRoleId(int clientRoleId) {
+    public void setClientRoleId(Integer clientRoleId) {
         this.id = clientRoleId;
     }
 

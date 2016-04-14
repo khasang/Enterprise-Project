@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProjectDao {
-    Project findById(int id);
 
     List<Project> findByProjectBasis(ProjectBasis basis);
 
@@ -16,10 +15,6 @@ public interface ProjectDao {
     List<Project> findUnfinishedProjects();
 
     List<Project> findFinishedProjects();
-
-    List<Project> findAllProjects();
-
-    void saveProject(Project project);
 
     void deleteProjectById(int id);
 

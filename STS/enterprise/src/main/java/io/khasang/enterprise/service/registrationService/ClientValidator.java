@@ -9,7 +9,6 @@ import org.springframework.validation.Validator;
 
 @Component
 public class ClientValidator implements Validator {
-
     @Autowired
     private RegistrationService registrationService;
 
@@ -24,27 +23,27 @@ public class ClientValidator implements Validator {
         String login = client.getLogin();
         String password = client.getPassword();
 
-        if (client.getContactPersonName().isEmpty()){
-            errors.rejectValue("contactPersonName","required","Contact person can't be empty.");
+        if (client.getContactPersonName().isEmpty()) {
+            errors.rejectValue("contactPersonName", "required", "Contact person can't be empty.");
         }
-        if (client.getCompanyName().isEmpty()){
-            errors.rejectValue("companyName","required", "Company name can't be empty.");
+        if (client.getCompanyName().isEmpty()) {
+            errors.rejectValue("companyName", "required", "Company name can't be empty.");
         }
-        if (client.getCompanyDescription().isEmpty()){
-            errors.rejectValue("companyDescription","required", "Company description can't be empty.");
+        if (client.getCompanyDescription().isEmpty()) {
+            errors.rejectValue("companyDescription", "required", "Company description can't be empty.");
         }
-        if (!(client.getPhoneNumber().matches("\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})\\2([0-9]{4})"))){
-            errors.rejectValue("phoneNumber","required", "Phone number format: (111)-222-3333 | 1112223333 | 111-222-3333");
+        if (!(client.getPhoneNumber().matches("\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})\\2([0-9]{4})"))) {
+            errors.rejectValue("phoneNumber", "required", "Phone number format: (111)-222-3333 | 1112223333 | 111-222-3333");
         }
 
         /*------ LOGIN VALIDATOR -------*/
         if (!StringUtils.hasLength(login)) {
             errors.rejectValue("login", "required", "Login can't be empty.");
         }
-        if (!login.matches("^\\w{8,}$")){
+        if (!login.matches("^\\w{8,}$")) {
             errors.rejectValue("login", "required", "Login can only consists of numbers, letters, underscore and hyphens characters.");
         }
-        if (login.length()<4 || login.length()>15) {
+        if (login.length() < 4 || login.length() > 15) {
             errors.rejectValue("login", "required", "Login must be between 4 and 15 characters long.");
         }
         if (registrationService.isLoginExist(login)) {
@@ -58,7 +57,7 @@ public class ClientValidator implements Validator {
         if (!password.matches("^\\S+$")) {
             errors.rejectValue("password", "required", "Password can only consists of numbers, letters, underscore and hyphens characters.");
         }
-        if (password.length()<4 || password.length()>15) {
+        if (password.length() < 4 || password.length() > 15) {
             errors.rejectValue("password", "required", "Password must be between 4 and 15 characters long.");
         }
 

@@ -1,8 +1,8 @@
 package io.khasang.enterprise.service;
 
 public class ProjectTrackingService {
-    String project;
-    String progress;
+    private String project;
+    private String progress;
 
     public String getProject() {
         return project;

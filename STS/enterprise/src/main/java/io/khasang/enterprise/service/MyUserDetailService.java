@@ -1,7 +1,7 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.interfaces.ClientDao;
-import io.khasang.enterprise.dao.interfaces.EmployeeDao;
+import io.khasang.enterprise.dao.ClientDaoImpl;
+import io.khasang.enterprise.dao.EmployeeDaoImpl;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.ClientRole;
 import io.khasang.enterprise.model.Employee;
@@ -9,12 +9,12 @@ import io.khasang.enterprise.model.EmployeeRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.core.userdetails.User;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,20 +24,20 @@ import java.util.Set;
 @Service("userDetailsService")
 public class MyUserDetailService implements UserDetailsService {
     @Autowired
-    private ClientDao clientDao;
+    private ClientDaoImpl clientDao;
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeDaoImpl employeeDao;
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(final String login) throws UsernameNotFoundException {
         Client client = clientDao.findByLogin(login);
-        if(client != null) {
+        if (client != null) {
             List<GrantedAuthority> authorities = buildClientAuthority(client.getClientRoles());
             return buildUserFormClient(client, authorities);
         } else {
             Employee employee = employeeDao.findByLogin(login);
-            if(employee != null) {
+            if (employee != null) {
                 List<GrantedAuthority> authorities = buildEmployeeAuthority(employee.getEmployeeRoles());
                 return buildUserFormEmployee(employee, authorities);
             }

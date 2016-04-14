@@ -1,6 +1,6 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.interfaces.NewsDao;
+import io.khasang.enterprise.dao.NewsDaoImpl;
 import io.khasang.enterprise.model.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,23 +11,26 @@ import java.util.List;
 @Service("newsService")
 @Transactional
 public class NewsService {
-
     @Autowired
-    NewsDao newsDao;
+    NewsDaoImpl newsDao;
 
     public List<News> findLatestNews() {
         return newsDao.findLastNews();
     }
 
+    public List<News> findAllNews() {
+        return newsDao.findAll();
+    }
+
     public List<News> getAllNews() {
-        return newsDao.findAllNews();
+        return newsDao.findAll();
     }
 
     public void deleteAllNews() {
-        newsDao.deleteAll();
+        newsDao.deleteAllNews();
     }
 
     public void saveNewsToDB(News news) {
-        newsDao.saveNews(news);
+        newsDao.save(news);
     }
 }

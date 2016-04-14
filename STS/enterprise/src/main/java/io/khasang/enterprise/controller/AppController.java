@@ -56,7 +56,7 @@ public class AppController {
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news(Model model) {
-        model.addAttribute("news", newsService.findLatestNews());
+        model.addAttribute("news", newsService.findAllNews());
         return "news";
     }
 
@@ -135,7 +135,7 @@ public class AppController {
     }
 
     @RequestMapping(value = "/employee/account")
-    public String homeEmployee(){
+    public String homeEmployee() {
         return "employee/account";
     }
 }

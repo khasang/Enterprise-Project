@@ -9,20 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("newsDao")
-public class NewsDaoImpl extends AbstractDao<News> implements NewsDao {
-    @SuppressWarnings("unchecked")
-    public List<News> findAllNews() {
-        Criteria criteria = getSession().createCriteria(News.class);
-        return (List<News>) criteria.list();
-    }
+public class NewsDaoImpl extends AbstractDao<Integer, News> implements NewsDao {
     @SuppressWarnings("unchecked")
     public List<News> findLastNews() {
-        Criteria criteria = getSession().createCriteria(News.class);
-        return criteria.list(); //todo create criteria for latest 3 news
-    }
-
-    public void saveNews(News news) {
-        persist(news);
+        Query query = getSession().createSQLQuery("SELECT * FROM news ORDER BY id DESC LIMIT 3");
+        return query.list();
     }
 
     public void deleteNewsById(int id) {
@@ -31,7 +22,7 @@ public class NewsDaoImpl extends AbstractDao<News> implements NewsDao {
         query.executeUpdate();
     }
 
-    public void deleteAll() {
+    public void deleteAllNews() {
         Query query = getSession().createSQLQuery("delete from news");
         query.executeUpdate();
     }
