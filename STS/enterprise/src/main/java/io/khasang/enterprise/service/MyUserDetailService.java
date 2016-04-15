@@ -1,7 +1,7 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.ClientDaoImpl;
-import io.khasang.enterprise.dao.EmployeeDaoImpl;
+import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.ClientRole;
 import io.khasang.enterprise.model.Employee;
@@ -24,9 +24,9 @@ import java.util.Set;
 @Service("userDetailsService")
 public class MyUserDetailService implements UserDetailsService {
     @Autowired
-    private ClientDaoImpl clientDao;
+    private ClientDao clientDao;
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
 
     @Transactional(readOnly = true)
     @Override
