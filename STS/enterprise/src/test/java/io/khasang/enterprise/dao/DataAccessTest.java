@@ -2,6 +2,7 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.config.HibernateConfig;
 import io.khasang.enterprise.config.application.WebConfig;
+import io.khasang.enterprise.dao.interfaces.*;
 import io.khasang.enterprise.model.*;
 import io.khasang.enterprise.model.enums.Features;
 import io.khasang.enterprise.model.enums.ProjectBasis;
@@ -42,17 +43,17 @@ public class DataAccessTest {
     @Autowired
     private DataSource dataSource;
     @Autowired
-    private ClientDaoImpl clientDao;
+    private ClientDao clientDao;
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
     @Autowired
-    private NewsDaoImpl newsDao;
+    private NewsDao newsDao;
     @Autowired
-    private OfferDaoImpl offerDao;
+    private OfferDao offerDao;
     @Autowired
-    private ProjectDaoImpl projectDao;
+    private ProjectDao projectDao;
     @Autowired
-    private OrderDaoImpl orderDao;
+    private OrderDao orderDao;
 
     @Before
     public void setupMock() {

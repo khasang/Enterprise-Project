@@ -1,7 +1,7 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.ClientDaoImpl;
-import io.khasang.enterprise.dao.EmployeeDaoImpl;
+import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import java.util.List;
 @Transactional
 public class AdminService {
     @Autowired
-    private ClientDaoImpl clientDao;
+    private ClientDao clientDao;
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
 
     @Transactional
     public void addClientRole(int id) {

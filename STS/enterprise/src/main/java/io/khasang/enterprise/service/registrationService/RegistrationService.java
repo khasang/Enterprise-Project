@@ -1,7 +1,7 @@
 package io.khasang.enterprise.service.registrationService;
 
-import io.khasang.enterprise.dao.ClientDaoImpl;
-import io.khasang.enterprise.dao.EmployeeDaoImpl;
+import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.Employee;
 import io.khasang.enterprise.service.AdminService;
@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RegistrationService {
     @Autowired
-    private ClientDaoImpl clientDao;
+    private ClientDao clientDao;
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
     @Autowired
     private AdminService adminService;
 
