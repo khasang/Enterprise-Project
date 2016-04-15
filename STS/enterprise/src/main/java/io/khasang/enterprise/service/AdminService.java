@@ -2,9 +2,12 @@ package io.khasang.enterprise.service;
 
 import io.khasang.enterprise.dao.ClientDaoImpl;
 import io.khasang.enterprise.dao.EmployeeDaoImpl;
+import io.khasang.enterprise.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service("adminService")
 @Transactional
@@ -34,6 +37,11 @@ public class AdminService {
     public void deleteAllClients() {
         deleteAllClientRoles();
         clientDao.deleteAllClients();
+    }
+
+    @Transactional
+    public List<Client> getAllClients() {
+       return clientDao.findAll();
     }
 
     @Transactional

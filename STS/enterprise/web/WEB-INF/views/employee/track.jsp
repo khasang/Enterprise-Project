@@ -5,16 +5,16 @@
 <jsp:include page="../fragments/header.jsp"/>
 
 <body>
-<jsp:include page="adminNavigationBar.jsp"/>
+<jsp:include page="employeeNavigationBar.jsp"/>
 
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <h1>CRUD по клиентам</h1>
+            <h1>Project Tracking</h1>
             <p>
-                <a href=<c:url value='/admin/all_clients'/>>Список всех клиентов</a> <br/>
+                Your project status
+                <br>
             </p>
-            <a href=<c:url value='/admin/clients'/>>НАЗАД</a> <br/>
         </section>
         <section id="news">
             <jsp:include page="../fragments/newssection.jsp"/>
