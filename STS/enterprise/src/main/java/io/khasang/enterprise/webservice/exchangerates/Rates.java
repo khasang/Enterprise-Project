@@ -19,8 +19,8 @@ public class Rates {
     private static DailyInfo service;
 
     public Rates() {
-//        System.setProperty("http.proxyHost", "192.168.0.1");
-//        System.setProperty("http.proxyPort", "3128");
+        System.setProperty("http.proxyHost", "192.168.0.1");
+        System.setProperty("http.proxyPort", "3128");
     }
 
     public DailyInfoSoap getPort() {

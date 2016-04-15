@@ -20,4 +20,10 @@ public class EmployeeController {
         model.addAttribute("currentDay", rates.getCurrentDay());
         return "employee/account";
     }
+
+    @RequestMapping(value = "/tracking", method = RequestMethod.GET)
+    public String employeeTracking(Model model) {
+
+        return "employee/track";
+    }
 }
