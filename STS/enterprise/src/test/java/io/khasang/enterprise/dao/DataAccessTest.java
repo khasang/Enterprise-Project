@@ -98,7 +98,7 @@ public class DataAccessTest {
     public void findAllEmployeesTest() throws Exception {
         List<Employee> employee = employeeDao.findAll();
         Assert.assertNotNull(employee);
-        Assert.assertEquals(4, employee.size());
+        Assert.assertTrue(employee.size() >= 4);
         Assert.assertEquals("employeepassword", employee.get(0).getPassword());
         Assert.assertEquals("employeepassword1", employee.get(1).getPassword());
         Assert.assertEquals("employeepassword2", employee.get(2).getPassword());

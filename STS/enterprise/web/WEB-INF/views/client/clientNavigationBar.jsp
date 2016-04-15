@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 
 <header class="top">
@@ -28,5 +29,8 @@
         <li><a href=<c:url value='/client/order'/>>ЗАКАЗАТЬ ПРОЕКТ</a></li>
         <li><a href=<c:url value='/client/contacts'/>>КОНТАКТЫ</a></li>
         <li><a href=<c:url value='/index'/>>НА ГЛАВНУЮ</a></li>
+        <sec:authorize access="hasRole('ROLE_CUSTOMER')">
+            <li><a href="<c:url value="/client/tracking"/>">PROJECT TRACKING</a></li>
+        </sec:authorize>
     </ul>
 </nav>

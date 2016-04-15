@@ -13,6 +13,8 @@ public interface ProjectDao {
 
     void save(Project project);
 
+    void update(Project project);
+
     List<Project> findByProjectBasis(ProjectBasis basis);
 
     List<Project> findByPrice(BigDecimal price);

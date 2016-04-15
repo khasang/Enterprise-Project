@@ -1,6 +1,7 @@
 package io.khasang.enterprise.controller;
 
 import io.khasang.enterprise.model.Client;
+import io.khasang.enterprise.service.ExampleMySqlDump;
 import io.khasang.enterprise.service.NewsService;
 import io.khasang.enterprise.service.registrationService.ClientValidator;
 import io.khasang.enterprise.service.registrationService.RegistrationService;

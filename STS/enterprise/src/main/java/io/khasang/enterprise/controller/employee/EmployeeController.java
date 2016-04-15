@@ -20,4 +20,5 @@ public class EmployeeController {
         model.addAttribute("currentDay", rates.getCurrentDay());
         return "employee/account";
     }
+
 }

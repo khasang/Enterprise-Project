@@ -11,6 +11,8 @@ public interface NewsDao {
 
     void save(News news);
 
+    void update(News news);
+
     List<News> findLastNews();
 
     void deleteNewsById(int id);

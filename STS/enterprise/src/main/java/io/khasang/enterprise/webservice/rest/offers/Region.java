@@ -2,7 +2,6 @@ package io.khasang.enterprise.webservice.rest.offers;
 
 import javax.xml.bind.annotation.*;
 
-
 @XmlRootElement(name = "region")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType
@@ -25,7 +24,6 @@ public class Region {
         this.regionName = regionName;
         this.population = population;
     }
-
 
     public Integer getRegionId() {
         return regionId;
