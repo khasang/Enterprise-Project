@@ -12,6 +12,8 @@ public interface OfferDao {
 
     void save(Offer offer);
 
+    void update(Offer offer);
+
     List<Offer> findOfferByPrice(BigDecimal price);
 
     void deleteOfferById(int id);

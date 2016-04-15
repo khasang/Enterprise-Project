@@ -21,7 +21,7 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private ProjectBasis projectBasis;
 
-    @ManyToOne
+    @ManyToOne(cascade = javax.persistence.CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Client customer;
 

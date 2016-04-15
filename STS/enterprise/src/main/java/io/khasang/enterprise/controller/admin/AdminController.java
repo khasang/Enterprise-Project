@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -43,6 +40,8 @@ public class AdminController {
     @RequestMapping(value = "/client/{login}", method = RequestMethod.GET)
     public String adminGetCurrentClient(@PathVariable("login") String login, Model model) {
         Client client = adminService.getClientByLogin(login);
+//        Set<ClientRole> roles = client.getClientRoles();
+//        model.addAttribute("roles", roles);
         model.addAttribute("client", client);
         return "admin/client";
     }
@@ -64,6 +63,7 @@ public class AdminController {
         model.addAttribute("clients", adminService.getAllClients());
         return "admin/all_clients";
     }
+
 
 
 

@@ -20,6 +20,7 @@
                     <th>Контактное Лицо</th>
                     <th>Почта</th>
                     <th>Контактный Телефон</th>
+                    <th>Роли</th>
                     <th>Enabled</th>
                 </tr>
                 <tr>
@@ -30,6 +31,11 @@
                     <td>${client.contactPersonName}</td>
                     <td>${client.email}</td>
                     <td>${client.phoneNumber}</td>
+                    <td>
+                        <c:forEach items="${roles}" var="r">
+                            ${r.role} &nbsp;&nbsp;
+                        </c:forEach>
+                    </td>
                     <td>${client.enabled}</td>
                 </tr>
                 <br/>

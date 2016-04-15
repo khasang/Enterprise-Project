@@ -11,6 +11,8 @@ public interface EmployeeDao {
 
     void save(Employee employee);
 
+    void update(Employee employee);
+
     Employee findEmployeeByLogin(String login);
 
     void deleteEmployeeByLogin(String login);

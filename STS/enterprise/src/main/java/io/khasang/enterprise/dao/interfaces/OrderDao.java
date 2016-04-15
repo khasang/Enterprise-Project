@@ -11,6 +11,8 @@ public interface OrderDao {
 
     void save(CustomerOrder customerOrder);
 
+    void update(CustomerOrder order);
+
     CustomerOrder findOrderByProjectId(Integer projectId);
 
     void deleteAllOrders();
