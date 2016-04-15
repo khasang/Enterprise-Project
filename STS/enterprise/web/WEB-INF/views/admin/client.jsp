@@ -10,7 +10,7 @@
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <h1>Список всех клиентов</h1>
+            <h1>Клиент</h1>
             <table border="1">
                 <tr>
                     <th>ID</th>
@@ -22,23 +22,31 @@
                     <th>Контактный Телефон</th>
                     <th>Enabled</th>
                 </tr>
-                <c:forEach items="${clients}" var="c">
                 <tr>
-                    <td>${c.id}</td>
-                    <td><a href=<c:url value='/admin/client/${c.login}'/>>${c.login}</a></td>
-                    <td>${c.companyName}</td>
-                    <td>${c.companyDescription}</td>
-                    <td>${c.contactPersonName}</td>
-                    <td>${c.email}</td>
-                    <td>${c.phoneNumber}</td>
-                    <td>${c.enabled}</td>
+                    <td>${client.id}</td>
+                    <td>${client.login}</td>
+                    <td>${client.companyName}</td>
+                    <td>${client.companyDescription}</td>
+                    <td>${client.contactPersonName}</td>
+                    <td>${client.email}</td>
+                    <td>${client.phoneNumber}</td>
+                    <td>${client.enabled}</td>
                 </tr>
-                </c:forEach>
-                </table>
                 <br/>
-                <p>
-            <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
-                </p>
+            </table>
+
+            <c:choose>
+                <c:when test="${client.enabled == 'true'}">
+                    <a href=<c:url value='/admin/client/ban/${client.login}'/>><h2>BAN!</h2></a> <br/>
+                </c:when>
+                <c:otherwise>
+                    <a href=<c:url value='/admin/client/unban/${client.login}'/>><h2>UNBAN!</h2></a> <br/>
+                </c:otherwise>
+            </c:choose>
+            <p>
+                <a href=<c:url value='/admin/all_clients'/>>НАЗАД</a> <br/>
+            </p>
+            </form>
         </section>
         <section id="news">
             <jsp:include page="../fragments/newssection.jsp"/>
@@ -52,5 +60,3 @@
 
 </body>
 </html>
-
-

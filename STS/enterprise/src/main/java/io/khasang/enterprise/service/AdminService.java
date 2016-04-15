@@ -1,5 +1,6 @@
 package io.khasang.enterprise.service;
 
+import io.khasang.enterprise.dao.ClientDaoImpl;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Client;
@@ -14,6 +15,8 @@ import java.util.List;
 public class AdminService {
     @Autowired
     private ClientDao clientDao;
+    @Autowired
+    private ClientDaoImpl clientDaoImpl;
     @Autowired
     private EmployeeDao employeeDao;
 
@@ -40,13 +43,32 @@ public class AdminService {
     }
 
     @Transactional
-    public List<Client> getAllClients() {
-       return clientDao.findAll();
+    private void deleteAllClientRoles() {
+        clientDao.deleteAllClientRoles();
     }
 
     @Transactional
-    private void deleteAllClientRoles() {
-        clientDao.deleteAllClientRoles();
+    public List<Client> getAllClients() {
+        return clientDao.findAll();
+    }
+
+    @Transactional
+    public Client getClientByLogin(String login) {
+        return clientDao.findByLogin(login);
+    }
+
+    @Transactional
+    public void banClient(String login) {
+        Client client = clientDao.findByLogin(login);
+        client.setEnabled(false);
+        clientDaoImpl.update(client);
+    }
+
+    @Transactional
+    public void unbanClient(String login) {
+        Client client = clientDao.findByLogin(login);
+        client.setEnabled(true);
+        clientDaoImpl.update(client);
     }
 
     /**

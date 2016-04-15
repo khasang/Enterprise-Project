@@ -21,9 +21,4 @@ public class EmployeeController {
         return "employee/account";
     }
 
-    @RequestMapping(value = "/tracking", method = RequestMethod.GET)
-    public String employeeTracking(Model model) {
-
-        return "employee/track";
-    }
 }
