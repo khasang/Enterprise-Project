@@ -29,7 +29,7 @@ public class Client extends SuperUser {
     @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
     private boolean enabled = true;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "client", fetch = FetchType.LAZY)
     @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     private Set<ClientRole> clientRoles = new HashSet<>(0);
 
