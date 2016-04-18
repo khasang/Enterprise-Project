@@ -13,7 +13,7 @@ public interface OrderDao {
 
     void update(CustomerOrder order);
 
-    CustomerOrder findOrderByProjectId(Integer projectId);
+    List<CustomerOrder> findOrdersByProjectId(Integer projectId);
 
     void deleteAllOrders();
 }

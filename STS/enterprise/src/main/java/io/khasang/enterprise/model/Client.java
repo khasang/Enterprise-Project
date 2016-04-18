@@ -106,15 +106,6 @@ public class Client extends SuperUser {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", contactPersonName='" + contactPersonName + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", companyDescription='" + companyDescription + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return getContactPersonName();
     }
 }

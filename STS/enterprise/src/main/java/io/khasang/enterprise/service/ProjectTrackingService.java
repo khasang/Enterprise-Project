@@ -1,22 +1,32 @@
 package io.khasang.enterprise.service;
 
+import io.khasang.enterprise.dao.interfaces.OrderDao;
+import io.khasang.enterprise.dao.interfaces.ProjectDao;
+import io.khasang.enterprise.model.CustomerOrder;
+import io.khasang.enterprise.model.Project;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service("projectTrackingService")
+@Transactional
 public class ProjectTrackingService {
-    private String project;
-    private String progress;
+    @Autowired
+    private ProjectDao projectDao;
+    @Autowired
+    private OrderDao orderDao;
 
-    public String getProject() {
-        return project;
+    public Project getProjectById(Integer id) {
+        return projectDao.findById(id);
     }
 
-    public void setProject(String project) {
-        this.project = project;
+    public List<Project> getAllProject() {
+        return projectDao.findAll();
     }
 
-    public String getProgress() {
-        return progress;
-    }
-
-    public void setProgress(String progress) {
-        this.progress = progress;
+    public List<CustomerOrder> getProjectOrders(Integer projectId) {
+        return orderDao.findOrdersByProjectId(projectId);
     }
 }

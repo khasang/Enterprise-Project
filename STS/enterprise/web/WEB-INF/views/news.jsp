@@ -28,8 +28,8 @@
 				<section id="news">
 					<jsp:include page="fragments/newssection.jsp"/>
 				</section>
-			</div> <!-- mainRow -->
-		</div> <!-- mainContainer -->
+			</div>
+		</div>
 
 		<footer>
 			&copy; 2016, Enterprise co.

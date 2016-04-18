@@ -45,4 +45,9 @@ public class CustomerOrder {
     public void setFeature(Features features) {
         this.feature = features;
     }
+
+    @Override
+    public String toString() {
+        return getFeature().toString();
+    }
 }

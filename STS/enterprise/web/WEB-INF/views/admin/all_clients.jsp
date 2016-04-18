@@ -23,28 +23,28 @@
                     <th>Enabled</th>
                 </tr>
                 <c:forEach items="${clients}" var="c">
-                <tr>
-                    <td>${c.id}</td>
-                    <td><a href=<c:url value='/admin/client/${c.login}'/>>${c.login}</a></td>
-                    <td>${c.companyName}</td>
-                    <td>${c.companyDescription}</td>
-                    <td>${c.contactPersonName}</td>
-                    <td>${c.email}</td>
-                    <td>${c.phoneNumber}</td>
-                    <td>${c.enabled}</td>
-                </tr>
+                    <tr>
+                        <td>${c.id}</td>
+                        <td><a href=<c:url value='/admin/client/${c.login}'/>>${c.login}</a></td>
+                        <td>${c.companyName}</td>
+                        <td>${c.companyDescription}</td>
+                        <td>${c.contactPersonName}</td>
+                        <td>${c.email}</td>
+                        <td>${c.phoneNumber}</td>
+                        <td>${c.enabled}</td>
+                    </tr>
                 </c:forEach>
-                </table>
-                <br/>
-                <p>
-            <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
-                </p>
+            </table>
+            <br/>
+            <p>
+                <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
+            </p>
         </section>
         <section id="news">
             <jsp:include page="../fragments/newssection.jsp"/>
         </section>
-    </div> <!-- mainRow -->
-</div> <!-- mainContainer -->
+    </div>
+</div>
 
 <footer>
     &copy; 2016, Enterprise co.

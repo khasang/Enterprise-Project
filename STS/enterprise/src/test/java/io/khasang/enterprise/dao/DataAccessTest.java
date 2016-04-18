@@ -219,9 +219,10 @@ public class DataAccessTest {
 
     @Test
     public void findOrderByProjectIdTest() throws Exception {
-        CustomerOrder order = orderDao.findOrderByProjectId(3);
-        Assert.assertFalse(order == null);
-        Assert.assertEquals(Features.ONLINEPAYMENTS, order.getFeature());
+        List<CustomerOrder> orders = orderDao.findOrdersByProjectId(3);
+        Assert.assertTrue(orders.size() >= 2);
+        Assert.assertEquals(Features.ONLINEPAYMENTS, orders.get(0).getFeature());
+        Assert.assertEquals(Features.LIVECHAT, orders.get(1).getFeature());
     }
 
     @Test
