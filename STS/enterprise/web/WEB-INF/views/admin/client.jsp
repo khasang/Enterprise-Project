@@ -50,7 +50,7 @@
                 </c:otherwise>
             </c:choose>
             <p>
-                <a href=<c:url value='/admin/all_clients'/>>НАЗАД</a> <br/>
+                <a href=<c:url value='/admin/clients'/>>НАЗАД</a> <br/>
             </p>
             </form>
         </section>

@@ -37,7 +37,7 @@
             </table>
             <br/>
             <p>
-                <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
+                <a href=<c:url value='/admin/clients'/>>НАЗАД</a> <br/>
             </p>
         </section>
         <section id="news">

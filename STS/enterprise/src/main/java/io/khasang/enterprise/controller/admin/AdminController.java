@@ -1,5 +1,6 @@
 package io.khasang.enterprise.controller.admin;
 
+import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.ClientRole;
 import io.khasang.enterprise.service.AdminService;
@@ -9,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
@@ -22,6 +26,8 @@ public class AdminController {
     private Rates rates;
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private ClientDao clientDao;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String adminHome(Model model) {
@@ -47,6 +53,26 @@ public class AdminController {
         return "admin/client";
     }
 
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public String findClient() {
+        return "admin/find_client";
+    }
+
+    @Transactional
+    @RequestMapping(value = "/client/{login}", method = RequestMethod.POST)
+    public ModelAndView clientFinder(@RequestParam("login") String login, ModelMap model) {
+        if(clientDao.findByLogin(login) == null) {
+            model.addAttribute("error", new Exception("Пользователь не найден в Базе"));
+            return new ModelAndView("admin/find_client", model);
+        }
+        Client client = adminService.getClientByLogin(login);
+        Set<ClientRole> roles = client.getClientRoles();
+        Hibernate.initialize(roles);
+        model.addAttribute("roles", roles);
+        model.addAttribute("client", client);
+        return new ModelAndView("admin/client", model);
+    }
+
     @RequestMapping(value = "/client/ban/{login}", method = RequestMethod.GET)
     public String disableClient(@PathVariable("login") String login) {
         adminService.banClient(login);
@@ -64,6 +90,7 @@ public class AdminController {
         model.addAttribute("clients", adminService.getAllClients());
         return "admin/all_clients";
     }
+
 
 
 
