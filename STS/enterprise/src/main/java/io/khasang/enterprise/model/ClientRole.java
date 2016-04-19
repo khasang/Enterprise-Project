@@ -1,6 +1,7 @@
 package io.khasang.enterprise.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "client_role")
@@ -11,7 +12,7 @@ public class ClientRole {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
@@ -44,4 +45,5 @@ public class ClientRole {
     public void setRole(String role) {
         this.role = role;
     }
+
 }

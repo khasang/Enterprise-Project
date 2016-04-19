@@ -1,7 +1,8 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.NewsDaoImpl;
+import io.khasang.enterprise.dao.interfaces.NewsDao;
 import io.khasang.enterprise.model.News;
+import org.glassfish.jersey.process.internal.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import java.util.List;
 @Transactional
 public class NewsService {
     @Autowired
-    NewsDaoImpl newsDao;
+    NewsDao newsDao;
 
     public List<News> findLatestNews() {
         return newsDao.findLastNews();

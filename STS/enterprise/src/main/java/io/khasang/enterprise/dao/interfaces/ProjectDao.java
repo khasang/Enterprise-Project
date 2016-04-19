@@ -7,6 +7,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProjectDao {
+    Project findById(Integer id);
+
+    List<Project> findAll();
+
+    void save(Project project);
+
+    void update(Project project);
 
     List<Project> findByProjectBasis(ProjectBasis basis);
 

@@ -22,5 +22,6 @@
 <nav id="publicArea">
     <ul>
         <li><a href=<c:url value='/employee/account'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
+        <li><a href=<c:url value='/employee/all-projects'/>>ВСЕ ПРОЕКТЫ</a></li>
     </ul>
 </nav>

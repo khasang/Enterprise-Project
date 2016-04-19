@@ -7,13 +7,16 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("orderDao")
 public class OrderDaoImpl extends AbstractDao<Integer, CustomerOrder> implements OrderDao {
 
-    public CustomerOrder findOrderByProjectId(Integer projectId) {
+    @SuppressWarnings("unchecked")
+    public List<CustomerOrder> findOrdersByProjectId(Integer projectId) {
         Query query = getSession().createQuery("FROM CustomerOrder u WHERE u.project = :project");
         query.setInteger("project", projectId);
-        return (CustomerOrder) query.list().get(0);
+        return query.list();
     }
 
     public void deleteAllOrders() {

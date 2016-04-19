@@ -33,8 +33,6 @@ public class AppController {
     RegistrationService registrationService;
     @Autowired
     private Rates rates;
-    @Autowired
-    ExampleMySqlDump exampleMySqlDump;
 
     @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
@@ -58,12 +56,6 @@ public class AppController {
     public String news(Model model) {
         model.addAttribute("news", newsService.findAllNews());
         return "news";
-    }
-
-    @RequestMapping(value = "/example", method = RequestMethod.GET)
-    public String example(Model model) {
-        model.addAttribute("example",exampleMySqlDump.newBaseResult());
-        return "example";
     }
 
     @RequestMapping(value = "/projects", method = RequestMethod.GET)

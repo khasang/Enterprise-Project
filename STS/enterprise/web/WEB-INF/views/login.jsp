@@ -38,7 +38,7 @@
 						<input type="hidden" name="${_csrf.parameterName}"
 							   value="${_csrf.token}" />
 					</form>
-					<p><a href="<c:url value="/registration"/>">Create new Acount</a> </p>
+					<p><a href="<c:url value="/registration"/>">Create new Account</a> </p>
 				</section>
 				<section id="news">
 					<jsp:include page="fragments/newssection.jsp"/>

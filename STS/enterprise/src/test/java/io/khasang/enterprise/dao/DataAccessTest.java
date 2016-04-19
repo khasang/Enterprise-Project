@@ -2,6 +2,7 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.config.HibernateConfig;
 import io.khasang.enterprise.config.application.WebConfig;
+import io.khasang.enterprise.dao.interfaces.*;
 import io.khasang.enterprise.model.*;
 import io.khasang.enterprise.model.enums.Features;
 import io.khasang.enterprise.model.enums.ProjectBasis;
@@ -42,17 +43,17 @@ public class DataAccessTest {
     @Autowired
     private DataSource dataSource;
     @Autowired
-    private ClientDaoImpl clientDao;
+    private ClientDao clientDao;
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
     @Autowired
-    private NewsDaoImpl newsDao;
+    private NewsDao newsDao;
     @Autowired
-    private OfferDaoImpl offerDao;
+    private OfferDao offerDao;
     @Autowired
-    private ProjectDaoImpl projectDao;
+    private ProjectDao projectDao;
     @Autowired
-    private OrderDaoImpl orderDao;
+    private OrderDao orderDao;
 
     @Before
     public void setupMock() {
@@ -97,7 +98,7 @@ public class DataAccessTest {
     public void findAllEmployeesTest() throws Exception {
         List<Employee> employee = employeeDao.findAll();
         Assert.assertNotNull(employee);
-        Assert.assertEquals(4, employee.size());
+        Assert.assertTrue(employee.size() >= 4);
         Assert.assertEquals("employeepassword", employee.get(0).getPassword());
         Assert.assertEquals("employeepassword1", employee.get(1).getPassword());
         Assert.assertEquals("employeepassword2", employee.get(2).getPassword());
@@ -218,9 +219,10 @@ public class DataAccessTest {
 
     @Test
     public void findOrderByProjectIdTest() throws Exception {
-        CustomerOrder order = orderDao.findOrderByProjectId(3);
-        Assert.assertFalse(order == null);
-        Assert.assertEquals(Features.ONLINEPAYMENTS, order.getFeature());
+        List<CustomerOrder> orders = orderDao.findOrdersByProjectId(3);
+        Assert.assertTrue(orders.size() >= 2);
+        Assert.assertEquals(Features.ONLINEPAYMENTS, orders.get(0).getFeature());
+        Assert.assertEquals(Features.LIVECHAT, orders.get(1).getFeature());
     }
 
     @Test

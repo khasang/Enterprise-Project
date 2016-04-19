@@ -1,18 +1,21 @@
 package io.khasang.enterprise.service;
 
-import io.khasang.enterprise.dao.ClientDaoImpl;
-import io.khasang.enterprise.dao.EmployeeDaoImpl;
+import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.EmployeeDao;
+import io.khasang.enterprise.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service("adminService")
 @Transactional
 public class AdminService {
     @Autowired
-    private ClientDaoImpl clientDao;
+    private ClientDao clientDao;
     @Autowired
-    private EmployeeDaoImpl employeeDao;
+    private EmployeeDao employeeDao;
 
     @Transactional
     public void addClientRole(int id) {
@@ -39,6 +42,30 @@ public class AdminService {
     @Transactional
     private void deleteAllClientRoles() {
         clientDao.deleteAllClientRoles();
+    }
+
+    @Transactional
+    public List<Client> getAllClients() {
+        return clientDao.findAll();
+    }
+
+    @Transactional
+    public Client getClientByLogin(String login) {
+        return clientDao.findByLogin(login);
+    }
+
+    @Transactional
+    public void banClient(String login) {
+        Client client = clientDao.findByLogin(login);
+        client.setEnabled(false);
+        clientDao.update(client);
+    }
+
+    @Transactional
+    public void unbanClient(String login) {
+        Client client = clientDao.findByLogin(login);
+        client.setEnabled(true);
+        clientDao.update(client);
     }
 
     /**

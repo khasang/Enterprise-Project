@@ -1,55 +1,63 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-	<jsp:include page="../fragments/header.jsp"/>
+<jsp:include page="../fragments/header.jsp"/>
 
-	<body>
-		<header class="top">
-			<img id="headerLogo"
-					 src="../images/headerLogo.png" alt="Enterprise header logo image">
-			<img id="headerSlogan"
-					src="../images/headerSlogan.png" alt="Слоган">
-		</header>
+<body>
+<jsp:include page="employeeNavigationBar.jsp"/>
 
-		<nav id="privateArea">
-			<ul>
-				<li><a href="../index.jsp">ВЫХОД</a></li>
-			</ul>
-		</nav>
+<div id="mainContainer">
+	<div id="mainRow">
+		<section id="main">
+			<h1>Все проекты</h1>
+			<table align="center" border="1">
+				<tr>
+					<th>Id</th>
+					<th>Title</th>
+					<th>Project basis</th>
+					<th>Description</th>
+					<th>Customer</th>
+					<th>Price</th>
+					<th>Begin date</th>
+					<th>End date</th>
+					<th>Orders for project</th>
+				</tr>
+				<c:forEach items="${allProjects}" var="project">
+					<tr>
+						<td>${project.id}</td>
+						<td>${project.title}</td>
+						<td>${project.projectBasis}</td>
+						<td>${project.description}</td>
+						<td>${project.customer}</td>
+						<td>${project.price}</td>
+						<td>${project.beginDate}</td>
+						<td>
+							<c:choose>
+								<c:when test="${project.endDate == null}">
+									open
+								</c:when>
+								<c:otherwise>
+									${project.endDate}
+								</c:otherwise>
+							</c:choose>
+						</td>
+						<td><a href="<c:url value='/employee/all-projects/${project.id}/orders'/>">Show orders</a> </td>
+					</tr>
+				</c:forEach>
+			</table>
+		</section>
+		<section id="news">
+			<jsp:include page="../fragments/newssection.jsp"/>
+		</section>
+	</div>
+</div>
 
-		<nav id="publicArea">
-			<ul>
-				<li><a href="account.jsp">ЛИЧНЫЙ КАБИНЕТ ИСПОЛНИТЕЛЯ</a></li>
-				<li><a href="../employee/chat.jsp">ЧАТ</a></li>
-				<li><a href="../employee/structure.jsp">СТРУКТУРА</a></li>
-				<li><a href="../employee/news.jsp">НОВОСТИ И СТАТЬИ</a></li>
-				<li class="selected"><a href="../employee/projects.jsp">НАШИ ПРОЕКТЫ</a></li>
-				<li><a href="../employee/contacts.jsp">КОНТАКТЫ</a></li>
-			</ul>
-		</nav>
+<footer>
+	&copy; 2016, Enterprise co.
+</footer>
 
-		<div id="mainContainer">
-			<div id="mainRow">
-				<section id="main">
-					<h1>Наши проекты</h1>
-					<p>
-						Презентации выполненных проектов.
-						<br>
-						Описания проектов со ссылками на рабочий сайт/приложение в Store.
-					</p>
-					<h2>Статическая HTML-страница</h2>
-				</section>
-				<section id="news">
-					<jsp:include page="../fragments/newssection.jsp"/>
-				</section>
-			</div> <!-- mainRow -->
-		</div> <!-- mainContainer -->
-
-		<footer>
-			&copy; 2016, Enterprise co.
-		</footer>
-
-	</body>
+</body>
 </html>
 
 

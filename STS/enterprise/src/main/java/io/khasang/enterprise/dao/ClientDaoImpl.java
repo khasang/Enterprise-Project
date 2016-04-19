@@ -2,9 +2,12 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.model.Client;
+import io.khasang.enterprise.model.ClientRole;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository("clientDao")
 public class ClientDaoImpl extends AbstractDao<Integer, Client> implements ClientDao {

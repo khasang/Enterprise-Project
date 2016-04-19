@@ -3,10 +3,7 @@ package io.khasang.enterprise.model;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,14 +29,13 @@ public class Client extends SuperUser {
     @Column(name = "enabled", nullable = false, columnDefinition = "TINYINT(1) default 1")
     private boolean enabled = true;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "client", fetch = FetchType.LAZY)
     @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     private Set<ClientRole> clientRoles = new HashSet<>(0);
 
     @OneToMany(mappedBy = "customer")
     @Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private Set<Project> projects = new HashSet<>(0);
-
 
     public Client() {
     }
@@ -110,15 +106,6 @@ public class Client extends SuperUser {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", contactPersonName='" + contactPersonName + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", companyDescription='" + companyDescription + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return getContactPersonName();
     }
 }

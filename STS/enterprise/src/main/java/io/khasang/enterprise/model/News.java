@@ -1,8 +1,10 @@
 package io.khasang.enterprise.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
 
+@XmlRootElement
 @Entity
 @Table(name = "news")
 public class News {

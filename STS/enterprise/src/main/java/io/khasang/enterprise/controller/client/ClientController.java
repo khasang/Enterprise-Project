@@ -21,6 +21,11 @@ public class ClientController {
         return "client/account";
     }
 
+    @RequestMapping(value = "/tracking", method = RequestMethod.GET)
+    public String employeeTracking(Model model) {
+        return "client/track";
+    }
+
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String clientOrder() {
         return "client/order";
