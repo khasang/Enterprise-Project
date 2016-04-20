@@ -3,6 +3,7 @@ package io.khasang.enterprise.service;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Client;
+import io.khasang.enterprise.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -95,6 +96,30 @@ public class AdminService {
 
     @Transactional
     private void deleteAllEmployeesRoles() {
-        employeeDao.deleteAllEmployersRoles();
+        employeeDao.deleteAllEmployeesRoles();
+    }
+
+    @Transactional
+    public List<Employee> getAllEmployees() {
+        return employeeDao.findAll();
+    }
+
+    @Transactional
+    public Employee getEmployeeByLogin(String login) {
+        return employeeDao.findByLogin(login);
+    }
+
+    @Transactional
+    public void banEmployee(String login) {
+        Employee employee = employeeDao.findByLogin(login);
+        employee.setEnabled(false);
+        employeeDao.update(employee);
+    }
+
+    @Transactional
+    public void unbanEmployee(String login) {
+        Employee employee = employeeDao.findByLogin(login);
+        employee.setEnabled(true);
+        employeeDao.update(employee);
     }
 }

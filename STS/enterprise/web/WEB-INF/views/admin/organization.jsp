@@ -12,12 +12,8 @@
         <section id="main">
             <h1>CRUD по организации</h1>
             <p>
-                getAll
-                <br>
-                удалить/добавить
-                <br>
-                getById
-                <br>
+                <a href=<c:url value='/admin/all_employee'/>>Список всех сотрудников</a> <br/>
+                <a href=<c:url value='/admin/find_employee'/>>Найти сотрудника</a> <br/>
             </p>
             <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
         </section>
