@@ -37,6 +37,10 @@ public class AdminController {
         return "admin/account";
     }
 
+    /**
+     * CRUD operations by Client
+     */
+
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public String adminGetAllClient() {
         return "admin/clients";
@@ -53,11 +57,6 @@ public class AdminController {
         return "admin/client";
     }
 
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public String findClient() {
-        return "admin/find_client";
-    }
-
     @Transactional
     @RequestMapping(value = "/client/{login}", method = RequestMethod.POST)
     public ModelAndView clientFinder(@RequestParam("login") String login, ModelMap model) {
@@ -71,6 +70,11 @@ public class AdminController {
         model.addAttribute("roles", roles);
         model.addAttribute("client", client);
         return new ModelAndView("admin/client", model);
+    }
+
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public String findClient() {
+        return "admin/find_client";
     }
 
     @RequestMapping(value = "/client/ban/{login}", method = RequestMethod.GET)
@@ -91,14 +95,23 @@ public class AdminController {
         return "admin/all_clients";
     }
 
-
-
-
+    /**
+     * CRUD operations by Employee
+     */
 
     @RequestMapping(value = "/organization", method = RequestMethod.GET)
     public String adminOrganization() {
         return "admin/organization";
     }
+
+    @RequestMapping(value = "/all_employee", method = RequestMethod.GET)
+    public String getAllEmployee(Model model) {
+        model.addAttribute("employee", adminService.getAllEmployees());
+        return "admin/all_employees";
+    }
+
+
+
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String adminRegistration() {

@@ -27,5 +27,5 @@ public interface EmployeeDao {
 
     void deleteEmployeeRoleById(int id);
 
-    void deleteAllEmployersRoles();
+    void deleteAllEmployeesRoles();
 }
