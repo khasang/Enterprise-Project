@@ -29,8 +29,7 @@
                 <c:forEach items="${employee}" var="employee">
                     <tr>
                         <td>${employee.id}</td>
-                        <%--<td><a href=<c:url value='/admin/client/${c.login}'/>>${c.login}</a></td>--%>
-                        <td>${employee.login}</td>
+                        <td><a href=<c:url value='/admin/employee/${employee.login}'/>>${employee.login}</a></td>
                         <td>${employee.address}</td>
                         <td>${employee.age}</td>
                         <td>${employee.department}</td>

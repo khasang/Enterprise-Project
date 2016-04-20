@@ -103,4 +103,23 @@ public class AdminService {
     public List<Employee> getAllEmployees() {
         return employeeDao.findAll();
     }
+
+    @Transactional
+    public Employee getEmployeeByLogin(String login) {
+        return employeeDao.findByLogin(login);
+    }
+
+    @Transactional
+    public void banEmployee(String login) {
+        Employee employee = employeeDao.findByLogin(login);
+        employee.setEnabled(false);
+        employeeDao.update(employee);
+    }
+
+    @Transactional
+    public void unbanEmployee(String login) {
+        Employee employee = employeeDao.findByLogin(login);
+        employee.setEnabled(true);
+        employeeDao.update(employee);
+    }
 }

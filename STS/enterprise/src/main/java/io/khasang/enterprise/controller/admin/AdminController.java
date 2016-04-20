@@ -1,8 +1,11 @@
 package io.khasang.enterprise.controller.admin;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.ClientRole;
+import io.khasang.enterprise.model.Employee;
+import io.khasang.enterprise.model.EmployeeRole;
 import io.khasang.enterprise.service.AdminService;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.hibernate.Hibernate;
@@ -28,6 +31,8 @@ public class AdminController {
     private AdminService adminService;
     @Autowired
     private ClientDao clientDao;
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String adminHome(Model model) {
@@ -61,7 +66,7 @@ public class AdminController {
     @RequestMapping(value = "/client/{login}", method = RequestMethod.POST)
     public ModelAndView clientFinder(@RequestParam("login") String login, ModelMap model) {
         if(clientDao.findByLogin(login) == null) {
-            model.addAttribute("error", new Exception("Пользователь не найден в Базе"));
+            model.addAttribute("error", new Exception("Клиент не найден в Базе"));
             return new ModelAndView("admin/find_client", model);
         }
         Client client = adminService.getClientByLogin(login);
@@ -72,7 +77,7 @@ public class AdminController {
         return new ModelAndView("admin/client", model);
     }
 
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    @RequestMapping(value = "/find_client", method = RequestMethod.GET)
     public String findClient() {
         return "admin/find_client";
     }
@@ -110,7 +115,48 @@ public class AdminController {
         return "admin/all_employees";
     }
 
+    @Transactional
+    @RequestMapping(value = "/employee/{login}", method = RequestMethod.GET)
+    public String getCurrentEmployee(@PathVariable("login") String login, Model model) {
+        Employee employee = adminService.getEmployeeByLogin(login);
+        Set<EmployeeRole> roles = employee.getEmployeeRoles();
+        Hibernate.initialize(roles);
+        model.addAttribute("roles", roles);
+        model.addAttribute("employee", employee);
+        return "admin/employee";
+    }
 
+    @Transactional
+    @RequestMapping(value = "/employee/{login}", method = RequestMethod.POST)
+    public ModelAndView employeeFinder(@RequestParam("login") String login, ModelMap model) {
+        if(employeeDao.findByLogin(login) == null) {
+            model.addAttribute("error", new Exception("Сотрудник не найден в Базе"));
+            return new ModelAndView("admin/find_employee", model);
+        }
+        Employee employee = adminService.getEmployeeByLogin(login);
+        Set<EmployeeRole> roles = employee.getEmployeeRoles();
+        Hibernate.initialize(roles);
+        model.addAttribute("roles", roles);
+        model.addAttribute("employee", employee);
+        return new ModelAndView("admin/employee", model);
+    }
+
+    @RequestMapping(value = "/find_employee", method = RequestMethod.GET)
+    public String findEmployee() {
+        return "admin/find_employee";
+    }
+
+    @RequestMapping(value = "/employee/ban/{login}", method = RequestMethod.GET)
+    public String disableEmployee(@PathVariable("login") String login) {
+        adminService.banEmployee(login);
+        return "redirect:/admin/all_employee";
+    }
+
+    @RequestMapping(value = "/employee/unban/{login}", method = RequestMethod.GET)
+    public String enableEmployee(@PathVariable("login") String login) {
+        adminService.unbanEmployee(login);
+        return "redirect:/admin/all_employee";
+    }
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
