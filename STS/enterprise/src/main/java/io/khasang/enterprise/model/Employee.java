@@ -3,8 +3,10 @@ package io.khasang.enterprise.model;
 import io.khasang.enterprise.model.enums.Department;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +20,7 @@ public class Employee extends SuperUser {
     private String fullName;
 
     @Column(name = "age")
-    private String age;
+    private Integer age;
 
     @Column(name = "email")
     private String email;
@@ -26,9 +28,11 @@ public class Employee extends SuperUser {
     @Column(name = "address")
     private String address;
 
+    @Digits(integer=6, fraction=2)
     @Column(name = "salary")
     private BigDecimal salary;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "hire_date")
     @Temporal(TemporalType.DATE)
     private Date hiredate;
@@ -41,6 +45,7 @@ public class Employee extends SuperUser {
     @Enumerated(EnumType.STRING)
     private Department department;
 
+    @Digits(integer=6, fraction=2)
     @Column(name = "tax")
     private BigDecimal tax;
 
@@ -66,11 +71,11 @@ public class Employee extends SuperUser {
         this.fullName = fullName;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

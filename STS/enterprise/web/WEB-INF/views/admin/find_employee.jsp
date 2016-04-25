@@ -18,7 +18,7 @@
                 <table>
                     <tr>
                         <td>Введите Логин Сотрудника <br/></td>
-                        <td><input type='text' name='login'></td>
+                        <td><input name='login'></td>
                     </tr>
                     <br/>
                     <tr>

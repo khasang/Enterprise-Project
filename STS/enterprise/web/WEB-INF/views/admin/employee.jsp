@@ -15,6 +15,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Логин</th>
+                    <th>Пароль</th>
                     <th>Адрес</th>
                     <th>Возраст</th>
                     <th>Департамен</th>
@@ -30,6 +31,7 @@
                 <tr>
                     <td>${employee.id}</td>
                     <td>${employee.login}</td>
+                    <td>${employee.password}</td>
                     <td>${employee.address}</td>
                     <td>${employee.age}</td>
                     <td>${employee.department}</td>

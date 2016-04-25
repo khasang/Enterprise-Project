@@ -6,20 +6,25 @@ import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.ClientRole;
 import io.khasang.enterprise.model.Employee;
 import io.khasang.enterprise.model.EmployeeRole;
+import io.khasang.enterprise.model.enums.Department;
 import io.khasang.enterprise.service.AdminService;
+import io.khasang.enterprise.service.registrationService.EmployeeValidator;
+import io.khasang.enterprise.service.registrationService.RegistrationService;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -33,6 +38,10 @@ public class AdminController {
     private ClientDao clientDao;
     @Autowired
     private EmployeeDao employeeDao;
+    @Autowired
+    private EmployeeValidator employeeValidator;
+    @Autowired
+    RegistrationService registrationService;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String adminHome(Model model) {
@@ -158,10 +167,26 @@ public class AdminController {
         return "redirect:/admin/all_employee";
     }
 
-
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String adminRegistration() {
+    public String adminRegistration(Model model) {
+        model.addAttribute("employee", new Employee());
         return "admin/registration";
+    }
+
+    @RequestMapping(value = "/registration/new_employee", method = RequestMethod.POST)
+    public String saveEmployee(@ModelAttribute("employee")@Valid Employee employee, BindingResult result, Model model) {
+            if(result.hasErrors()) {
+            return "admin/registration";
+        } else {
+            employee.setEnabled(true);
+            registrationService.saveEmployeeinDB(employee);
+            model.addAttribute("employee", employee);
+            return "admin/organization";
+        }
+    }
+    @InitBinder("employee")
+    public void initClientBinder(WebDataBinder dataBinder) {
+        dataBinder.setValidator(employeeValidator);
     }
 
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
