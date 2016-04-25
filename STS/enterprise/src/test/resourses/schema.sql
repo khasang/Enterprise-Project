@@ -8,10 +8,10 @@ INSERT INTO client_role VALUES (2,'ROLE_CLIENT', 2);
 INSERT INTO client_role VALUES (3,'ROLE_CLIENT', 3);
 INSERT INTO client_role VALUES (4,'ROLE_CLIENT', 4);
 
-INSERT INTO employee VALUES (1, 'employeelogin', 'employeepassword', 'Wash.street-18', '30', 'DEVELOPMENT', 'er@yt.ty', 1, '2000-01-01', 'BondJamesAlekseevich', '2000-01-01','50000.00', '1500.00');
-INSERT INTO employee VALUES (2, 'employeelogin2', 'employeepassword1', 'Wash.street-15', '20', 'QA', 'er2@yt.ty', 1, '2001-01-01', 'BondJamesAlekseevich1', '2001-01-01', '90000.00', '2500.00');
-INSERT INTO employee VALUES (3, 'employeelogin3', 'employeepassword2', 'Wash.street-16', '70', 'DESIGN', 'er3@yt.ty', 1, '2005-01-01', 'BondJamesAlekseevich2', '2002-01-01', '70000.00', '2500.00');
-INSERT INTO employee VALUES (4, 'employeelogin4', 'employeepassword3', 'Wash.street-11', '70', 'MANAGEMENT', 'er4@yt.ty', 4, '2007-01-01', 'BondJamesAlekseevich3', '2003-01-01', '80000.00', '3500.00');
+INSERT INTO employee VALUES (1, 'employeelogin', 'employeepassword', 'Wash.street-18', 30, 'DEVELOPMENT', 'er@yt.ty', 1, '2000-01-01', 'BondJamesAlekseevich', '2000-01-01','50000.00', '1500.00');
+INSERT INTO employee VALUES (2, 'employeelogin2', 'employeepassword1', 'Wash.street-15', 20, 'QA', 'er2@yt.ty', 1, '2001-01-01', 'BondJamesAlekseevich1', '2001-01-01', '90000.00', '2500.00');
+INSERT INTO employee VALUES (3, 'employeelogin3', 'employeepassword2', 'Wash.street-16', 70, 'DESIGN', 'er3@yt.ty', 1, '2005-01-01', 'BondJamesAlekseevich2', '2002-01-01', '70000.00', '2500.00');
+INSERT INTO employee VALUES (4, 'employeelogin4', 'employeepassword3', 'Wash.street-11', 70, 'MANAGEMENT', 'er4@yt.ty', 4, '2007-01-01', 'BondJamesAlekseevich3', '2003-01-01', '80000.00', '3500.00');
 
 INSERT INTO employee_role VALUES (1,'ROLE_ADMIN', 1);
 INSERT INTO employee_role VALUES (2,'ROLE_EMPLOYEE', 2);

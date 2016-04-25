@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("adminService")
@@ -113,6 +114,7 @@ public class AdminService {
     public void banEmployee(String login) {
         Employee employee = employeeDao.findByLogin(login);
         employee.setEnabled(false);
+        employee.setFireDate(new Date());
         employeeDao.update(employee);
     }
 
@@ -120,6 +122,7 @@ public class AdminService {
     public void unbanEmployee(String login) {
         Employee employee = employeeDao.findByLogin(login);
         employee.setEnabled(true);
+        employee.setFireDate(null);
         employeeDao.update(employee);
     }
 }
