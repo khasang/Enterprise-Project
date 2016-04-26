@@ -28,11 +28,11 @@ public class Employee extends SuperUser {
     @Column(name = "address")
     private String address;
 
-    @Digits(integer=6, fraction=2)
+    @Digits(integer = 6, fraction = 2)
     @Column(name = "salary")
     private BigDecimal salary;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "hire_date")
     @Temporal(TemporalType.DATE)
     private Date hiredate;
@@ -45,7 +45,7 @@ public class Employee extends SuperUser {
     @Enumerated(EnumType.STRING)
     private Department department;
 
-    @Digits(integer=6, fraction=2)
+    @Digits(integer = 6, fraction = 2)
     @Column(name = "tax")
     private BigDecimal tax;
 
@@ -55,6 +55,10 @@ public class Employee extends SuperUser {
     @OneToMany(mappedBy = "employee")
     @Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private Set<EmployeeRole> employeeRoles = new HashSet<>();
+
+    @OneToMany(mappedBy = "employee")
+    @Cascade(value = CascadeType.SAVE_UPDATE)
+    private Set<Track> tracks = new HashSet<>(0);
 
     public Employee() {
     }

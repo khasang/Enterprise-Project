@@ -48,6 +48,18 @@ section#news {
   vertical-align:   top;
 }
 
+div#TrackingTable {
+  display:          table-row;
+}
+
+section#OrderPartOfTable {
+  display:          table-cell;
+}
+
+section#ProgressPartOfTable {
+  display:          table-cell;
+}
+
 footer {
   background-color: #6d617e;
   color:            #efe5d0;

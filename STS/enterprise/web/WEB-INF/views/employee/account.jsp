@@ -12,19 +12,17 @@
 		<section id="main">
 			<h1>Личный кабинет Работника</h1>
 			<p>
-				Курсы валют на ${currentDay} <br/>
-				USD: ${USD} <br/>
-				EUR: ${EUR} <br/>
+				<%--Курсы валют на ${currentDay} <br/>--%>
+				<%--USD: ${USD} <br/>--%>
+				<%--EUR: ${EUR} <br/>--%>
 				<br/>
-				Что-нибудь придумать для личного кабинета Работника
-				<br>
 			</p>
 		</section>
 		<section id="news">
 			<jsp:include page="../fragments/newssection.jsp"/>
 		</section>
-	</div> <!-- mainRow -->
-</div> <!-- mainContainer -->
+	</div>
+</div>
 
 <footer>
 	&copy; 2016, Enterprise co.

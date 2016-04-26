@@ -14,7 +14,7 @@
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <form:form id="details" method="POST" action="/reg/registration" modelAttribute="client">
+            <form:form id="details" method="POST" action="/tracking/{projectId}/{orderId}/newtrack" modelAttribute="client">
                 <form:errors path="*" cssClass="errorblock" element="div"/>
                 <table align="center" border="1" width="30%" cellpadding="5">
                     <thead>

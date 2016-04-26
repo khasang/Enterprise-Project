@@ -23,5 +23,9 @@
     <ul>
         <li><a href=<c:url value='/employee/account'/>>ЛИЧНЫЙ КАБИНЕТ</a></li>
         <li><a href=<c:url value='/employee/all-projects'/>>ВСЕ ПРОЕКТЫ</a></li>
+        <li><a href=<c:url value='/employee/tracking'/>>TRACKING</a></li>
+        <li><a href=<c:url value='/employee/mytasks'/>>MY TASKS</a></li>
+        <li><a href=<c:url value='/employee/myaccount'/>>MY ACCOUNT</a></li>
+
     </ul>
 </nav>
