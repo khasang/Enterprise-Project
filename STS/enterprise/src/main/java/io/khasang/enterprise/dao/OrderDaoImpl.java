@@ -2,9 +2,7 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.OrderDao;
 import io.khasang.enterprise.model.CustomerOrder;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
