@@ -35,4 +35,14 @@ public class RegistrationService {
         employeeDao.save(employee);
         adminService.addEmployeeRole(employee.getId());
     }
+
+    @Transactional
+    public Employee getEmployeeToEdit() {
+        return employeeDao.findByLogin("Jack"); // todo найти способ, как пихнуть сюдя текущего юзера
+    }
+
+    @Transactional
+    public void updateEmployee(Employee employee) {
+        employeeDao.update(employee);
+    }
 }

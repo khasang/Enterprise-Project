@@ -1,8 +1,14 @@
 package io.khasang.enterprise.model;
 
 import io.khasang.enterprise.model.enums.Features;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer_order")
@@ -18,6 +24,10 @@ public class CustomerOrder {
 
     @Enumerated(EnumType.STRING)
     private Features feature;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @Cascade(value = org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private Set<Track> tracks = new HashSet<>(0);
 
     public CustomerOrder() {
     }
@@ -44,6 +54,14 @@ public class CustomerOrder {
 
     public void setFeature(Features features) {
         this.feature = features;
+    }
+
+    public Set<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(Set<Track> tracks) {
+        this.tracks = tracks;
     }
 
     @Override

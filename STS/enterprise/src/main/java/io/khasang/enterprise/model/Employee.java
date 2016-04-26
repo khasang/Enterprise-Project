@@ -51,6 +51,10 @@ public class Employee extends SuperUser {
     @Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private Set<EmployeeRole> employeeRoles = new HashSet<>();
 
+    @OneToMany(mappedBy = "employee")
+    @Cascade(value = CascadeType.SAVE_UPDATE)
+    private Set<Track> tracks = new HashSet<>(0);
+
     public Employee() {
     }
 

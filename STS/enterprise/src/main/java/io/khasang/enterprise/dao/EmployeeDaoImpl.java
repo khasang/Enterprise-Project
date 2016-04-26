@@ -61,7 +61,7 @@ public class EmployeeDaoImpl extends AbstractDao<Integer, Employee> implements E
     }
 
     @Override
-    public void deleteAllEmployersRoles() {
+    public void deleteAllEmployeesRoles() {
         Query query = getSession().createSQLQuery("delete FROM employee_role");
         query.executeUpdate();
     }

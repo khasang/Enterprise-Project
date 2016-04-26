@@ -6,6 +6,7 @@ import io.khasang.enterprise.dao.interfaces.*;
 import io.khasang.enterprise.model.*;
 import io.khasang.enterprise.model.enums.Features;
 import io.khasang.enterprise.model.enums.ProjectBasis;
+import io.khasang.enterprise.model.enums.TrackStatus;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,6 +55,8 @@ public class DataAccessTest {
     private ProjectDao projectDao;
     @Autowired
     private OrderDao orderDao;
+    @Autowired
+    private TrackDao trackDao;
 
     @Before
     public void setupMock() {
@@ -220,9 +223,15 @@ public class DataAccessTest {
     @Test
     public void findOrderByProjectIdTest() throws Exception {
         List<CustomerOrder> orders = orderDao.findOrdersByProjectId(3);
-        Assert.assertTrue(orders.size() >= 2);
+        Assert.assertTrue(orders.size() >= 1);
         Assert.assertEquals(Features.ONLINEPAYMENTS, orders.get(0).getFeature());
-        Assert.assertEquals(Features.LIVECHAT, orders.get(1).getFeature());
+    }
+
+    @Test
+    public void findOrderByIdTest() throws Exception {
+        CustomerOrder order = orderDao.findById(1);
+        Assert.assertEquals(Features.PHOTOGALLERY, order.getFeature());
+
     }
 
     @Test
@@ -261,6 +270,29 @@ public class DataAccessTest {
         Assert.assertTrue(projects.size() >= 3);
         for (Project project : projects) {
             Assert.assertTrue(project.getEndDate() != null);
+        }
+    }
+
+//    @Test
+//    public void findAllTracksByEmployeeId() throws Exception {
+//        List<T>
+//    }
+
+    @Test
+    public void findTrackByOrderIdAndMaxProgressTest() throws Exception {
+        Track lastTrackOfOrder = trackDao.findByOrderIdAndMaxProgress(1); //todo костыль, вместо 1 поставить относительное
+        Assert.assertEquals(100, lastTrackOfOrder.getProgress().longValue());
+        lastTrackOfOrder = trackDao.findByOrderIdAndMaxProgress(2); //todo костыль, вместо 2 поставить относительное
+        Assert.assertEquals(70, lastTrackOfOrder.getProgress().longValue());
+    }
+
+    @Test
+    public void findUnfinishedByEmployeeIdTest() throws Exception {
+        final long finishedPercentageValue = 100;
+        List<Track> tasksOfEmployee = trackDao.findUnfinishedByEmployeeId(1); // todo 1 временно
+        for (Track track : tasksOfEmployee) {
+            Assert.assertEquals(TrackStatus.RUNNING, track.getTrackStatus());
+            Assert.assertNotEquals(finishedPercentageValue, track.getProgress().longValue());
         }
     }
 }

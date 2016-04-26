@@ -39,7 +39,7 @@ public class Project {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
     @Cascade(value = {CascadeType.SAVE_UPDATE, CascadeType.DELETE})
     private Set<CustomerOrder> customerOrders = new HashSet<>(0);
 
