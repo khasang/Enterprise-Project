@@ -1,22 +1,30 @@
 package io.khasang.enterprise.controller.admin;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
+import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.ClientRole;
+import io.khasang.enterprise.model.Employee;
+import io.khasang.enterprise.model.EmployeeRole;
+import io.khasang.enterprise.model.enums.Department;
 import io.khasang.enterprise.service.AdminService;
+import io.khasang.enterprise.service.registrationService.EmployeeValidator;
+import io.khasang.enterprise.service.registrationService.RegistrationService;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -28,6 +36,12 @@ public class AdminController {
     private AdminService adminService;
     @Autowired
     private ClientDao clientDao;
+    @Autowired
+    private EmployeeDao employeeDao;
+    @Autowired
+    private EmployeeValidator employeeValidator;
+    @Autowired
+    RegistrationService registrationService;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String adminHome(Model model) {
@@ -36,6 +50,10 @@ public class AdminController {
         model.addAttribute("currentDay", rates.getCurrentDay());
         return "admin/account";
     }
+
+    /**
+     * CRUD operations by Client
+     */
 
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public String adminGetAllClient() {
@@ -53,16 +71,11 @@ public class AdminController {
         return "admin/client";
     }
 
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public String findClient() {
-        return "admin/find_client";
-    }
-
     @Transactional
     @RequestMapping(value = "/client/{login}", method = RequestMethod.POST)
     public ModelAndView clientFinder(@RequestParam("login") String login, ModelMap model) {
         if(clientDao.findByLogin(login) == null) {
-            model.addAttribute("error", new Exception("Пользователь не найден в Базе"));
+            model.addAttribute("error", new Exception("Клиент не найден в Базе"));
             return new ModelAndView("admin/find_client", model);
         }
         Client client = adminService.getClientByLogin(login);
@@ -71,6 +84,11 @@ public class AdminController {
         model.addAttribute("roles", roles);
         model.addAttribute("client", client);
         return new ModelAndView("admin/client", model);
+    }
+
+    @RequestMapping(value = "/find_client", method = RequestMethod.GET)
+    public String findClient() {
+        return "admin/find_client";
     }
 
     @RequestMapping(value = "/client/ban/{login}", method = RequestMethod.GET)
@@ -91,18 +109,84 @@ public class AdminController {
         return "admin/all_clients";
     }
 
-
-
-
+    /**
+     * CRUD operations by Employee
+     */
 
     @RequestMapping(value = "/organization", method = RequestMethod.GET)
     public String adminOrganization() {
         return "admin/organization";
     }
 
+    @RequestMapping(value = "/all_employee", method = RequestMethod.GET)
+    public String getAllEmployee(Model model) {
+        model.addAttribute("employee", adminService.getAllEmployees());
+        return "admin/all_employees";
+    }
+
+    @Transactional
+    @RequestMapping(value = "/employee/{login}", method = RequestMethod.GET)
+    public String getCurrentEmployee(@PathVariable("login") String login, Model model) {
+        Employee employee = adminService.getEmployeeByLogin(login);
+        Set<EmployeeRole> roles = employee.getEmployeeRoles();
+        Hibernate.initialize(roles);
+        model.addAttribute("roles", roles);
+        model.addAttribute("employee", employee);
+        return "admin/employee";
+    }
+
+    @Transactional
+    @RequestMapping(value = "/employee/{login}", method = RequestMethod.POST)
+    public ModelAndView employeeFinder(@RequestParam("login") String login, ModelMap model) {
+        if(employeeDao.findByLogin(login) == null) {
+            model.addAttribute("error", new Exception("Сотрудник не найден в Базе"));
+            return new ModelAndView("admin/find_employee", model);
+        }
+        Employee employee = adminService.getEmployeeByLogin(login);
+        Set<EmployeeRole> roles = employee.getEmployeeRoles();
+        Hibernate.initialize(roles);
+        model.addAttribute("roles", roles);
+        model.addAttribute("employee", employee);
+        return new ModelAndView("admin/employee", model);
+    }
+
+    @RequestMapping(value = "/find_employee", method = RequestMethod.GET)
+    public String findEmployee() {
+        return "admin/find_employee";
+    }
+
+    @RequestMapping(value = "/employee/ban/{login}", method = RequestMethod.GET)
+    public String disableEmployee(@PathVariable("login") String login) {
+        adminService.banEmployee(login);
+        return "redirect:/admin/all_employee";
+    }
+
+    @RequestMapping(value = "/employee/unban/{login}", method = RequestMethod.GET)
+    public String enableEmployee(@PathVariable("login") String login) {
+        adminService.unbanEmployee(login);
+        return "redirect:/admin/all_employee";
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String adminRegistration() {
+    public String adminRegistration(Model model) {
+        model.addAttribute("employee", new Employee());
         return "admin/registration";
+    }
+
+    @RequestMapping(value = "/registration/new_employee", method = RequestMethod.POST)
+    public String saveEmployee(@ModelAttribute("employee")@Valid Employee employee, BindingResult result, Model model) {
+            if(result.hasErrors()) {
+            return "admin/registration";
+        } else {
+            employee.setEnabled(true);
+            registrationService.saveEmployeeinDB(employee);
+            model.addAttribute("employee", employee);
+            return "admin/organization";
+        }
+    }
+    @InitBinder("employee")
+    public void initClientBinder(WebDataBinder dataBinder) {
+        dataBinder.setValidator(employeeValidator);
     }
 
     @RequestMapping(value = "/projects", method = RequestMethod.GET)

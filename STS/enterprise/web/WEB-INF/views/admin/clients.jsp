@@ -13,9 +13,9 @@
             <h1>CRUD по клиентам</h1>
             <p>
                 <a href=<c:url value='/admin/all_clients'/>>Список всех клиентов</a> <br/>
-                <a href=<c:url value='/admin/find'/>>Найти клиента</a> <br/>
+                <a href=<c:url value='/admin/find_client'/>>Найти клиента</a> <br/>
             </p>
-            <a href=<c:url value='/admin/clients'/>>НАЗАД</a> <br/>
+            <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
         </section>
         <section id="news">
             <jsp:include page="../fragments/newssection.jsp"/>
