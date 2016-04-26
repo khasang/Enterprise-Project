@@ -10,7 +10,6 @@ import io.khasang.enterprise.model.Project;
 import io.khasang.enterprise.model.Track;
 import io.khasang.enterprise.model.enums.TrackStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,7 +48,10 @@ public class ProjectTrackingService {
     public List<Track> getLastTrackOfEachOrder(List<CustomerOrder> orders) {
         List<Track> lastTracks = new ArrayList<>();
         for (CustomerOrder order : orders) {
-            lastTracks.add(trackDao.findByOrderIdAndMaxProgress(order.getId()));
+            Track track = trackDao.findByOrderIdAndMaxProgress(order.getId());
+            if (track != null) {
+                lastTracks.add(track);
+            }
         }
         return lastTracks;
     }
@@ -66,7 +68,7 @@ public class ProjectTrackingService {
         String login = principal.getName();
         track.setOrder(orderDao.findById(orderId));
         track.setTrackStatus(TrackStatus.REQUESTED);
-        track.setEmployee(employeeDao.findByLogin(login)); // todo убрать заглушку 6. Вместо нее ставить id текущего емплоера в системе
+        track.setEmployee(employeeDao.findByLogin(login));
         trackDao.save(track);
     }
 

@@ -23,7 +23,7 @@ public class Track {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @Column(name = "progress", nullable = false, unique = true, columnDefinition = "INT(11) default 5")
+    @Column(name = "progress", nullable = false, columnDefinition = "INT(11) default 5")
     @Min(value = 0)
     @Max(value = 100)
     private Integer progress = INITIAL_PROGRESS;
