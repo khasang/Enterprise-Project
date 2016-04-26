@@ -5,13 +5,16 @@ import io.khasang.enterprise.dao.interfaces.OrderDao;
 import io.khasang.enterprise.dao.interfaces.ProjectDao;
 import io.khasang.enterprise.dao.interfaces.TrackDao;
 import io.khasang.enterprise.model.CustomerOrder;
+import io.khasang.enterprise.model.Employee;
 import io.khasang.enterprise.model.Project;
 import io.khasang.enterprise.model.Track;
 import io.khasang.enterprise.model.enums.TrackStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,15 +62,17 @@ public class ProjectTrackingService {
         return orderDao.findById(orderId);
     }
 
-    public void createNewTrack(Track track, Integer orderId) {
+    public void createNewTrack(Track track, Integer orderId, Principal principal) {
+        String login = principal.getName();
         track.setOrder(orderDao.findById(orderId));
         track.setTrackStatus(TrackStatus.REQUESTED);
-//        Employee employee = (Employee) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        track.setEmployee(employeeDao.findById(6)); // todo убрать заглушку 6. Вместо нее ставить id текущего емплоера в системе
+        track.setEmployee(employeeDao.findByLogin(login)); // todo убрать заглушку 6. Вместо нее ставить id текущего емплоера в системе
         trackDao.save(track);
     }
 
-    public List<Track> getTasksOfEmployee() {
-        return trackDao.findUnfinishedByEmployeeId(6); // todo убрать заглушкку 6
+    public List<Track> getTasksOfEmployee(Principal principal) {
+        String login = principal.getName();
+        Employee employee = employeeDao.findByLogin(login);
+        return trackDao.findUnfinishedByEmployeeId(employee.getId());
     }
 }

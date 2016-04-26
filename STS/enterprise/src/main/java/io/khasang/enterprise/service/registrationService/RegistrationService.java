@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
+
 @Service
 @Transactional
 public class RegistrationService {
@@ -37,8 +39,8 @@ public class RegistrationService {
     }
 
     @Transactional
-    public Employee getEmployeeToEdit() {
-        return employeeDao.findByLogin("Jack"); // todo найти способ, как пихнуть сюдя текущего юзера
+    public Employee getEmployeeToEdit(Principal principal) {
+        return employeeDao.findByLogin(principal.getName()); // todo найти способ, как пихнуть сюдя текущего юзера
     }
 
     @Transactional

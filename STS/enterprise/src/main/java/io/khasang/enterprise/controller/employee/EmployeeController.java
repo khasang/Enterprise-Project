@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -88,25 +89,25 @@ public class EmployeeController {
     @RequestMapping(value = "/tracking/{projectId}/{orderId}/create", method = RequestMethod.POST)
     public String createNewTrack(@ModelAttribute("track") @Valid Track newTrack, BindingResult result,
                                  @PathVariable("projectId") Integer projectId,
-                                 @PathVariable("orderId") Integer orderId, Model model) {
+                                 @PathVariable("orderId") Integer orderId, Model model, Principal principal) {
         if (result.hasErrors()) {
             return "redirect:/tracking/{projectId}/{orderId}/input_track";
         } else {
-            projectTrackingService.createNewTrack(newTrack, orderId);
+            projectTrackingService.createNewTrack(newTrack, orderId, principal);
             model.addAttribute("trackingProject", projectTrackingService.getProjectById(projectId));
             return "employee/newTrackSuccess";
         }
     }
 
     @RequestMapping(value = "/mytasks", method = RequestMethod.GET)
-    public String getMyTasks(Model model) {
-        model.addAttribute("tasks", projectTrackingService.getTasksOfEmployee());
+    public String getMyTasks(Model model, Principal principal) {
+        model.addAttribute("tasks", projectTrackingService.getTasksOfEmployee(principal));
         return "employee/tasks";
     }
 
     @RequestMapping(value = "/myaccount", method = RequestMethod.GET)
-    public String getMyAccountData(Model model) {
-        model.addAttribute("accountData", registrationService.getEmployeeToEdit());
+    public String getMyAccountData(Model model, Principal principal) {
+        model.addAttribute("accountData", registrationService.getEmployeeToEdit(principal));
         return "employee/aboutme";
     }
 }
