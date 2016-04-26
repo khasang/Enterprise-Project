@@ -54,7 +54,7 @@ public class EmployeeValidator implements Validator {
             errors.rejectValue("fullName", "required", "Contact person can't be empty.");
         }
 
-        if(age == null || age < 18 || age > 100) {
+        if (age == null || age < 18 || age > 100) {
             errors.rejectValue("age", "required", "Wrong age range");
         }
 

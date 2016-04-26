@@ -38,7 +38,11 @@ public class TrackDaoImpl extends AbstractDao<Integer, Track> implements TrackDa
         Query query = getSession().createQuery("FROM Track t WHERE t.order = :orderId ORDER BY t.progress DESC");
         query.setInteger("orderId", orderId);
         query.getFirstResult();
-        return (Track) query.list().get(0);
+        if (query.list().size() == 0) {
+            return null;
+        } else {
+            return (Track) query.list().get(0);
+        }
     }
 
 //    @SuppressWarnings("unchecked")
