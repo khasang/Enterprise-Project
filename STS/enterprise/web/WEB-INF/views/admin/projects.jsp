@@ -12,12 +12,9 @@
         <section id="main">
             <h1>CRUD по проектам</h1>
             <p>
-                getAll
-                <br>
-                удалить/добавить
-                <br>
-                getById
-                <br>
+                <a href=<c:url value='/admin/all_projects'/>>Список всех проектов</a> <br/>
+                <a href=<c:url value='/admin/projects/tracking'/>>Список рабочих проектов</a> <br/>
+                <a href=<c:url value='/admin/em111ployee/id/projects'/>>Проекты сотрудника</a> <br/>
             </p>
             <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
         </section>

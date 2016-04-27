@@ -2,12 +2,10 @@ package io.khasang.enterprise.controller.admin;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.dao.interfaces.EmployeeDao;
-import io.khasang.enterprise.model.Client;
-import io.khasang.enterprise.model.ClientRole;
-import io.khasang.enterprise.model.Employee;
-import io.khasang.enterprise.model.EmployeeRole;
+import io.khasang.enterprise.model.*;
 import io.khasang.enterprise.model.enums.Department;
 import io.khasang.enterprise.service.AdminService;
+import io.khasang.enterprise.service.ProjectTrackingService;
 import io.khasang.enterprise.service.registrationService.EmployeeValidator;
 import io.khasang.enterprise.service.registrationService.RegistrationService;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
@@ -42,6 +40,8 @@ public class AdminController {
     private EmployeeValidator employeeValidator;
     @Autowired
     RegistrationService registrationService;
+    @Autowired
+    private ProjectTrackingService projectTrackingService;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String adminHome(Model model) {
@@ -189,9 +189,65 @@ public class AdminController {
         dataBinder.setValidator(employeeValidator);
     }
 
+    @Transactional
+    @RequestMapping(value = "/employee/{login}/tracks", method = RequestMethod.GET)
+    public String getEmployeeProjects(@PathVariable("login") String login, Model model) {
+        Employee employee = adminService.getEmployeeByLogin(login);
+        List<Track> tracks = adminService.getEmployeeTracks(employee.getId());
+        Hibernate.initialize(tracks);
+        model.addAttribute("tracks", tracks);
+        model.addAttribute("employee", employee);
+        return "admin/employee_tracks";
+    }
+
+    /**
+     * CRUD operations by Projects
+     */
+
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
     public String adminProjects() {
         return "admin/projects";
+    }
+
+    @RequestMapping(value = "/all_projects", method = RequestMethod.GET) //todo: separate all projects for running finish new
+    public String allProjects(Model model) {
+        List<Project> projects = projectTrackingService.getAllProjects();
+        model.addAttribute("allProjects", projects);
+        return "admin/all_projects";
+    }
+
+    @RequestMapping(value = "/all_projects/{projectId}/orders", method = RequestMethod.GET)
+    public String adminGetProjectOrders(@PathVariable("projectId") Integer projectId, Model model) {
+        projectTrackingService.getProjectOrders(projectId);
+        model.addAttribute("ordersOfProject", projectTrackingService.getProjectOrders(projectId));
+        model.addAttribute("project", projectTrackingService.getProjectById(projectId));
+        return "admin/projectOrders";
+    }
+
+    @RequestMapping(value = "/projects/tracking", method = RequestMethod.GET)
+    public String adminGetTrackingBoard(Model model) {
+        model.addAttribute("runningProjects", projectTrackingService.getUnfinishedProjects());
+        return "admin/tracking";
+    }
+
+    @RequestMapping(value = "/projects/tracking/{projectId}", method = RequestMethod.GET)
+    public String adminGetTrackingItem(@PathVariable("projectId") Integer projectId, Model model) {
+        Project project = projectTrackingService.getProjectById(projectId);
+        List<CustomerOrder> orders = projectTrackingService.getProjectOrders(projectId);
+        model.addAttribute("lastTrack", projectTrackingService.getLastTrackOfEachOrder(orders));
+        model.addAttribute("ordersOfTrackingProject", orders);
+        model.addAttribute("trackingProject", project);
+        return "admin/trackingItem";
+    }
+
+    @RequestMapping(value = "/projects/tracking/{projectId}/{orderId}/history", method = RequestMethod.GET)
+    public String getTrackingHistoryOfOrder(@PathVariable("projectId") Integer projectId,
+                                            @PathVariable("orderId") Integer orderId, Model model) {
+
+        model.addAttribute("orderOfProject", projectTrackingService.getOrderById(orderId));
+        model.addAttribute("trackingProject", projectTrackingService.getProjectById(projectId));
+        model.addAttribute("allTracks", projectTrackingService.getTrackingHistoryOfOrder(orderId));
+        return "admin/history";
     }
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)

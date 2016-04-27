@@ -26,6 +26,7 @@
                     <th>Зарплата</th>
                     <th>Налог</th>
                     <th>Роли</th>
+                    <th>Проекты</th>
                     <th>Enabled</th>
                 </tr>
                 <tr>
@@ -46,6 +47,7 @@
                             ${r.role} &nbsp;&nbsp;
                         </c:forEach>
                     </td>
+                    <td><a href=<c:url value='/admin/employee/${employee.login}/tracks'/>>Проекты</a></td>
                     <td>${employee.enabled}</td>
                 </tr>
                 <br/>
