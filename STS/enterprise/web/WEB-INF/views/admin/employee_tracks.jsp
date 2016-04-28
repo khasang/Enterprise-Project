@@ -12,7 +12,7 @@
     <div id="mainRow">
         <section id="main">
             <p>
-                Tracks of ${employee.login}:
+                RUNNING Tracks of ${employee.login}:
             </p>
             <table border="1">
                 <tr>
@@ -22,13 +22,35 @@
                     <th>Description</th>
                     <th>Progress</th>
                 </tr>
-                <c:forEach items="${tracks}" var="tracks">
+                <c:forEach items="${runningTracks}" var="runningTracks">
                     <tr>
-                        <td>${tracks.order.project.title}</td>
-                        <td>${tracks.order.feature}</td>
-                        <td>${tracks.trackStatus}</td>
-                        <td>${tracks.description}</td>
-                        <td>${tracks.progress} %</td>
+                        <td>${runningTracks.order.project.title}</td>
+                        <td>${runningTracks.order.feature}</td>
+                        <td>${runningTracks.trackStatus}</td>
+                        <td>${runningTracks.description}</td>
+                        <td>${runningTracks.progress} %</td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <br/>
+            <p>
+                CONFIRMED Tracks of ${employee.login}:
+            </p>
+            <table border="1">
+                <tr>
+                    <th>Project</th>
+                    <th>Order</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Progress</th>
+                </tr>
+                <c:forEach items="${confirmedTracks}" var="confirmedTracks">
+                    <tr>
+                        <td>${confirmedTracks.order.project.title}</td>
+                        <td>${confirmedTracks.order.feature}</td>
+                        <td>${confirmedTracks.trackStatus}</td>
+                        <td>${confirmedTracks.description}</td>
+                        <td>${confirmedTracks.progress} %</td>
                     </tr>
                 </c:forEach>
             </table>

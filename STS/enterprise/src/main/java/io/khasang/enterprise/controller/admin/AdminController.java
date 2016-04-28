@@ -3,7 +3,7 @@ package io.khasang.enterprise.controller.admin;
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.dao.interfaces.EmployeeDao;
 import io.khasang.enterprise.model.*;
-import io.khasang.enterprise.model.enums.Department;
+import io.khasang.enterprise.model.enums.TrackStatus;
 import io.khasang.enterprise.service.AdminService;
 import io.khasang.enterprise.service.ProjectTrackingService;
 import io.khasang.enterprise.service.registrationService.EmployeeValidator;
@@ -11,13 +11,11 @@ import io.khasang.enterprise.service.registrationService.RegistrationService;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -195,9 +193,30 @@ public class AdminController {
         Employee employee = adminService.getEmployeeByLogin(login);
         List<Track> tracks = adminService.getEmployeeTracks(employee.getId());
         Hibernate.initialize(tracks);
-        model.addAttribute("tracks", tracks);
+        model.addAttribute("runningTracks", getRunningTracks(tracks));
+        model.addAttribute("confirmedTracks", getConfirmedTracks(tracks));
         model.addAttribute("employee", employee);
         return "admin/employee_tracks";
+    }
+
+    private List<Track> getRunningTracks(List<Track> tracks) {
+        List<Track> result = new ArrayList<>();
+        for (Track track: tracks) {
+            if (track.getTrackStatus().equals(TrackStatus.RUNNING)) {
+                result.add(track);
+            }
+        }
+        return result;
+    }
+
+    private List<Track> getConfirmedTracks(List<Track> tracks) {
+        List<Track> result = new ArrayList<>();
+        for (Track track: tracks) {
+            if (track.getTrackStatus().equals(TrackStatus.CONFIRMED)) {
+                result.add(track);
+            }
+        }
+        return result;
     }
 
     /**
