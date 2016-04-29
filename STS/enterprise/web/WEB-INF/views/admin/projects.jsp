@@ -12,9 +12,8 @@
         <section id="main">
             <h1>CRUD по проектам</h1>
             <p>
-                <a href=<c:url value='/admin/all_projects'/>>Список всех проектов</a> <br/>
-                <a href=<c:url value='/admin/projects/tracking'/>>Список рабочих проектов</a> <br/>
-                <a href=<c:url value='/admin/em111ployee/id/projects'/>>Проекты сотрудника</a> <br/>
+                <a href=<c:url value='/admin/all_projects'/>>All Projects</a> <br/>
+                <a href=<c:url value='/admin/project/find'/>>Find project</a> <br/>
             </p>
             <a href=<c:url value='/admin/account'/>>НАЗАД</a> <br/>
         </section>

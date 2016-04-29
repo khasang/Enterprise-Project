@@ -28,5 +28,5 @@ public interface ProjectDao {
 
     void deleteAllProjects();
 
-    List<Project> findProjectsByClient(Client client);
+    Project findProjectsByTitle(String title);
 }

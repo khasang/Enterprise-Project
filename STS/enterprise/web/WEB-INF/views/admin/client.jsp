@@ -39,7 +39,7 @@
                     </td>
                     <td>
                         <c:forEach items="${projects}" var="p">
-                            ${p.title} &nbsp;&nbsp;
+                            <a href=<c:url value='/admin/projects/${p.id}'/>>${p.title}</a> <br/> &nbsp;&nbsp;
                         </c:forEach>
                     </td>
                     <td>${client.enabled}</td>

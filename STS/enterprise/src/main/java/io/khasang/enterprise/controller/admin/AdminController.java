@@ -247,7 +247,7 @@ public class AdminController {
         return "admin/project";
     }
 
-    @RequestMapping(value = "/all_projects/{projectId}/orders", method = RequestMethod.GET)
+    @RequestMapping(value = "/projects/{projectId}/orders", method = RequestMethod.GET)
     public String adminGetProjectOrders(@PathVariable("projectId") Integer projectId, Model model) {
         projectTrackingService.getProjectOrders(projectId);
         model.addAttribute("ordersOfProject", projectTrackingService.getProjectOrders(projectId));
@@ -255,30 +255,31 @@ public class AdminController {
         return "admin/projectOrders";
     }
 
-    @RequestMapping(value = "/projects/tracking", method = RequestMethod.GET)
-    public String adminGetTrackingBoard(Model model) {
-        model.addAttribute("runningProjects", projectTrackingService.getUnfinishedProjects());
-        return "admin/tracking";
-    }
-
-    @RequestMapping(value = "/projects/tracking/{projectId}", method = RequestMethod.GET)
-    public String adminGetTrackingItem(@PathVariable("projectId") Integer projectId, Model model) {
-        Project project = projectTrackingService.getProjectById(projectId);
-        List<CustomerOrder> orders = projectTrackingService.getProjectOrders(projectId);
-        model.addAttribute("lastTrack", projectTrackingService.getLastTrackOfEachOrder(orders));
-        model.addAttribute("ordersOfTrackingProject", orders);
-        model.addAttribute("trackingProject", project);
-        return "admin/trackingItem";
-    }
-
-    @RequestMapping(value = "/projects/tracking/{projectId}/{orderId}/history", method = RequestMethod.GET)
+    @RequestMapping(value = "/project/{projectId}/order/{orderId}/tracks", method = RequestMethod.GET)
     public String getTrackingHistoryOfOrder(@PathVariable("projectId") Integer projectId,
                                             @PathVariable("orderId") Integer orderId, Model model) {
 
         model.addAttribute("orderOfProject", projectTrackingService.getOrderById(orderId));
         model.addAttribute("trackingProject", projectTrackingService.getProjectById(projectId));
         model.addAttribute("allTracks", projectTrackingService.getTrackingHistoryOfOrder(orderId));
-        return "admin/history";
+        return "admin/tracks";
+    }
+
+    @RequestMapping(value = "/project/find", method = RequestMethod.GET)
+    public String findProject() {
+        return "admin/find_project";
+    }
+
+    @Transactional
+    @RequestMapping(value = "/project/find", method = RequestMethod.POST)
+    public ModelAndView projectFinder(@RequestParam("title") String title, ModelMap model) {
+        if(projectTrackingService.getProjectByTitle(title) == null) {
+            model.addAttribute("error", new Exception("Проект не найден в Базе"));
+            return new ModelAndView("admin/find_project", model);
+        }
+        Project project = projectTrackingService.getProjectByTitle(title);
+        model.addAttribute("project", project);
+        return new ModelAndView("admin/project", model);
     }
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)

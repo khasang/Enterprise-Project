@@ -82,11 +82,6 @@ public class AdminService {
         clientDao.update(client);
     }
 
-    @Transactional
-    public List<Project> getProjectsByClient(Client client) {
-        return projectDao.findProjectsByClient(client);
-    }
-
     /**
      * Employee service
      */

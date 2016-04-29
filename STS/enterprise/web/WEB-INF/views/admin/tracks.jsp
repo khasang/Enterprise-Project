@@ -24,14 +24,14 @@
                 <c:forEach items="${allTracks}" var="track">
                     <tr>
                         <td>${track.id}</td>
-                        <td>${track.employee.fullName}</td>
+                        <td><a href="<c:url value='/admin/employee/${track.employee.login}'/>">${track.employee.fullName}</a></td>
                         <td>${track.trackStatus}</td>
                         <td>${track.description}</td>
                         <td>${track.progress} %</td>
                     </tr>
                 </c:forEach>
             </table>
-            <p><a href=<c:url value='/admin/projects/tracking/${trackingProject.id}'/>><< back to orders</a></p>
+            <p><a href=<c:url value='/admin/projects/${trackingProject.id}/orders/'/>><< back to orders</a></p>
         </section>
         <section id="news">
             <jsp:include page="../fragments/newssection.jsp"/>

@@ -33,7 +33,7 @@
                         <td>${openProjects.price}</td>
                         <td>${openProjects.beginDate}</td>
                         <td>Open</td>
-                        <td><a href="<c:url value='/admin/all_projects/${openProjects.id}/orders'/>">Show orders</a> </td>
+                        <td><a href="<c:url value='/admin/projects/${openProjects.id}/orders'/>">Show orders</a> </td>
                     </tr>
                 </c:forEach>
             </table>
@@ -61,7 +61,7 @@
                         <td>${finishedProjects.price}</td>
                         <td>${finishedProjects.beginDate}</td>
                         <td>${finishedProjects.endDate}</td>
-                        <td><a href="<c:url value='/admin/all_projects/${finishedProjects.id}/orders'/>">Show orders</a> </td>
+                        <td><a href="<c:url value='/admin/projects/${finishedProjects.id}/orders'/>">Show orders</a> </td>
                     </tr>
                 </c:forEach>
             </table>

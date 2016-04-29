@@ -41,7 +41,7 @@
                             </c:otherwise>
                         </c:choose>
                     </td>
-                    <td><a href="<c:url value='/admin/all_projects/${project.id}/orders'/>">Show orders</a></td>
+                    <td><a href="<c:url value='/admin/projects/${project.id}/orders'/>">Show orders</a></td>
                 </tr>
             </table>
             <br/>

@@ -53,9 +53,13 @@ public class ProjectDaoImpl extends AbstractDao<Integer, Project> implements Pro
     }
 
     @SuppressWarnings("unchecked")
-    public List<Project> findProjectsByClient(Client customer) {
-        Query query = getSession().createSQLQuery("SELECT FROM project WHERE customer_id = :id");
-        query.setInteger("id", customer.getId());
-        return (List<Project>) query.list();
+    public Project findProjectsByTitle(String title) {
+        Query query = getSession().createQuery("FROM Project p WHERE p.title = :title");
+        query.setString("title", title);
+        if (query.list().isEmpty()) {
+            return null;
+        } else {
+            return (Project) query.list().get(0);
+        }
     }
 }

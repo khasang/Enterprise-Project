@@ -10,23 +10,34 @@
 <div id="mainContainer">
     <div id="mainRow">
         <section id="main">
-            <h1>Заказы для проекта ${project.title}</h1><br>
-            <h2>Заказчик:</h2><p>${project.customer}</p>
-            <h2><b>Статус:</b></h2>
-            <p>
-                <c:choose>
-                    <c:when test="${project.endDate == null}">
-                        В работе
-                    </c:when>
-                    <c:otherwise>
-                        Закрыт: ${project.endDate}
-                    </c:otherwise>
-                </c:choose>
-            </p>
-            <h2><b>Список заказов:</b></h2>
-            <c:forEach items="${ordersOfProject}" var="orders">
-                <p>- ${orders}</p>
-            </c:forEach><br>
+            <table align="center" border="1">
+                <h1>Orders of project: ${project.title} <br/></h1>
+                <tr>
+                    <th>Id</th>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Status</th>
+                    <th>Tracks</th>
+                </tr>
+                <tr>
+                    <c:forEach items="${ordersOfProject}" var="order">
+                    <td>${order.id}</td>
+                    <td>${order.feature}</td>
+                    <td><a href="<c:url value='/admin/client/${project.customer.login}'/>">${project.customer}</a> </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${project.endDate == null}">
+                                В работе
+                            </c:when>
+                            <c:otherwise>
+                                Закрыт: ${project.endDate}
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                        <td><a href=<c:url value='/admin/project/${project.id}/order/${order.id}/tracks'/>>Tracks</a></td>
+                </tr>
+                </c:forEach>
+            </table>
             <p><a href=<c:url value='/admin/all_projects'/>><< к списку проектов</a></p>
         </section>
         <section id="news">

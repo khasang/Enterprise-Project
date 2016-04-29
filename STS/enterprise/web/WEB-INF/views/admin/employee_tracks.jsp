@@ -24,7 +24,7 @@
                 </tr>
                 <c:forEach items="${runningTracks}" var="runningTracks">
                     <tr>
-                        <td>${runningTracks.order.project.title}</td>
+                        <td><a href=<c:url value='/admin/projects/${runningTracks.order.project.id}'/>>${runningTracks.order.project.title}</a></td>
                         <td>${runningTracks.order.feature}</td>
                         <td>${runningTracks.trackStatus}</td>
                         <td>${runningTracks.description}</td>
@@ -46,7 +46,7 @@
                 </tr>
                 <c:forEach items="${confirmedTracks}" var="confirmedTracks">
                     <tr>
-                        <td>${confirmedTracks.order.project.title}</td>
+                        <td><a href=<c:url value='/admin/projects/${confirmedTracks.order.project.id}'/>>${confirmedTracks.order.project.title}</a></td>
                         <td>${confirmedTracks.order.feature}</td>
                         <td>${confirmedTracks.trackStatus}</td>
                         <td>${confirmedTracks.description}</td>
