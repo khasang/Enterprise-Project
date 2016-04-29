@@ -21,6 +21,7 @@
                     <th>Почта</th>
                     <th>Контактный Телефон</th>
                     <th>Роли</th>
+                    <th>Projects</th>
                     <th>Enabled</th>
                 </tr>
                 <tr>
@@ -34,6 +35,11 @@
                     <td>
                         <c:forEach items="${roles}" var="r">
                             ${r.role} &nbsp;&nbsp;
+                        </c:forEach>
+                    </td>
+                    <td>
+                        <c:forEach items="${projects}" var="p">
+                            ${p.title} &nbsp;&nbsp;
                         </c:forEach>
                     </td>
                     <td>${client.enabled}</td>

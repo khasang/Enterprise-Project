@@ -11,7 +11,7 @@
     <div id="mainRow">
         <section id="main">
             <table align="center" border="1">
-                <h1>Список всех проектов <br/></h1>
+                <h1>Список открытых проектов <br/></h1>
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
@@ -23,26 +23,45 @@
                     <th>End date</th>
                     <th>Orders for project</th>
                 </tr>
-                <c:forEach items="${allProjects}" var="project">
+                <c:forEach items="${openProjects}" var="openProjects">
                     <tr>
-                        <td>${project.id}</td>
-                        <td>${project.title}</td>
-                        <td>${project.projectBasis}</td>
-                        <td>${project.description}</td>
-                        <td>${project.customer}</td>
-                        <td>${project.price}</td>
-                        <td>${project.beginDate}</td>
-                        <td>
-                            <c:choose>
-                                <c:when test="${project.endDate == null}">
-                                    open
-                                </c:when>
-                                <c:otherwise>
-                                    ${project.endDate}
-                                </c:otherwise>
-                            </c:choose>
-                        </td>
-                        <td><a href="<c:url value='/admin/all_projects/${project.id}/orders'/>">Show orders</a> </td>
+                        <td>${openProjects.id}</td>
+                        <td><a href=<c:url value='/admin/projects/${openProjects.id}'/>>${openProjects.title}</a></td>
+                        <td>${openProjects.projectBasis}</td>
+                        <td>${openProjects.description}</td>
+                        <td>${openProjects.customer}</td>
+                        <td>${openProjects.price}</td>
+                        <td>${openProjects.beginDate}</td>
+                        <td>Open</td>
+                        <td><a href="<c:url value='/admin/all_projects/${openProjects.id}/orders'/>">Show orders</a> </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <br/>
+            <table align="center" border="1">
+                <h1>Список выполненных проектов <br/></h1>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Project basis</th>
+                    <th>Description</th>
+                    <th>Customer</th>
+                    <th>Price</th>
+                    <th>Begin date</th>
+                    <th>End date</th>
+                    <th>Orders for project</th>
+                </tr>
+                <c:forEach items="${finishedProjects}" var="finishedProjects">
+                    <tr>
+                        <td>${finishedProjects.id}</td>
+                        <td><a href=<c:url value='/admin/projects/${finishedProjects.id}'/>>${finishedProjects.title}</a></td>
+                        <td>${finishedProjects.projectBasis}</td>
+                        <td>${finishedProjects.description}</td>
+                        <td>${finishedProjects.customer}</td>
+                        <td>${finishedProjects.price}</td>
+                        <td>${finishedProjects.beginDate}</td>
+                        <td>${finishedProjects.endDate}</td>
+                        <td><a href="<c:url value='/admin/all_projects/${finishedProjects.id}/orders'/>">Show orders</a> </td>
                     </tr>
                 </c:forEach>
             </table>

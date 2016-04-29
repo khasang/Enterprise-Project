@@ -1,6 +1,7 @@
 package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.ProjectDao;
+import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.Project;
 import io.khasang.enterprise.model.enums.ProjectBasis;
 import org.hibernate.Criteria;
@@ -49,5 +50,12 @@ public class ProjectDaoImpl extends AbstractDao<Integer, Project> implements Pro
     public void deleteAllProjects() {
         Query query = getSession().createQuery("FROM Project");
         query.executeUpdate();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Project> findProjectsByClient(Client customer) {
+        Query query = getSession().createSQLQuery("SELECT FROM project WHERE customer_id = :id");
+        query.setInteger("id", customer.getId());
+        return (List<Project>) query.list();
     }
 }

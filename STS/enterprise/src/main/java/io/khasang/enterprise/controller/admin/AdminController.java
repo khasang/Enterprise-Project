@@ -50,7 +50,7 @@ public class AdminController {
     }
 
     /**
-     * CRUD operations by Client
+     * CRUD operations for Client
      */
 
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
@@ -63,8 +63,11 @@ public class AdminController {
     public String adminGetCurrentClient(@PathVariable("login") String login, Model model) {
         Client client = adminService.getClientByLogin(login);
         Set<ClientRole> roles = client.getClientRoles();
+        Set<Project> projects = client.getProjects();
         Hibernate.initialize(roles);
         model.addAttribute("roles", roles);
+        Hibernate.initialize(projects);
+        model.addAttribute("projects", projects);
         model.addAttribute("client", client);
         return "admin/client";
     }
@@ -108,7 +111,7 @@ public class AdminController {
     }
 
     /**
-     * CRUD operations by Employee
+     * CRUD operations for Employee
      */
 
     @RequestMapping(value = "/organization", method = RequestMethod.GET)
@@ -220,7 +223,7 @@ public class AdminController {
     }
 
     /**
-     * CRUD operations by Projects
+     * CRUD operations for Projects
      */
 
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
@@ -228,11 +231,20 @@ public class AdminController {
         return "admin/projects";
     }
 
-    @RequestMapping(value = "/all_projects", method = RequestMethod.GET) //todo: separate all projects for running finish new
+    @RequestMapping(value = "/all_projects", method = RequestMethod.GET)
     public String allProjects(Model model) {
-        List<Project> projects = projectTrackingService.getAllProjects();
-        model.addAttribute("allProjects", projects);
+        List<Project> openProjects = adminService.getUnfinishedProjects();
+        List<Project> finishedProjects = adminService.getFinishedProjects();
+        model.addAttribute("openProjects", openProjects);
+        model.addAttribute("finishedProjects", finishedProjects);
         return "admin/all_projects";
+    }
+
+    @RequestMapping(value = "/projects/{id}", method = RequestMethod.GET)
+    public String adminProject(@PathVariable("id") Integer id, Model model) {
+        Project project = projectTrackingService.getProjectById(id);
+        model.addAttribute("project", project);
+        return "admin/project";
     }
 
     @RequestMapping(value = "/all_projects/{projectId}/orders", method = RequestMethod.GET)

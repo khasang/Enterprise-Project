@@ -1,5 +1,6 @@
 package io.khasang.enterprise.dao.interfaces;
 
+import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.Project;
 import io.khasang.enterprise.model.enums.ProjectBasis;
 
@@ -26,4 +27,6 @@ public interface ProjectDao {
     void deleteProjectById(int id);
 
     void deleteAllProjects();
+
+    List<Project> findProjectsByClient(Client client);
 }
