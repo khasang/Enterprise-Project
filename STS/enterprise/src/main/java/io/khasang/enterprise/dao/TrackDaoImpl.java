@@ -2,7 +2,6 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.TrackDao;
 import io.khasang.enterprise.model.Track;
-import io.khasang.enterprise.model.enums.TrackStatus;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -44,13 +43,4 @@ public class TrackDaoImpl extends AbstractDao<Integer, Track> implements TrackDa
             return (Track) query.list().get(0);
         }
     }
-
-//    @SuppressWarnings("unchecked")
-//    public List<Track> findTemporary(String login) {
-//        Query query = getSession().createQuery("FROM Track t WHERE t.employee = :employeeId AND t.trackStatus = :status AND t.progress != :finishedValue");
-//        query.setInteger("employeeId", employeeId);
-//        query.setString("status", "RUNNING");
-//        query.setInteger("finishedValue", 100);
-//        return query.list();
-//    }
 }
