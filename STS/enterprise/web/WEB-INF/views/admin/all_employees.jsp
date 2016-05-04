@@ -24,6 +24,7 @@
                     <th>Дата устройства</th>
                     <th>Зарплата</th>
                     <th>Налог</th>
+                    <th>Tracks</th>
                     <th>Enabled</th>
                 </tr>
                 <c:forEach items="${employee}" var="employee">
@@ -39,6 +40,7 @@
                         <td>${employee.hiredate}</td>
                         <td>${employee.salary}</td>
                         <td>${employee.tax}</td>
+                        <td><a href=<c:url value='/admin/employee/${employee.login}/tracks'/>>Tracks</a></td>
                         <td>${employee.enabled}</td>
                     </tr>
                 </c:forEach>

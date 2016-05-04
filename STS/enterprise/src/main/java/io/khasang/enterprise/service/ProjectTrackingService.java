@@ -77,4 +77,8 @@ public class ProjectTrackingService {
         Employee employee = employeeDao.findByLogin(login);
         return trackDao.findUnfinishedByEmployeeId(employee.getId());
     }
+
+    public Project getProjectByTitle(String title) {
+        return projectDao.findProjectsByTitle(title);
+    }
 }

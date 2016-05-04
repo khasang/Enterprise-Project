@@ -2,8 +2,12 @@ package io.khasang.enterprise.service;
 
 import io.khasang.enterprise.dao.interfaces.ClientDao;
 import io.khasang.enterprise.dao.interfaces.EmployeeDao;
+import io.khasang.enterprise.dao.interfaces.ProjectDao;
+import io.khasang.enterprise.dao.interfaces.TrackDao;
 import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.Employee;
+import io.khasang.enterprise.model.Project;
+import io.khasang.enterprise.model.Track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +22,14 @@ public class AdminService {
     private ClientDao clientDao;
     @Autowired
     private EmployeeDao employeeDao;
+    @Autowired
+    private TrackDao trackDao;
+    @Autowired
+    private ProjectDao projectDao;
+
+    /**
+     * Client service
+     */
 
     @Transactional
     public void addClientRole(int id) {
@@ -71,7 +83,7 @@ public class AdminService {
     }
 
     /**
-     * Employee
+     * Employee service
      */
     @Transactional
     public void addEmployeeRole(int id) {
@@ -124,5 +136,24 @@ public class AdminService {
         employee.setEnabled(true);
         employee.setFireDate(null);
         employeeDao.update(employee);
+    }
+
+    @Transactional
+    public List<Track> getEmployeeTracks(Integer id) {
+        return trackDao.findAllByEmployeeId(id);
+    }
+
+    /**
+     * Project service
+     */
+
+    @Transactional
+    public List<Project> getUnfinishedProjects() {
+        return projectDao.findUnfinishedProjects();
+    }
+
+    @Transactional
+    public List<Project> getFinishedProjects() {
+        return projectDao.findFinishedProjects();
     }
 }

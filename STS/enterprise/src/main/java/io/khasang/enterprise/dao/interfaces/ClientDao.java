@@ -1,7 +1,6 @@
 package io.khasang.enterprise.dao.interfaces;
 
 import io.khasang.enterprise.model.Client;
-
 import java.util.List;
 
 public interface ClientDao {
@@ -25,4 +24,5 @@ public interface ClientDao {
     void deleteClientRoleById(int id);
 
     void deleteAllClientRoles();
+
 }
