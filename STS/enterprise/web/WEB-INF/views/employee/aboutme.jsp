@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +27,17 @@
                     <td>${accountData.age}</td>
                     <td>${accountData.email}</td>
                     <td>${accountData.hiredate}</td>
+                </tr>
+                <tr>
+                   <form:form id="trackForm" method="POST" action="/employee/update" modelAttribute="employee">
+                        <td></td>
+                        <td><input path="fullName" type="text" name="fullName" value=""/></td>
+                        <td><input path="address" type="text" name="address" value=""/></td>
+                        <td><input path="age" type="text" name="age" value=""/></td>
+                        <td><input path="email" type="text" name="email" value=""/></td>
+                        <td>${accountData.hiredate}</td>
+                        <td><input type="submit" value="Save"/></td>
+                    </form:form>
                 </tr>
             </table>
         </section>

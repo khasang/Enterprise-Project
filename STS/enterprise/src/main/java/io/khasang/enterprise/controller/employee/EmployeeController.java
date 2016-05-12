@@ -1,6 +1,7 @@
 package io.khasang.enterprise.controller.employee;
 
 import io.khasang.enterprise.model.CustomerOrder;
+import io.khasang.enterprise.model.Employee;
 import io.khasang.enterprise.model.Project;
 import io.khasang.enterprise.model.Track;
 import io.khasang.enterprise.service.ProjectTrackingService;
@@ -31,9 +32,9 @@ public class EmployeeController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String employeeHome(Model model) {
-        model.addAttribute("USD", rates.getRate("USD"));
-        model.addAttribute("EUR", rates.getRate("EUR"));
-        model.addAttribute("currentDay", rates.getCurrentDay());
+//        model.addAttribute("USD", rates.getRate("USD"));
+//        model.addAttribute("EUR", rates.getRate("EUR"));
+//        model.addAttribute("currentDay", rates.getCurrentDay());
         return "employee/account";
     }
 
@@ -90,12 +91,28 @@ public class EmployeeController {
     public String createNewTrack(@ModelAttribute("track") @Valid Track newTrack, BindingResult result,
                                  @PathVariable("projectId") Integer projectId,
                                  @PathVariable("orderId") Integer orderId, Model model, Principal principal) {
-        if (result.hasErrors()) {
-            return "redirect:/tracking/{projectId}/{orderId}/input_track";
+        Track lastTrack = projectTrackingService.getLastTrackByOrderId(orderId);
+        if (result.hasErrors() || lastTrack.getProgress() >= newTrack.getProgress()) {
+            return "redirect:/employee/tracking/{projectId}/{orderId}/input_track";
         } else {
             projectTrackingService.createNewTrack(newTrack, orderId, principal);
             model.addAttribute("trackingProject", projectTrackingService.getProjectById(projectId));
             return "employee/newTrackSuccess";
+        }
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateEmployeeAccount(@ModelAttribute("employee") @Valid Employee employee, BindingResult result, Principal principal) {
+        if (result.hasErrors()) {
+            return "redirect:/employee/myaccount";
+        } else {
+            Employee currentEmployee = registrationService.getEmployeeToEdit(principal);
+            currentEmployee.setFullName(employee.getFullName());
+            currentEmployee.setAddress(employee.getAddress());
+            currentEmployee.setAge(employee.getAge());
+            currentEmployee.setEmail(employee.getEmail());
+            registrationService.updateEmployee(currentEmployee);
+            return "redirect:/employee/myaccount";
         }
     }
 
