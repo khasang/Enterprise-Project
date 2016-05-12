@@ -40,7 +40,7 @@ public class RegistrationService {
 
     @Transactional
     public Employee getEmployeeToEdit(Principal principal) {
-        return employeeDao.findByLogin(principal.getName()); // todo найти способ, как пихнуть сюдя текущего юзера
+        return employeeDao.findByLogin(principal.getName());
     }
 
     @Transactional

@@ -22,13 +22,11 @@
                     <tbody>
                     <tr>
                         <td>Description</td>
-                            <td><input path="description" type="text" name="description" value=""/>
-                        </td>
+                        <td><input path="description" type="text" name="description" value=""/></td>
                     </tr>
                     <tr>
                         <td>Progress</td>
-                            <td><input path="progress" type="text" name="progress" value=""/>
-                        </td>
+                        <td><input path="progress" type="text" name="progress" value=""/></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Create"/></td>
@@ -36,8 +34,6 @@
                     </tr>
                     </tbody>
                 </table>
-                <%--<input type="hidden" name="${_csrf.parameterName}"--%>
-                       <%--value="${_csrf.token}"/>--%>
             </form:form>
             <td><a href="/employee/tracking/${trackingProject.id}"><< back to tracking table</a>
         </section>

@@ -35,9 +35,9 @@ public class AppController {
 
     @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
-        model.addAttribute("USD", rates.getRate("USD"));
-        model.addAttribute("EUR", rates.getRate("EUR"));
-        model.addAttribute("currentDay", rates.getCurrentDay());
+//        model.addAttribute("USD", rates.getRate("USD"));
+//        model.addAttribute("EUR", rates.getRate("EUR"));
+//        model.addAttribute("currentDay", rates.getCurrentDay());
         return "index";
     }
 

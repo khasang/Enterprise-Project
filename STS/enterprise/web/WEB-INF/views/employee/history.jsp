@@ -33,6 +33,7 @@
             </table>
             <h2 id="new-track-ref"><a href=<c:url value='/employee/tracking/${trackingProject.id}/${orderOfProject.id}/input_track'/>>New track</a></h2>
             <p><a href=<c:url value='/employee/tracking/${trackingProject.id}'/>><< back to orders</a></p>
+            <p><a href=<c:url value='/employee/mytasks'/>><< show tasks</a></p>
         </section>
         <section id="news">
             <jsp:include page="../fragments/newssection.jsp"/>

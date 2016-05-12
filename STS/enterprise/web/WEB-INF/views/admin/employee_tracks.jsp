@@ -12,7 +12,7 @@
     <div id="mainRow">
         <section id="main">
             <p>
-                RUNNING Tracks of ${employee.login}:
+                REQUESTED Tracks of ${employee.login}:
             </p>
             <table border="1">
                 <tr>
@@ -22,13 +22,13 @@
                     <th>Description</th>
                     <th>Progress</th>
                 </tr>
-                <c:forEach items="${runningTracks}" var="runningTracks">
+                <c:forEach items="${requestedTracks}" var="requestedTracks">
                     <tr>
-                        <td><a href=<c:url value='/admin/projects/${runningTracks.order.project.id}'/>>${runningTracks.order.project.title}</a></td>
-                        <td>${runningTracks.order.feature}</td>
-                        <td>${runningTracks.trackStatus}</td>
-                        <td>${runningTracks.description}</td>
-                        <td>${runningTracks.progress} %</td>
+                        <td><a href=<c:url value='/admin/projects/${requestedTracks.order.project.id}'/>>${requestedTracks.order.project.title}</a></td>
+                        <td>${requestedTracks.order.feature}</td>
+                        <td>${requestedTracks.trackStatus}</td>
+                        <td>${requestedTracks.description}</td>
+                        <td>${requestedTracks.progress} %</td>
                     </tr>
                 </c:forEach>
             </table>

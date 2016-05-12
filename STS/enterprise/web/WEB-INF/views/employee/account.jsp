@@ -12,9 +12,9 @@
 		<section id="main">
 			<h1>Личный кабинет Работника</h1>
 			<p>
-				<%--Курсы валют на ${currentDay} <br/>--%>
-				<%--USD: ${USD} <br/>--%>
-				<%--EUR: ${EUR} <br/>--%>
+				Курсы валют на ${currentDay} <br/>
+				USD: ${USD} <br/>
+				EUR: ${EUR} <br/>
 				<br/>
 			</p>
 		</section>

@@ -25,14 +25,11 @@ public class TrackDaoImpl extends AbstractDao<Integer, Track> implements TrackDa
     }
 
     @SuppressWarnings("unchecked")
-    public List<Track> findUnfinishedByEmployeeId(Integer employeeId) {
-        Query query = getSession().createQuery("FROM Track t WHERE t.employee = :employeeId AND t.trackStatus = :status AND t.progress != :finishedValue");
+    public List<Integer> findAllUniqueOrderIdsByEmployeeId(Integer employeeId) {
+        Query query = getSession().createQuery("SELECT DISTINCT t.order.id FROM Track t WHERE t.employee.id = :employeeId");
         query.setInteger("employeeId", employeeId);
-        query.setString("status", "RUNNING");
-        query.setInteger("finishedValue", 100);
-        return query.list();
+        return (List<Integer>) query.list();
     }
-
     public Track findByOrderIdAndMaxProgress(Integer orderId) {
         Query query = getSession().createQuery("FROM Track t WHERE t.order = :orderId ORDER BY t.progress DESC");
         query.setInteger("orderId", orderId);

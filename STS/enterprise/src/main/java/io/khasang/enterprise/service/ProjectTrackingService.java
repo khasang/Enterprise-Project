@@ -55,6 +55,10 @@ public class ProjectTrackingService {
         }
         return lastTracks;
     }
+
+    public Track getLastTrackByOrderId(Integer orderId) {
+        return trackDao.findByOrderIdAndMaxProgress(orderId);
+    }
     
     public List<Track> getTrackingHistoryOfOrder(Integer orderId) {
         return trackDao.findAllByOrderId(orderId);
@@ -73,9 +77,18 @@ public class ProjectTrackingService {
     }
 
     public List<Track> getTasksOfEmployee(Principal principal) {
+        final Integer maxProgressValue = 100;
+        List<Track> tasks = new ArrayList<>();
         String login = principal.getName();
         Employee employee = employeeDao.findByLogin(login);
-        return trackDao.findUnfinishedByEmployeeId(employee.getId());
+        List<Integer> orderIds = trackDao.findAllUniqueOrderIdsByEmployeeId(employee.getId());
+        for (Integer orderId : orderIds) {
+            Track track = trackDao.findByOrderIdAndMaxProgress(orderId);
+            if (track.getProgress() < maxProgressValue) {
+                tasks.add(track);
+            }
+        }
+        return tasks;
     }
 
     public Project getProjectByTitle(String title) {

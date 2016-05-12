@@ -43,16 +43,15 @@ public class AdminController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String adminHome(Model model) {
-        model.addAttribute("USD", rates.getRate("USD"));
-        model.addAttribute("EUR", rates.getRate("EUR"));
-        model.addAttribute("currentDay", rates.getCurrentDay());
+//        model.addAttribute("USD", rates.getRate("USD"));
+//        model.addAttribute("EUR", rates.getRate("EUR"));
+//        model.addAttribute("currentDay", rates.getCurrentDay());
         return "admin/account";
     }
 
     /**
      * CRUD operations for Client
      */
-
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public String adminGetAllClient() {
         return "admin/clients";
@@ -113,7 +112,6 @@ public class AdminController {
     /**
      * CRUD operations for Employee
      */
-
     @RequestMapping(value = "/organization", method = RequestMethod.GET)
     public String adminOrganization() {
         return "admin/organization";
@@ -185,6 +183,7 @@ public class AdminController {
             return "admin/organization";
         }
     }
+
     @InitBinder("employee")
     public void initClientBinder(WebDataBinder dataBinder) {
         dataBinder.setValidator(employeeValidator);
@@ -196,16 +195,16 @@ public class AdminController {
         Employee employee = adminService.getEmployeeByLogin(login);
         List<Track> tracks = adminService.getEmployeeTracks(employee.getId());
         Hibernate.initialize(tracks);
-        model.addAttribute("runningTracks", getRunningTracks(tracks));
+        model.addAttribute("requestedTracks", getRequestedTracks(tracks));
         model.addAttribute("confirmedTracks", getConfirmedTracks(tracks));
         model.addAttribute("employee", employee);
         return "admin/employee_tracks";
     }
 
-    private List<Track> getRunningTracks(List<Track> tracks) {
+    private List<Track> getRequestedTracks(List<Track> tracks) {
         List<Track> result = new ArrayList<>();
         for (Track track: tracks) {
-            if (track.getTrackStatus().equals(TrackStatus.RUNNING)) {
+            if (track.getTrackStatus().equals(TrackStatus.REQUESTED)) {
                 result.add(track);
             }
         }
@@ -225,7 +224,6 @@ public class AdminController {
     /**
      * CRUD operations for Projects
      */
-
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
     public String adminProjects() {
         return "admin/projects";
@@ -258,7 +256,6 @@ public class AdminController {
     @RequestMapping(value = "/project/{projectId}/order/{orderId}/tracks", method = RequestMethod.GET)
     public String getTrackingHistoryOfOrder(@PathVariable("projectId") Integer projectId,
                                             @PathVariable("orderId") Integer orderId, Model model) {
-
         model.addAttribute("orderOfProject", projectTrackingService.getOrderById(orderId));
         model.addAttribute("trackingProject", projectTrackingService.getProjectById(projectId));
         model.addAttribute("allTracks", projectTrackingService.getTrackingHistoryOfOrder(orderId));

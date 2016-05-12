@@ -17,7 +17,7 @@ public interface TrackDao {
 
     List<Track> findAllByEmployeeId(Integer employeeId);
 
-    List<Track> findUnfinishedByEmployeeId(Integer employeeId);
-
     Track findByOrderIdAndMaxProgress(Integer orderId);
+
+    List<Integer> findAllUniqueOrderIdsByEmployeeId(Integer employeeId);
 }
