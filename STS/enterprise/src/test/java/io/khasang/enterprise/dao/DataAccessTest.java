@@ -6,7 +6,6 @@ import io.khasang.enterprise.dao.interfaces.*;
 import io.khasang.enterprise.model.*;
 import io.khasang.enterprise.model.enums.Features;
 import io.khasang.enterprise.model.enums.ProjectBasis;
-import io.khasang.enterprise.model.enums.TrackStatus;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -273,11 +272,6 @@ public class DataAccessTest {
         }
     }
 
-//    @Test
-//    public void findAllTracksByEmployeeId() throws Exception {
-//        List<T>
-//    }
-
     @Test
     public void findTrackByOrderIdAndMaxProgressTest() throws Exception {
         Track lastTrackOfOrder = trackDao.findByOrderIdAndMaxProgress(1); //todo костыль, вместо 1 поставить относительное
@@ -287,12 +281,11 @@ public class DataAccessTest {
     }
 
     @Test
-    public void findUnfinishedByEmployeeIdTest() throws Exception {
-        final long finishedPercentageValue = 100;
-        List<Track> tasksOfEmployee = trackDao.findUnfinishedByEmployeeId(1); // todo 1 временно
-        for (Track track : tasksOfEmployee) {
-            Assert.assertEquals(TrackStatus.RUNNING, track.getTrackStatus());
-            Assert.assertNotEquals(finishedPercentageValue, track.getProgress().longValue());
+    public void findAllUniqueOrderIdsByEmployeeIdTest() throws Exception {
+        List<Integer> uniqueOrderIds = trackDao.findAllUniqueOrderIdsByEmployeeId(2);
+        for (Integer uniqueOrderId : uniqueOrderIds) {
+            System.out.println(uniqueOrderId.toString());
         }
+        Assert.assertEquals(1, uniqueOrderIds.size());
     }
 }

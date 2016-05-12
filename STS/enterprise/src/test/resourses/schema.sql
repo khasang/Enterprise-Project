@@ -38,7 +38,7 @@ INSERT INTO news VALUES (2, 'NewsAuthor1', 'NewsContent1', 'NewsDescription', '2
 INSERT INTO news VALUES (3, 'NewsAuthor2', 'NewsContent2', 'NewsDescription', '2013-12-12', 'NewsTitle2');
 INSERT INTO news VALUES (4, 'NewsAuthor3', 'NewsContent3', 'NewsDescription', '2012-12-12', 'NewsTitle3');
 
-INSERT INTO track VALUES (1, 'TrackDescription1', 10, 'RUNNING', 1, 1);
-INSERT INTO track VALUES (2, 'TrackDescription2', 100, 'RUNNING', 1, 1);
+INSERT INTO track VALUES (1, 'TrackDescription1', 10, 'REQUESTED', 1, 1);
+INSERT INTO track VALUES (2, 'TrackDescription2', 100, 'CONFIRMED', 1, 1);
 INSERT INTO track VALUES (3, 'TrackDescription3', 20, 'CONFIRMED', 2, 2);
-INSERT INTO track VALUES (4, 'TrackDescription4', 70, 'RUNNING', 2, 2);
+INSERT INTO track VALUES (4, 'TrackDescription4', 70, 'REQUESTED', 2, 2);
