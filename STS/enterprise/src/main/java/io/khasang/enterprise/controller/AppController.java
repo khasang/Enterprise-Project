@@ -110,7 +110,7 @@ public class AppController {
         return "/registration";
     }
 
-    @RequestMapping(value = "reg/registration", method = RequestMethod.POST)
+    @RequestMapping(value = "/reistration_confirm", method = RequestMethod.POST)
     public String ClientRegistration(@ModelAttribute("client") @Valid Client newClient, BindingResult result) {
         if (result.hasErrors()) {
             return "/registration";
