@@ -16,13 +16,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service("userDetailsService")
 public class MyUserDetailService implements UserDetailsService {
+
     @Autowired
     private ClientDao clientDao;
     @Autowired
@@ -51,12 +51,10 @@ public class MyUserDetailService implements UserDetailsService {
     }
 
     private List<GrantedAuthority> buildClientAuthority(Set<ClientRole> roles) {
-        Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
-        for (ClientRole clientRole : roles) {
-            setAuths.add(new SimpleGrantedAuthority(clientRole.getRole()));
-        }
-        List<GrantedAuthority> result = new ArrayList<GrantedAuthority>(setAuths);
-        return result;
+        return roles.stream()
+                .map(ClientRole::getRole)
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
     }
 
     private User buildUserFormEmployee(Employee employee, List<GrantedAuthority> authorities) {
@@ -65,11 +63,9 @@ public class MyUserDetailService implements UserDetailsService {
     }
 
     private List<GrantedAuthority> buildEmployeeAuthority(Set<EmployeeRole> roles) {
-        Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
-        for (EmployeeRole employeeRole : roles) {
-            setAuths.add(new SimpleGrantedAuthority(employeeRole.getRole()));
-        }
-        List<GrantedAuthority> result = new ArrayList<GrantedAuthority>(setAuths);
-        return result;
+        return roles.stream()
+                .map(EmployeeRole::getRole)
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
     }
 }

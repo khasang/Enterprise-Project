@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("projectTrackingService")
 @Transactional
@@ -46,14 +47,10 @@ public class ProjectTrackingService {
     }
 
     public List<Track> getLastTrackOfEachOrder(List<CustomerOrder> orders) {
-        List<Track> lastTracks = new ArrayList<>();
-        for (CustomerOrder order : orders) {
-            Track track = trackDao.findByOrderIdAndMaxProgress(order.getId());
-            if (track != null) {
-                lastTracks.add(track);
-            }
-        }
-        return lastTracks;
+        return orders.stream()
+                .map(CustomerOrder::getId)
+                .map(trackDao::findByOrderIdAndMaxProgress)
+                .filter(track -> track != null).collect(Collectors.toList());
     }
 
     public Track getLastTrackByOrderId(Integer orderId) {
@@ -78,17 +75,13 @@ public class ProjectTrackingService {
 
     public List<Track> getTasksOfEmployee(Principal principal) {
         final Integer maxProgressValue = 100;
-        List<Track> tasks = new ArrayList<>();
         String login = principal.getName();
         Employee employee = employeeDao.findByLogin(login);
         List<Integer> orderIds = trackDao.findAllUniqueOrderIdsByEmployeeId(employee.getId());
-        for (Integer orderId : orderIds) {
-            Track track = trackDao.findByOrderIdAndMaxProgress(orderId);
-            if (track.getProgress() < maxProgressValue) {
-                tasks.add(track);
-            }
-        }
-        return tasks;
+
+        return orderIds.stream()
+                .map(trackDao::findByOrderIdAndMaxProgress)
+                .filter(track -> track.getProgress() < maxProgressValue).collect(Collectors.toList());
     }
 
     public Project getProjectByTitle(String title) {
