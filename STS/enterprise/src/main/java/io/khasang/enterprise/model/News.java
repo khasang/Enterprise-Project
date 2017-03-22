@@ -2,23 +2,29 @@ package io.khasang.enterprise.model;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.sql.Date;
 
 @XmlRootElement
 @Entity
-@Table(name = "news")
-public class News {
+@Table(name = "news", catalog = "enterprise")
+public class News implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
     private Integer id;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "content")
     private String content;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "author")
     private String author;
 
     @Column(name = "publish_date")

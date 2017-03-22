@@ -2,8 +2,9 @@ package io.khasang.enterprise.service;
 
 import io.khasang.enterprise.dao.interfaces.NewsDao;
 import io.khasang.enterprise.model.News;
-import org.glassfish.jersey.process.internal.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,25 +14,43 @@ import java.util.List;
 @Transactional
 public class NewsService {
     @Autowired
-    NewsDao newsDao;
+    private NewsDao newsDao;
 
+    public NewsService() {
+    }
+
+    @Transactional
     public List<News> findLatestNews() {
         return newsDao.findLastNews();
     }
 
+    @Transactional
     public List<News> findAllNews() {
         return newsDao.findAll();
     }
 
+    @Transactional
     public List<News> getAllNews() {
         return newsDao.findAll();
     }
 
+    @Transactional
     public void deleteAllNews() {
         newsDao.deleteAllNews();
     }
 
+    @Transactional
     public void saveNewsToDB(News news) {
         newsDao.save(news);
+    }
+
+    @Transactional
+    public News getNewsById(Integer id) {
+        return newsDao.getById(id);
+    }
+
+    @Transactional
+    public News getNewsByTitle(String title) {
+        return newsDao.getByTitle(title);
     }
 }

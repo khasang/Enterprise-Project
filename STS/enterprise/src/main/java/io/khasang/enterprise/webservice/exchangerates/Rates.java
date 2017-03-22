@@ -5,6 +5,7 @@ import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.Daily
 import io.khasang.enterprise.webservice.exchangerates.generated.ru.cbr.web.GetCursOnDateXMLResponse;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -12,9 +13,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Configuration
-@EnableTransactionManagement
-@ComponentScan({"io.khasang.enterprise.webservice"})
+@Component
 public class Rates {
     private static DailyInfo service;
 

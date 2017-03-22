@@ -15,7 +15,7 @@
 						<c:forEach items="${news}" var="news">
 						<article>
 							<header>
-								<h2>${news.title}</h2>
+								<h2><a href=<c:url value='/news/${news.id}'/>>${news.title}</a></h2>
 								<p>Дата: ${news.publishDate}</p>
 							</header>
 								<p>

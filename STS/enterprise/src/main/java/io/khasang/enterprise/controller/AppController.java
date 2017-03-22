@@ -6,6 +6,7 @@ import io.khasang.enterprise.service.registrationService.ClientValidator;
 import io.khasang.enterprise.service.registrationService.RegistrationService;
 import io.khasang.enterprise.webservice.exchangerates.Rates;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
@@ -22,15 +23,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-//test commit
 @Controller
 public class AppController {
     @Autowired
-    NewsService newsService;
+    private NewsService newsService;
     @Autowired
-    ClientValidator clientValidator;
+    private ClientValidator clientValidator;
     @Autowired
-    RegistrationService registrationService;
+    private RegistrationService registrationService;
     @Autowired
     private Rates rates;
 
@@ -56,6 +56,12 @@ public class AppController {
     public String news(Model model) {
         model.addAttribute("news", newsService.findAllNews());
         return "news";
+    }
+
+    @RequestMapping(value = "/news/{id}", method = RequestMethod.GET)
+    public String singleNews(Model model, @PathVariable("id") Integer id) {
+        model.addAttribute("news", newsService.getNewsById(id));
+        return "currentNews";
     }
 
     @RequestMapping(value = "/projects", method = RequestMethod.GET)

@@ -2,7 +2,6 @@ package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.NewsDao;
 import io.khasang.enterprise.model.News;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +15,12 @@ public class NewsDaoImpl extends AbstractDao<Integer, News> implements NewsDao {
         return query.list();
     }
 
+    public News getById(Integer id) {
+        Query query = getSession().createQuery("FROM News n WHERE n.id = :id");
+        query.setInteger("id", id);
+        return (News) query.list().get(0);
+    }
+
     public void deleteNewsById(int id) {
         Query query = getSession().createSQLQuery("DELETE from news where id = :id");
         query.setInteger("id", id);
@@ -25,5 +30,12 @@ public class NewsDaoImpl extends AbstractDao<Integer, News> implements NewsDao {
     public void deleteAllNews() {
         Query query = getSession().createSQLQuery("delete from news");
         query.executeUpdate();
+    }
+
+    @Override
+    public News getByTitle(String title) {
+        Query query = getSession().createQuery("FROM News n WHERE n.title = :title");
+        query.setString("title", title);
+        return (News) query.list().get(0);
     }
 }

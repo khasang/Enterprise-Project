@@ -19,7 +19,7 @@
 
 <nav id="publicArea">
     <ul>
-        <li><a href="<c:url value='/index'/>">ГЛАВНАЯ</a></li>
+        <li><a href=<c:url value='/index'/>>ГЛАВНАЯ</a></li>
         <li><a href=<c:url value='/structure'/>>СТРУКТУРА</a></li>
         <li><a href=<c:url value='/services'/>>УСЛУГИ</a></li>
         <li><a href=<c:url value='/news'/>>НОВОСТИ И СТАТЬИ</a></li>

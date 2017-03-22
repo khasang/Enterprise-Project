@@ -17,7 +17,20 @@
         <hibernate-version>5.0.1.Final</hibernate-version>
         <jersey2.version>2.22.2</jersey2.version>
         <jaxrs.version>2.0.1</jaxrs.version>
+        <jersey.version>2.16</jersey.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.glassfish.jersey</groupId>
+                <artifactId>jersey-bom</artifactId>
+                <version>${jersey.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
     <dependencies>
@@ -203,20 +216,14 @@
         </dependency>
         <!--Jersey rest-->
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>${jaxrs.version}</version>
+            <groupId>org.glassfish.jersey.containers</groupId>
+             <artifactId>jersey-container-servlet</artifactId>
+            <version>2.25.1</version>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.jersey.bundles</groupId>
-            <artifactId>jaxrs-ri</artifactId>
-            <version>${jaxrs.version}</version>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-moxy</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.glassfish.jersey.media</groupId>-->
-            <!--<artifactId>jersey-media-json-jackson</artifactId>-->
-            <!--<version>${jersey2.version}</version>-->
-        <!--</dependency>-->
         <!--End Jersey rest-->
 
         <!--Parser-->
