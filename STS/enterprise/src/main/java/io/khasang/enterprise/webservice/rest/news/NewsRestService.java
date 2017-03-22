@@ -1,6 +1,5 @@
 package io.khasang.enterprise.webservice.rest.news;
 
-import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.News;
 import io.khasang.enterprise.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;

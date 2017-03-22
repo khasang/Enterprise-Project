@@ -20,6 +20,4 @@ public interface NewsDao {
     void deleteAllNews();
 
     News getById(Integer id);
-
-    News getByTitle(String title);
 }

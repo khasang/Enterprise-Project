@@ -1,10 +1,11 @@
 package io.khasang.enterprise.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "employee_role")
-public class EmployeeRole {
+public class EmployeeRole implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

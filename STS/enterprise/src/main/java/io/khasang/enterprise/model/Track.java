@@ -5,9 +5,10 @@ import io.khasang.enterprise.model.enums.TrackStatus;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 
 @Entity
-public class Track {
+public class Track implements Serializable {
 
     private static final Integer INITIAL_PROGRESS = 5;
 

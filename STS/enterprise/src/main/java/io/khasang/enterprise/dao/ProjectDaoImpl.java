@@ -1,7 +1,6 @@
 package io.khasang.enterprise.dao;
 
 import io.khasang.enterprise.dao.interfaces.ProjectDao;
-import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.model.Project;
 import io.khasang.enterprise.model.enums.ProjectBasis;
 import org.hibernate.Criteria;

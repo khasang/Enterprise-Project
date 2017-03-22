@@ -7,12 +7,13 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "customer_order")
-public class CustomerOrder {
+public class CustomerOrder implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

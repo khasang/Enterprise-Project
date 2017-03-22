@@ -31,11 +31,4 @@ public class NewsDaoImpl extends AbstractDao<Integer, News> implements NewsDao {
         Query query = getSession().createSQLQuery("delete from news");
         query.executeUpdate();
     }
-
-    @Override
-    public News getByTitle(String title) {
-        Query query = getSession().createQuery("FROM News n WHERE n.title = :title");
-        query.setString("title", title);
-        return (News) query.list().get(0);
-    }
 }
