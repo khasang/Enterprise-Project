@@ -18,7 +18,7 @@ public class News implements Serializable {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "content")
+    @Column(name = "content", length = 5000)
     private String content;
 
     @Column(name = "description")
