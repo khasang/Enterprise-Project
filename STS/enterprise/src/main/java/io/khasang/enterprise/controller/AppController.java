@@ -4,7 +4,7 @@ import io.khasang.enterprise.model.Client;
 import io.khasang.enterprise.service.NewsService;
 import io.khasang.enterprise.service.registrationService.ClientValidator;
 import io.khasang.enterprise.service.registrationService.RegistrationService;
-import io.khasang.enterprise.webservice.exchangerates.Rates;
+import io.khasang.enterprise.webservice.exchangerates.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -31,13 +31,13 @@ public class AppController {
     @Autowired
     private RegistrationService registrationService;
     @Autowired
-    private Rates rates;
+    private CurrencyService currencyService;
 
     @RequestMapping(value = {"/", "/index"})
     public String home(Model model) {
-        model.addAttribute("USD", rates.getRate("USD"));
-        model.addAttribute("EUR", rates.getRate("EUR"));
-        model.addAttribute("currentDay", rates.getCurrentDay());
+        model.addAttribute("USD", currencyService.getCurrency("USD"));
+        model.addAttribute("EUR", currencyService.getCurrency("EUR"));
+        model.addAttribute("currentDay", currencyService.getCurrentDay());
         return "index";
     }
 

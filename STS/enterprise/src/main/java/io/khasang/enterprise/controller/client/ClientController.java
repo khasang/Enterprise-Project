@@ -1,6 +1,6 @@
 package io.khasang.enterprise.controller.client;
 
-import io.khasang.enterprise.webservice.exchangerates.Rates;
+import io.khasang.enterprise.webservice.exchangerates.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/client")
 public class ClientController {
     @Autowired
-    private Rates rates;
+    private CurrencyService currencyService;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String clientHome(Model model) {
-        model.addAttribute("USD", rates.getRate("USD"));
-        model.addAttribute("EUR", rates.getRate("EUR"));
-        model.addAttribute("currentDay", rates.getCurrentDay());
+        model.addAttribute("USD", currencyService.getCurrency("USD"));
+        model.addAttribute("EUR", currencyService.getCurrency("EUR"));
+        model.addAttribute("currentDay", currencyService.getCurrentDay());
         return "client/account";
     }
 

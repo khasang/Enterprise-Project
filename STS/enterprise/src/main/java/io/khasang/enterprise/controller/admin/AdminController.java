@@ -8,7 +8,7 @@ import io.khasang.enterprise.service.AdminService;
 import io.khasang.enterprise.service.ProjectTrackingService;
 import io.khasang.enterprise.service.registrationService.EmployeeValidator;
 import io.khasang.enterprise.service.registrationService.RegistrationService;
-import io.khasang.enterprise.webservice.exchangerates.Rates;
+import io.khasang.enterprise.webservice.exchangerates.CurrencyService;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ import java.util.*;
 @RequestMapping(value = "/admin")
 public class AdminController {
     @Autowired
-    private Rates rates;
+    private CurrencyService currencyService;
     @Autowired
     private AdminService adminService;
     @Autowired
@@ -43,9 +43,9 @@ public class AdminController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String adminHome(Model model) {
-        model.addAttribute("USD", rates.getRate("USD"));
-        model.addAttribute("EUR", rates.getRate("EUR"));
-        model.addAttribute("currentDay", rates.getCurrentDay());
+        model.addAttribute("USD", currencyService.getCurrency("USD"));
+        model.addAttribute("EUR", currencyService.getCurrency("EUR"));
+        model.addAttribute("currentDay", currencyService.getCurrentDay());
         return "admin/account";
     }
 
