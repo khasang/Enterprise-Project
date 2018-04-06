@@ -46,31 +46,25 @@ public class UrlAuthSuccessHandler implements AuthenticationSuccessHandler {
     }
 
     protected String determineTargetUrl(final Authentication authentication) {
-        boolean isAdmin = false;
-        boolean isClient = false;
-        boolean isEmployee = false;
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        return getTargetUrl(authorities);
+    }
+
+    private String getTargetUrl(Collection<? extends GrantedAuthority> authorities) {
+        String url = null;
         for (final GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
-                isAdmin = true;
+                url =  "/admin/account";
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_EMPLOYEE")) {
-                isEmployee = true;
+                url = "/employee/account";
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_CLIENT")) {
-                isClient = true;
+                url = "/client/account";
                 break;
             }
         }
-        if (isAdmin) {
-            return "/admin/account";
-        } else if (isEmployee) {
-            return "/employee/account";
-        } else if (isClient) {
-            return "/client/account";
-        } else {
-            throw new IllegalStateException();
-        }
+        return url;
     }
 
     protected final void clearAuthenticationAttributes(final HttpServletRequest request) {
