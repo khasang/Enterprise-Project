@@ -123,11 +123,16 @@ public class AdminService {
     }
 
     @Transactional
-    public void banEmployee(String login) {
+    public String banEmployee(String login) {
         Employee employee = employeeDao.findByLogin(login);
-        employee.setEnabled(false);
-        employee.setFireDate(new Date());
-        employeeDao.update(employee);
+        if (!isAdmin(employee)) {
+            employee.setEnabled(false);
+            employee.setFireDate(new Date());
+            employeeDao.update(employee);
+            return "redirect:/admin/all_employee";
+        } else {
+            return "redirect:/admin/error300";
+        }
     }
 
     @Transactional
@@ -136,6 +141,11 @@ public class AdminService {
         employee.setEnabled(true);
         employee.setFireDate(null);
         employeeDao.update(employee);
+    }
+
+    private boolean isAdmin(Employee employee) {
+        if (employee.getId() == 1) return true;
+        else return false;
     }
 
     @Transactional

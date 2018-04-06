@@ -158,14 +158,18 @@ public class AdminController {
 
     @RequestMapping(value = "/employee/ban/{login}", method = RequestMethod.GET)
     public String disableEmployee(@PathVariable("login") String login) {
-        adminService.banEmployee(login);
-        return "redirect:/admin/all_employee";
+        return adminService.banEmployee(login);
     }
 
     @RequestMapping(value = "/employee/unban/{login}", method = RequestMethod.GET)
     public String enableEmployee(@PathVariable("login") String login) {
         adminService.unbanEmployee(login);
         return "redirect:/admin/all_employee";
+    }
+
+    @RequestMapping(value = "/error300", method = RequestMethod.GET)
+    public String accessDenied() {
+        return "admin/300";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)

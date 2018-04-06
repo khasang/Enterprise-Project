@@ -106,7 +106,7 @@ public class AppController {
         } else if (exception instanceof LockedException) {
             error = exception.getMessage();
         } else {
-            error = "Неверный логин или пароль!";
+            error = "Тебя забанили, неудачник!";
         }
         return error;
     }
